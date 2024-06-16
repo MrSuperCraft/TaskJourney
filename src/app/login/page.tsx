@@ -1,0 +1,162 @@
+'use client';
+
+import { useState } from 'react';
+import { Button } from '@nextui-org/react';
+import { FaGoogle } from 'react-icons/fa';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { auth, db } from '../firebase';
+import { doc, setDoc, getDoc, deleteDoc } from 'firebase/firestore';
+import { generateToken, generateRefreshToken } from '../utils/jwt'; // Import the function for generating tokens
+
+const LoginPage = () => {
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+
+    const router = useRouter();
+
+    const sendVerificationEmail = async (email: string) => {
+        try {
+            // Notify backend to send verification email
+            const response = await fetch('/api/sendVerificationEmail', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email }),
+            });
+
+            const data = await response.json();
+            if (!response.ok) {
+                throw new Error(data.error || 'Failed to send verification code');
+            }
+
+            console.log('Verification email sent:', data.message);
+        } catch (error) {
+            console.error('Error sending verification email:', error);
+        }
+    };
+
+    const handleGoogleLogin = async () => {
+        try {
+            setLoading(true);
+            const auth = getAuth();
+            const provider = new GoogleAuthProvider();
+
+            // Sign in with Google popup
+            const result = await signInWithPopup(auth, provider);
+
+            // After successful Google sign-in
+            const { uid, email } = result.user;
+
+            // Retrieve user information from Firestore
+            const userRef = doc(db, 'users', uid);
+            const userDoc = await getDoc(userRef);
+
+            if (userDoc.exists()) {
+                const userData = userDoc.data();
+
+                // Check if the user is verified
+                if (!userData?.verified) {
+                    throw new Error('Verify your account, check your email.');
+                }
+            } else {
+                // If user does not exist in Firestore, this is a first-time signup
+                // Add the user to Firestore and send a verification email
+                await setDoc(userRef, {
+                    uid,
+                    email,
+                    verified: false,
+                    createdAt: new Date(),
+                    // other user data
+                });
+
+                // Send verification email (assuming you have a function for this)
+                await sendVerificationEmail(result.user.email || '');
+
+                throw new Error('Verify your account, check your email.');
+            }
+
+            // Generate an access token for the user
+            const accessToken = generateToken(uid);
+
+            if (!accessToken) {
+                throw new Error('Failed to generate access token');
+            }
+
+            // Generate a refresh token for the user
+            const refreshToken = generateRefreshToken(uid);
+
+            if (!refreshToken) {
+                throw new Error('Failed to generate refresh token');
+            }
+
+
+            // Set the expiration time for the refresh token (e.g., 30 days from now)
+            const expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + 30);
+
+            // Store the access token in Firestore with the user's UID as the document ID
+            const accessTokenRef = doc(db, 'accessTokens', uid);
+            await setDoc(accessTokenRef, {
+                uid,
+                accessToken,
+                expirationDate: new Date(Date.now() + 15 * 60 * 1000).getTime() // 15 minutes expiration
+            }, { merge: true });
+
+            // Store the refresh token in Firestore with the user's UID as the document ID
+            const refreshTokenRef = doc(db, 'refreshTokens', uid);
+            await setDoc(refreshTokenRef, {
+                uid,
+                refreshToken,
+                expirationDate: expirationDate.getTime()
+            }, { merge: true });
+
+            // Redirect to the dashboard after successful login
+            router.push('/dashboard');
+        } catch (error) {
+            setError((error as Error).message || 'Login failed. Please try again.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+
+
+    return (
+        <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-slate-300 via-sky-blue to-teal dark:from-dark-teal dark:via-sky-blue dark:to-dark-primary-brand">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden w-full max-w-3xl mx-8 md:max-w-6xl min-h-[600px] md:mx-auto flex">
+                <div className="hidden md:block w-3/5 bg-primary-brand">
+                    <Image src="/login.svg" alt="Login" width={800} height={400} className="object-cover w-full h-full" />
+                </div>
+                <div className="w-full md:w-2/5 p-8 my-auto">
+                    <h2 className="lg:text-5xl md:text-3xl sm:text-2xl font-bold mb-2 text-center font-inter">Welcome Back!</h2>
+                    <h2 className="lg:text-2xl md:text-lg sm:text-md mb-6 text-center font-lato">Log in to your dashboard.</h2>
+
+                    {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+
+                    <div className="mt-4 flex justify-center items-center">
+                        <Button color="default" variant="bordered" className="flex items-center space-x-2" onClick={handleGoogleLogin} isLoading={loading}>
+                            <FaGoogle />
+                            <span>Sign in with Google</span>
+                        </Button>
+                    </div>
+                    <div className="mt-4 text-center">
+                        <span className="text-gray-600 dark:text-gray-300">
+                            Don't have an account?
+                            <Link href="/signup">
+                                <span className="text-teal dark:text-primary-brand-light hover:underline ml-2">
+                                    Sign up today
+                                </span>
+                            </Link>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default LoginPage;
