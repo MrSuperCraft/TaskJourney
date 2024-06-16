@@ -32,11 +32,11 @@ TaskJourney uses Tailwind CSS for styling, and the configuration is defined in t
 ## Planned Features
 
 ### Current Features
-- [v] Home Page
-- [v] Authentication via Google Account (Oauth)
-- [v] Customizable Settings
-- [v] Dark mode support 
-- [ ] Semi - finalizied task manager tab
+- [x] Home Page
+- [x] Authentication via Google Account (Oauth)
+- [x] Customizable Settings
+- [x] Dark mode support 
+- [x] Semi - finalizied task manager tab
 
 ### Upcoming Features
 - [ ] Custom AI Assistant (self - made)
