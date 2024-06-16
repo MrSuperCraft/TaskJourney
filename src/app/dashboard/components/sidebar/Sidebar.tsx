@@ -9,6 +9,7 @@ import { ThemeContext } from '../../../contexts/ThemeContext'; // Adjust this im
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion'; // Import motion from Framer Motion
 import { useProfile } from '@/app/contexts/ProfileContext';
+import Image from 'next/image';
 
 const Sidebar: React.FC = () => {
     const { theme, toggleTheme } = useContext(ThemeContext);
@@ -70,10 +71,14 @@ const Sidebar: React.FC = () => {
                     <div className="flex flex-col items-center mt-4">
                         <div className="flex items-center">
                             {profilePic ? (
-                                <img
+                                <Image
                                     src={profilePic}
                                     alt="Profile"
                                     className="w-20 h-20 mr-3 border rounded-full object-cover" // Adjust size here
+                                    width={80}
+                                    height={80}
+                                    unoptimized // Disable optimization for this image
+
                                 />
                             ) : (
                                 <FaUserCircle className="text-cyan-700 dark:text-primary-brand-600 text-4xl mr-2" />

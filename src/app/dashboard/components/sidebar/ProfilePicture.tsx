@@ -1,4 +1,5 @@
-import { IconType } from 'react-icons';
+import Image from 'next/image'
+
 
 interface ProfilePictureProps {
     imageUrl: string;
@@ -7,7 +8,7 @@ interface ProfilePictureProps {
 
 const ProfilePicture: React.FC<ProfilePictureProps> = ({ imageUrl, altText }) => {
     return (
-        <img src={imageUrl} alt={altText} className="w-10 h-10 rounded-full object-cover" />
+        <Image src={imageUrl} alt={altText} className="w-10 h-10 rounded-full object-cover" />
     );
 };
 

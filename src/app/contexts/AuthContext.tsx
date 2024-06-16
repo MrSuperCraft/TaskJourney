@@ -65,7 +65,7 @@ export const useAuth = (): AuthContextType => {
 
 const UserDataContext = createContext<UserDataContextType | undefined>(undefined);
 
-export const getUserData = (): UserDataContextType => {
+export const useUserData = (): UserDataContextType => {
   const context = useContext(UserDataContext);
   if (!context) {
     throw new Error('useUserData must be used within an UserDataContextProvider');

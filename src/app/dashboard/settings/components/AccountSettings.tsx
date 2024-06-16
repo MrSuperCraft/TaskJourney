@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useCallback, useRef } from 'react';
+import React, { useEffect, useState, useCallback, useRef, useMemo } from 'react';
 import { useAuth } from '../../../contexts/AuthContext';
 import { db, storage } from '../../../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
@@ -125,7 +125,7 @@ const AccountSettings: React.FC = () => {
         return usernameSnapshot.empty;
     };
 
-    const saveUserData = async (data: any) => {
+    const saveUserData = useCallback(async (data: any) => {
         if (user) {
             if (data.username.trim().length === 0) {
                 setUsernameError('Username cannot be empty.');
@@ -190,21 +190,21 @@ const AccountSettings: React.FC = () => {
                 });
             }
         }
-    };
+    }, [user, setUsername]);
 
 
 
 
-    const debouncedSaveUserData = useCallback(
-        debounce((data) => saveUserData(data), 6000),
-        []
+    const debouncedSaveUserData = useMemo(
+        () => debounce((data) => saveUserData(data), 6000),
+        [] // Dependency array is empty since debounce should only be created once
     );
 
     useEffect(() => {
         if (Object.keys(userData).length > 0) {
             debouncedSaveUserData(userData);
         }
-    }, [userData, debouncedSaveUserData]);
+    }, [userData, debouncedSaveUserData]); // Include debouncedSaveUserData in the dependency array since it's used in the effect
 
     return (
         <div className="mb-6">

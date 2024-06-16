@@ -57,7 +57,7 @@ const Navbar = () => {
                                     className="ml-4 px-4 py-2 rounded-full text-white bg-darker-cyan dark:bg-dark-cyan hover:bg-teal dark:hover:bg-dark-teal transition-colors duration-300"
                                     onClick={() => setClicked(true)}
                                 >
-                                    {clicked ? <Spinner color="primary-brand" /> : "Sign Up"}
+                                    {clicked ? <Spinner color="primary" /> : "Sign Up"}
                                 </button>
                             </Link>
 

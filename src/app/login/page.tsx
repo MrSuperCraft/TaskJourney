@@ -8,36 +8,59 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth, db } from '../firebase';
-import { doc, setDoc, getDoc, deleteDoc } from 'firebase/firestore';
-import { generateToken, generateRefreshToken } from '../utils/jwt'; // Import the function for generating tokens
+import { doc, setDoc, getDoc } from 'firebase/firestore';
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
+// Define the type for the sendEmail function
+type SendEmailFunction = (email: string, verificationCode: string) => Promise<EmailJSResponseStatus>;
+
+
+const sendEmail: SendEmailFunction = async (email: string, verificationCode: string) => {
+    const serviceID = process.env.NEXT_PUBLIC_SMTP_SERVICE || '';
+    const templateID = process.env.NEXT_PUBLIC_TEMPLATE_ID || '';
+    const userID = process.env.NEXT_PUBLIC_SMTP_UID || '';
+
+    // Get the URLs for the images
+    const tasksImageURL = `${process.env.NEXT_PUBLIC_BASE_URL}/tasks-solid.png`;
+    const circleCheckImageURL = `${process.env.NEXT_PUBLIC_BASE_URL}/circle-check-solid.png`;
+
+    const templateParams = {
+        email: email,
+        verification_code: verificationCode,
+        tasks_image: tasksImageURL,
+        circle_check_image: circleCheckImageURL,
+    };
+
+    try {
+        // Send email using templateParams which include image URLs
+        const response = await emailjs.send(serviceID, templateID, templateParams, userID);
+        return response;
+    } catch (error) {
+        console.error('Failed to send email:', error);
+        throw error;
+    }
+};
+
+
+// Function to generate a 6-digit code
+const generateCode = () => {
+    return Math.floor(100000 + Math.random() * 900000).toString();
+};
+
+const sendVerificationEmail = async (email: string, verificationCode: string) => {
+    try {
+
+        sendEmail(email, verificationCode);
+
+    } catch (error) {
+        console.error('Failed to send verification email:', error);
+    }
+};
 
 const LoginPage = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
     const router = useRouter();
-
-    const sendVerificationEmail = async (email: string) => {
-        try {
-            // Notify backend to send verification email
-            const response = await fetch('/api/sendVerificationEmail', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email }),
-            });
-
-            const data = await response.json();
-            if (!response.ok) {
-                throw new Error(data.error || 'Failed to send verification code');
-            }
-
-            console.log('Verification email sent:', data.message);
-        } catch (error) {
-            console.error('Error sending verification email:', error);
-        }
-    };
 
     const handleGoogleLogin = async () => {
         try {
@@ -64,55 +87,21 @@ const LoginPage = () => {
                 }
             } else {
                 // If user does not exist in Firestore, this is a first-time signup
-                // Add the user to Firestore and send a verification email
-                await setDoc(userRef, {
-                    uid,
-                    email,
-                    verified: false,
-                    createdAt: new Date(),
-                    // other user data
+                const verificationCode = generateCode();
+
+                // Store the code in Firestore with an expiration time
+                const codeExpiration = new Date();
+                codeExpiration.setHours(codeExpiration.getHours() + 1); // Code valid for 1 hour
+                await setDoc(doc(db, 'emailVerificationCodes', email!), {
+                    code: verificationCode,
+                    expiresAt: codeExpiration,
                 });
 
-                // Send verification email (assuming you have a function for this)
-                await sendVerificationEmail(result.user.email || '');
+                // Send verification email
+                await sendVerificationEmail(email!, verificationCode);
 
                 throw new Error('Verify your account, check your email.');
             }
-
-            // Generate an access token for the user
-            const accessToken = generateToken(uid);
-
-            if (!accessToken) {
-                throw new Error('Failed to generate access token');
-            }
-
-            // Generate a refresh token for the user
-            const refreshToken = generateRefreshToken(uid);
-
-            if (!refreshToken) {
-                throw new Error('Failed to generate refresh token');
-            }
-
-
-            // Set the expiration time for the refresh token (e.g., 30 days from now)
-            const expirationDate = new Date();
-            expirationDate.setDate(expirationDate.getDate() + 30);
-
-            // Store the access token in Firestore with the user's UID as the document ID
-            const accessTokenRef = doc(db, 'accessTokens', uid);
-            await setDoc(accessTokenRef, {
-                uid,
-                accessToken,
-                expirationDate: new Date(Date.now() + 15 * 60 * 1000).getTime() // 15 minutes expiration
-            }, { merge: true });
-
-            // Store the refresh token in Firestore with the user's UID as the document ID
-            const refreshTokenRef = doc(db, 'refreshTokens', uid);
-            await setDoc(refreshTokenRef, {
-                uid,
-                refreshToken,
-                expirationDate: expirationDate.getTime()
-            }, { merge: true });
 
             // Redirect to the dashboard after successful login
             router.push('/dashboard');
@@ -122,8 +111,6 @@ const LoginPage = () => {
             setLoading(false);
         }
     };
-
-
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-slate-300 via-sky-blue to-teal dark:from-dark-teal dark:via-sky-blue dark:to-dark-primary-brand">
@@ -145,7 +132,7 @@ const LoginPage = () => {
                     </div>
                     <div className="mt-4 text-center">
                         <span className="text-gray-600 dark:text-gray-300">
-                            Don't have an account?
+                            Don&apos;t have an account?
                             <Link href="/signup">
                                 <span className="text-teal dark:text-primary-brand-light hover:underline ml-2">
                                     Sign up today

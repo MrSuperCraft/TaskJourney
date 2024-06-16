@@ -37,7 +37,7 @@ const FAQ: React.FC = () => {
                     <AccordionItem
                         title={<span className="font-bold flex items-center max-sm:text-md"><FaComments className="mr-4 text-xl max-sm:hidden" /> How can users provide feedback or suggestions for improving TaskJourney?</span>}
                         textValue="How can users provide feedback or suggestions for improving TaskJourney?">
-                        <p>TaskJourney welcomes user feedback and suggestions for improvement. Users can submit feedback through the platform's feedback form, participate in surveys or polls, and engage in community forums to share ideas and suggestions.</p>
+                        <p>TaskJourney welcomes user feedback and suggestions for improvement. Users can submit feedback through the platform&apos;s feedback form, participate in surveys or polls, and engage in community forums to share ideas and suggestions.</p>
                     </AccordionItem>
                     <AccordionItem
                         title={<span className="font-bold flex items-center max-sm:text-md"><FaHeadset className="mr-4 text-xl max-sm:hidden" /> Is there customer support available to assist users with any issues or questions they may have?</span>}

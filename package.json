@@ -5,7 +5,7 @@
   "scripts": {
     "start-cron": "node server.js",
     "next-dev": "next dev",
-    "dev": "concurrently \"next dev\" \"node server.js\"",
+    "dev": "concurrently \"next dev\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -33,6 +33,7 @@
     "clsx": "^2.1.1",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
+    "emailjs-com": "^3.2.0",
     "express": "^4.19.2",
     "firebase": "^10.12.2",
     "firebase-functions": "^5.0.1",

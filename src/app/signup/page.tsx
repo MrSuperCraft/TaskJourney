@@ -9,6 +9,15 @@ import { db } from '../firebase'; // Import Firestore instance
 import Header from './SignupHeader';
 import Buttons from './Buttons';
 import Footer from './Footer';
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
+
+
+const generateCode = () => {
+    return Math.floor(100000 + Math.random() * 900000).toString();
+};
+
+
+
 
 const SignupPage = () => {
     const [error, setError] = useState<string | null>(null); // Update type to string | null
@@ -58,24 +67,42 @@ const SignupPage = () => {
             setIsLoading(false);
         }
     };
+    // Define the type for the sendEmail function
+    type SendEmailFunction = (email: string, verificationCode: string) => Promise<EmailJSResponseStatus>;
+
+
+    const sendEmail: SendEmailFunction = async (email: string, verificationCode: string) => {
+        const serviceID = process.env.NEXT_PUBLIC_SMTP_SERVICE || '';
+        const templateID = process.env.NEXT_PUBLIC_TEMPLATE_ID || '';
+        const userID = process.env.NEXT_PUBLIC_SMTP_UID || '';
+
+        // Get the URLs for the images
+        const tasksImageURL = `${process.env.NEXT_PUBLIC_BASE_URL}/tasks-solid.png`;
+        const circleCheckImageURL = `${process.env.NEXT_PUBLIC_BASE_URL}/circle-check-solid.png`;
+
+        const templateParams = {
+            email: email,
+            verification_code: verificationCode,
+            tasks_image: tasksImageURL,
+            circle_check_image: circleCheckImageURL,
+        };
+
+        try {
+            // Send email using templateParams which include image URLs
+            const response = await emailjs.send(serviceID, templateID, templateParams, userID);
+            return response;
+        } catch (error) {
+            console.error('Failed to send email:', error);
+            throw error;
+        }
+    };
 
     const sendVerificationEmail = async (email: string) => {
         try {
-            // Notify backend to send verification email
-            const response = await fetch('/api/sendVerificationEmail', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email }),
-            });
+            const verificationCode = generateCode();
+            await sendEmail(email, verificationCode);
 
-            const data = await response.json();
-            if (!response.ok) {
-                throw new Error(data.error || 'Failed to send verification code');
-            }
 
-            console.log('Verification email sent:', data.message);
         } catch (error) {
             console.error('Error sending verification email:', error);
         }
@@ -104,4 +131,5 @@ const SignupPage = () => {
 };
 
 export default SignupPage;
+
 

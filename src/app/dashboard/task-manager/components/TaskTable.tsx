@@ -86,7 +86,7 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, darkMode = false, o
                                         <Button
                                             onClick={() => handleEdit(task)}
                                             size="sm"
-                                            color={darkMode ? "primary-brand" : "success"}
+                                            color={darkMode ? "primary" : "success"}
                                             className="mr-2 text-white"
                                             aria-label="Edit Task"
                                         >
@@ -106,7 +106,7 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, darkMode = false, o
                                         <Button
                                             onClick={() => handleEdit(task)}
                                             size="sm"
-                                            color={darkMode ? "primary-brand" : "success"}
+                                            color={darkMode ? "primary" : "success"}
                                             className="mr-2 text-white"
                                             aria-label="Edit Task"
                                         >

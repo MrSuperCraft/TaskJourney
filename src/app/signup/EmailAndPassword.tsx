@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+/* import React, { useState } from 'react';
 import { Input } from '@nextui-org/react';
 import { getAuth, fetchSignInMethodsForEmail } from "firebase/auth";
 import { FaEye, FaEyeSlash, FaCheckCircle } from 'react-icons/fa';
@@ -205,3 +205,4 @@ const EmailAndPasswordInputs: React.FC<DataInterface> = ({
 };
 
 export default EmailAndPasswordInputs;
+*/
