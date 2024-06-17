@@ -1,4 +1,3 @@
-
 'use client'
 
 import React, { useState, useEffect } from 'react';
@@ -7,8 +6,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaTasks, FaInfoCircle, FaEnvelope, FaMoon, FaSun, FaShoppingBag, FaHandsHelping, FaBlog } from "react-icons/fa";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useContext } from 'react';
-import { ThemeContext } from '../../contexts/ThemeContext'
-import { Spinner } from '@nextui-org/react';
+import { ThemeContext } from '../../contexts/ThemeContext';
+import { Spinner, Button } from '@nextui-org/react';
 
 const Navbar = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -19,7 +18,6 @@ const Navbar = () => {
     useEffect(() => {
         setMounted(true);
     }, []);
-
 
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
@@ -38,23 +36,27 @@ const Navbar = () => {
                 <div className="w-full h-[100px] fixed bg-primary-brand-600 dark:bg-dark-primary-brand shadow-lg transition-colors duration-300">
                     <div className="flex justify-between items-center h-full px-6">
                         <Link href="/">
-                            <div className="flex items-center text-black dark:text-white font-bold text-xl cursor-pointer transition-colors duration-300">
-                                <FaTasks className="w-6 h-6 mr-2 text-black dark:text-white" />
-                                TaskJourney
+                            <div className="flex items-center text-black dark:text-white font-bold text-lg sm:text-xl cursor-pointer transition-colors duration-300">
+                                <FaTasks className="w-5 h-5 sm:w-6 sm:h-6 mr-2 text-black dark:text-white" />
+                                <span className="text-base sm:text-xl">TaskJourney</span>
                             </div>
                         </Link>
 
-                        <div className="flex items-center space-x-4">
-                            <button
-                                className="p-2 rounded-md text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors duration-300"
+                        <div className="flex items-center space-x-2 sm:space-x-4">
+
+                            <Button
+                                isIconOnly
+                                variant="shadow"
+                                className="p-1 sm:p-2 bg-gray-200 dark:bg-gray-700 text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
                                 onClick={toggleTheme}
                             >
-                                {theme === 'light' ? <FaMoon className="w-5 h-5" /> : <FaSun className="w-5 h-5" />}
-                            </button>
+                                {theme === 'light' ? <FaMoon className="w-4 h-4 sm:w-5 sm:h-5 text-sky-700" /> : <FaSun className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400" />}
+                            </Button>
+
 
                             <Link href="/signup">
                                 <button
-                                    className="ml-4 px-4 py-2 rounded-full text-white bg-darker-cyan dark:bg-dark-cyan hover:bg-teal dark:hover:bg-dark-teal transition-colors duration-300"
+                                    className="ml-2 sm:ml-4 px-3 sm:px-4 py-1 sm:py-2 max-sm:py-2 rounded-full text-white bg-darker-cyan dark:bg-dark-cyan hover:bg-teal dark:hover:bg-dark-teal transition-colors duration-300"
                                     onClick={() => setClicked(true)}
                                 >
                                     {clicked ? <Spinner color="primary" /> : "Sign Up"}
@@ -62,10 +64,10 @@ const Navbar = () => {
                             </Link>
 
                             <button
-                                className="p-2 rounded-md text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors duration-300"
+                                className="p-1 sm:p-2 rounded-md text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors duration-300"
                                 onClick={toggleSidebar}
                             >
-                                {isSidebarOpen ? <AiOutlineClose className="w-6 h-6" /> : <AiOutlineMenu className="w-6 h-6" />}
+                                {isSidebarOpen ? <AiOutlineClose className="w-4 h-4 sm:w-6 sm:h-6" /> : <AiOutlineMenu className="w-4 h-4 sm:w-6 sm:h-6" />}
                             </button>
                         </div>
                     </div>
@@ -93,7 +95,6 @@ const Navbar = () => {
                                         Contact
                                     </div>
                                 </Link>
-                                {/* Additional categories */}
                                 <Link href="/products">
                                     <div className="flex items-center text-black dark:text-white py-2 cursor-pointer hover:text-blue-600 transition-colors duration-300">
                                         <FaShoppingBag className="mr-2" />

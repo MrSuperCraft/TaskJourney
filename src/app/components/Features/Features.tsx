@@ -46,21 +46,21 @@ const Features: React.FC = () => {
                 <h2 className="font-inter text-3xl md:text-4xl font-bold text-center mb-12 text-black dark:text-white">
                     Our Features & Qualities
                 </h2>
-                <div className="flex flex-wrap justify-center gap-8 transition-all duration-500">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-8 transition-all duration-500">
                     {features.map((feature, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.2 }}
-                            className="w-full md:w-1/3 lg:w-1/4 p-4"
+                            className="p-4"
                         >
                             <Card className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-center transition-all duration-500">
                                 <CardBody className="transition-all duration-500">
                                     <div className="mb-4">
                                         {feature.icon}
                                     </div>
-                                    <h3 className="font-inter text-xl font-semibold text-black dark:text-white mb-2">
+                                    <h3 className="font-inter md:text-xl font-semibold text-black dark:text-white mb-2 text-md">
                                         {feature.title}
                                     </h3>
                                     <p className="font-lato text-gray-600 dark:text-gray-300">

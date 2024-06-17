@@ -49,7 +49,7 @@ const StatBoxes: React.FC = () => {
         <section className="py-16 bg-white dark:bg-gray-800 transition-all duration-500">
             <div className="container mx-auto px-4 text-center">
                 <h1 className="text-3xl md:text-4xl font-bold text-center mb-12 text-black dark:text-white">Our Community in Numbers</h1>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-center md:justify-start">
                     {displayedStats.map((stat, index) => (
                         <motion.div
                             key={index}
@@ -58,7 +58,7 @@ const StatBoxes: React.FC = () => {
                             transition={{ duration: 0.5, delay: index * 0.2 + 1, ease: 'easeInOut' }}
                             className="p-6 bg-gray-100 dark:bg-gray-900 rounded-lg shadow-lg"
                         >
-                            <h3 className="text-2xl font-bold dark:text-sky-blue text-teal">
+                            <h3 className="text-2xl font-bold text-teal dark:text-sky-blue">
                                 {formatNumber(stat.displayedValue)}
                             </h3>
                             <p className="text-gray-600 dark:text-gray-300 mt-2">{stat.title}</p>

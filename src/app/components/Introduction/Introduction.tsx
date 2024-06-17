@@ -1,8 +1,9 @@
-'use client'
+// src/components/Introduction.tsx
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Card, CardBody } from '@nextui-org/react';
+import { Card, CardBody, Button } from '@nextui-org/react';
+import Image from 'next/image'
 
 const Introduction: React.FC = () => {
     return (
@@ -13,32 +14,44 @@ const Introduction: React.FC = () => {
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     <div>
-                        <motion.img
-                            src="/mockup window.png" // Replace with the path to your demo/mockup image
-                            alt="TaskJourney Mockup"
-                            className="w-full rounded-lg shadow-lg"
+                        <motion.div
+                            className="rounded-lg overflow-hidden shadow-lg"
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.5 }}
-                        />
+                        >
+                            <Image
+                                src="/completed-task-31.svg" // Replace with the path to your demo/mockup image
+                                alt="TaskJourney Mockup"
+                                className="object-cover object-center w-full h-auto"
+                                width={300}
+                                height={300}
+                            />
+                        </motion.div>
                     </div>
                     <div>
                         <Card className="bg-white dark:bg-gray-800">
                             <CardBody>
                                 <p className="text-lg text-gray-600 dark:text-gray-300 font-lato">
-                                    TaskJourney is a powerful platform designed to gamify your life and enhance productivity.
+                                    <span className='font-bold'>TaskJourney</span> enhances productivity and gamifies life.
                                 </p>
                                 <p className="text-lg text-gray-600 dark:text-gray-300 font-lato mt-4">
-                                    With TaskJourney, you can easily manage your tasks, track your progress, set goals, and get insights into your productivity habits.
+                                    Easily manage tasks, track progress, set goals, and gain productivity insights.
                                 </p>
                                 <p className="text-lg text-gray-600 dark:text-gray-300 font-lato mt-4">
-                                    Our AI-driven planning feature helps you make smarter decisions and stay focused on what matters most.
+                                    Our AI assistant can help you out with getting started and achieving your goals.
                                 </p>
                                 <p className="text-lg text-gray-600 dark:text-gray-300 font-lato mt-4">
-                                    Discover a new way to approach your goals and turn your everyday tasks into exciting challenges!
+                                    Turn tasks into exciting challenges with TaskJourney.
                                 </p>
+                                <div className="mt-8 flex justify-center">
+                                    <Button variant="shadow" color="primary">
+                                        Get Started
+                                    </Button>
+                                </div>
                             </CardBody>
                         </Card>
+
                     </div>
                 </div>
             </div>

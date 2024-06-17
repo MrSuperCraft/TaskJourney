@@ -1,0 +1,29 @@
+[debug] [2024-06-17T07:37:19.654Z] ----------------------------------------------------------------------
+[debug] [2024-06-17T07:37:19.656Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-06-17T07:37:19.657Z] CLI Version:   13.11.2
+[debug] [2024-06-17T07:37:19.657Z] Platform:      win32
+[debug] [2024-06-17T07:37:19.657Z] Node Version:  v18.17.1
+[debug] [2024-06-17T07:37:19.672Z] Time:          Mon Jun 17 2024 10:37:19 GMT+0300 (Israel Daylight Time)
+[debug] [2024-06-17T07:37:19.672Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-06-17T07:37:19.677Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2024-06-17T07:37:19.850Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-06-17T07:37:19.851Z] > authorizing via signed-in user (msccodes1@gmail.com)
+[debug] [2024-06-17T07:37:19.851Z] [iam] checking project taskjourney-cb5d6 for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2024-06-17T07:37:19.852Z] > refreshing access token with scopes: []
+[debug] [2024-06-17T07:37:19.853Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2024-06-17T07:37:19.853Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-06-17T07:37:20.072Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2024-06-17T07:37:20.073Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-06-17T07:37:20.087Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/taskjourney-cb5d6:testIamPermissions [none]
+[debug] [2024-06-17T07:37:20.088Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/taskjourney-cb5d6:testIamPermissions x-goog-quota-user=projects/taskjourney-cb5d6
+[debug] [2024-06-17T07:37:20.088Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/taskjourney-cb5d6:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
+[debug] [2024-06-17T07:37:20.281Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2024-06-17T07:37:20.281Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2024-06-17T07:37:21.111Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/taskjourney-cb5d6:testIamPermissions 200
+[debug] [2024-06-17T07:37:21.111Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/taskjourney-cb5d6:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
+[debug] [2024-06-17T07:37:21.113Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/taskjourney-cb5d6 [none]
+[debug] [2024-06-17T07:37:21.459Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/taskjourney-cb5d6 200
+[debug] [2024-06-17T07:37:21.459Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/taskjourney-cb5d6 {"projectId":"taskjourney-cb5d6","projectNumber":"507977665513","displayName":"TaskJourney","name":"projects/taskjourney-cb5d6","resources":{"hostingSite":"taskjourney-cb5d6","realtimeDatabaseInstance":"taskjourney-cb5d6-default-rtdb","storageBucket":"taskjourney-cb5d6.appspot.com","locationId":"europe-west"},"state":"ACTIVE","etag":"1_b783f52e-fed3-4302-b061-c38a1d9ffa74"}
+[debug] [2024-06-17T07:37:21.459Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/taskjourney-cb5d6 [none]
+[debug] [2024-06-17T07:37:21.780Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/taskjourney-cb5d6 200
