@@ -27,3 +27,49 @@
 [debug] [2024-06-17T07:37:21.459Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/taskjourney-cb5d6 {"projectId":"taskjourney-cb5d6","projectNumber":"507977665513","displayName":"TaskJourney","name":"projects/taskjourney-cb5d6","resources":{"hostingSite":"taskjourney-cb5d6","realtimeDatabaseInstance":"taskjourney-cb5d6-default-rtdb","storageBucket":"taskjourney-cb5d6.appspot.com","locationId":"europe-west"},"state":"ACTIVE","etag":"1_b783f52e-fed3-4302-b061-c38a1d9ffa74"}
 [debug] [2024-06-17T07:37:21.459Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/taskjourney-cb5d6 [none]
 [debug] [2024-06-17T07:37:21.780Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/taskjourney-cb5d6 200
+[debug] [2024-06-17T07:37:21.780Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/taskjourney-cb5d6 {"projectId":"taskjourney-cb5d6","projectNumber":"507977665513","displayName":"TaskJourney","name":"projects/taskjourney-cb5d6","resources":{"hostingSite":"taskjourney-cb5d6","realtimeDatabaseInstance":"taskjourney-cb5d6-default-rtdb","storageBucket":"taskjourney-cb5d6.appspot.com","locationId":"europe-west"},"state":"ACTIVE","etag":"1_b783f52e-fed3-4302-b061-c38a1d9ffa74"}
+[debug] [2024-06-17T07:37:34.567Z] defaultcredentials: writing to file C:\Users\user\AppData\Roaming\firebase\msccodes1_gmail_com_application_default_credentials.json
+[debug] [2024-06-17T07:37:34.604Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/taskjourney-cb5d6/sites pageToken=&pageSize=10
+[debug] [2024-06-17T07:37:36.227Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/taskjourney-cb5d6/sites 200
+[debug] [2024-06-17T07:37:36.228Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/taskjourney-cb5d6/sites {"sites":[{"name":"projects/taskjourney-cb5d6/sites/taskjourney-cb5d6","defaultUrl":"https://taskjourney-cb5d6.web.app","appId":"1:507977665513:web:be2f8789a0b49fba019978","type":"DEFAULT_SITE"}]}
+[debug] [2024-06-17T07:37:36.229Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:507977665513:web:be2f8789a0b49fba019978/config [none]
+[debug] [2024-06-17T07:37:36.981Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:507977665513:web:be2f8789a0b49fba019978/config 200
+[debug] [2024-06-17T07:37:36.981Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:507977665513:web:be2f8789a0b49fba019978/config {"projectId":"taskjourney-cb5d6","appId":"1:507977665513:web:be2f8789a0b49fba019978","databaseURL":"https://taskjourney-cb5d6-default-rtdb.europe-west1.firebasedatabase.app","storageBucket":"taskjourney-cb5d6.appspot.com","locationId":"europe-west","apiKey":"AIzaSyDVVqYZMgAPinwBbCKgnVLD0AMmYhQla6I","authDomain":"taskjourney-cb5d6.firebaseapp.com","messagingSenderId":"507977665513"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+   The integration is known to work with Next.js version 12 - 14.0. You may encounter errors.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2024-06-17T07:37:55.587Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/taskjourney-cb5d6/sites/taskjourney-cb5d6 [none]
+[debug] [2024-06-17T07:37:56.906Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/taskjourney-cb5d6/sites/taskjourney-cb5d6 200
+[debug] [2024-06-17T07:37:56.906Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/taskjourney-cb5d6/sites/taskjourney-cb5d6 {"name":"projects/taskjourney-cb5d6/sites/taskjourney-cb5d6","defaultUrl":"https://taskjourney-cb5d6.web.app","appId":"1:507977665513:web:be2f8789a0b49fba019978","type":"DEFAULT_SITE"}
+[info]  ⚠ Invalid next.config.mjs options detected: 
+
+[info]  ⚠     Unrecognized key(s) in object: 'remotePatterns'
+ ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+
+[info]   ▲ Next.js 14.2.4
+
+[info]   - Environments: .env.local
+  - Experiments (use with caution):
+    · missingSuspenseWithCSRBailout
+
+
+[info]    Creating an optimized production build ...
+
+[info] uncaughtException [Error: EPERM: operation not permitted, open 'C:\Users\user\Desktop\CS Learning\TaskJourney\taskjourney\.next\trace'] {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'open',
+  path: 'C:\\Users\\user\\Desktop\\CS Learning\\TaskJourney\\taskjourney\\.next\\trace'
+}
+
+[debug] [2024-06-17T07:38:26.491Z] Error: ENOENT: no such file or directory, open 'C:\Users\user\Desktop\CS Learning\TaskJourney\taskjourney\.next\server\middleware-manifest.json'
+[error] 
+[error] Error: An unexpected error has occurred.
