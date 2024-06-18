@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardBody, Button } from '@nextui-org/react';
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Introduction: React.FC = () => {
     return (
@@ -21,7 +22,7 @@ const Introduction: React.FC = () => {
                             transition={{ duration: 0.5 }}
                         >
                             <Image
-                                src="/completed-task-31.svg" // Replace with the path to your demo/mockup image
+                                src="/completed-task-31.svg"
                                 alt="TaskJourney Mockup"
                                 className="object-cover object-center w-full h-auto"
                                 width={300}
@@ -45,9 +46,11 @@ const Introduction: React.FC = () => {
                                     Turn tasks into exciting challenges with TaskJourney.
                                 </p>
                                 <div className="mt-8 flex justify-center">
-                                    <Button variant="shadow" color="primary">
-                                        Get Started
-                                    </Button>
+                                    <Link href="/about">
+                                        <Button variant="shadow" color="primary">
+                                            Learn More About TaskJourney
+                                        </Button>
+                                    </Link>
                                 </div>
                             </CardBody>
                         </Card>

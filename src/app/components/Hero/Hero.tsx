@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
                     <h1 className="text-4xl md:text-6xl font-bold mb-4">TaskJourney</h1>
                     <p className="text-lg md:text-xl mb-6">Your journey to productivity and achievement starts here.</p>
                     {/* CTA Button */}
-                    <Link href="/signup">
+                    <Link href="/login">
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
