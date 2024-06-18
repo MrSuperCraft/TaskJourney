@@ -4,13 +4,15 @@ const nextConfig = {
         missingSuspenseWithCSRBailout: false,
     },
 
-    remotePatterns: [
-        {
-            protocol: 'https',
-            hostname: 'firebasestorage.googleapis.com',
-            pathname: '**',
-        },
-    ],
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'firebasestorage.googleapis.com',
+                pathname: '**',
+            },
+        ],
+    }
 
 };
 
