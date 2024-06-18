@@ -100,6 +100,14 @@ const SignupPage = () => {
     const sendVerificationEmail = async (email: string) => {
         try {
             const verificationCode = generateCode();
+            // add the code to the database under a "emailVerificationCodes" collection. 
+            await setDoc(doc(db, "emailVerificationCodes", email), {
+                email: email,
+                code: verificationCode
+            });
+
+
+
             await sendEmail(email, verificationCode);
 
 

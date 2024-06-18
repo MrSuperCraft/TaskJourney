@@ -22,18 +22,18 @@ const ConfirmEmailComponent = () => {
     }
 
     return (
-        <Card className="flex items-center justify-center h-screen bg-sky-blue dark:bg-dark-navy-blue">
-            <Card className=" p-6 shadow-lg w-[400px]">
+        <Card className="flex items-center justify-center h-screen bg-sky-blue dark:bg-slate-800">
+            <Card className=" p-6 shadow-lg w-[400px] dark:bg-dark-primary-brand">
                 <CardBody className="text-center text-dark-primary-brand dark:text-light-cyan font-bold font-inter text-xl underline">
                     Confirm your email
                 </CardBody>
                 <Spacer y={1} />
-                <CardBody className="text-center text-teal dark:text-dark-teal font-lato text-xl">
+                <CardBody className="text-center text-teal dark:text-black font-lato text-xl">
                     We have sent a verification email to <strong>{decodeURIComponent(email)}</strong>
                     Please check your inbox and follow the instructions to complete your account setup.
                 </CardBody>
                 <Link href="/login">
-                    <Button className="text-white bg-dark-primary-brand mx-auto flex align-center items-center" >Sign In</Button>
+                    <Button className="text-white bg-dark-primary-brand dark:bg-dark-navy-blue mx-auto flex align-center items-center" >Sign In</Button>
                 </Link>
             </Card>
         </Card>
