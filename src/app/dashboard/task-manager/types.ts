@@ -4,7 +4,7 @@ interface Task {
     stages?: string[];
     date?: string;
     description?: string;
-    location?: string;
+    location?: string | null;
     image?: string;
     reminder?: string;
     priority: "low" | "medium" | "high";

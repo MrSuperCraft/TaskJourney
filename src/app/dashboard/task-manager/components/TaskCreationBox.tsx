@@ -13,7 +13,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MyEditor from './TextArea/MyEditor';
 import EditorProvider, { useDescription } from '@/app/contexts/EditorContext';
-
+import LocationChip from './LocationChip';
 
 
 type Priority = 'low' | 'medium' | 'high';
@@ -28,11 +28,14 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
     const [title, setTitle] = useState('');
     const { description, setDescription } = useDescription();
     const [dueDate, setDueDate] = useState<Date | null>(null);
-    const [location, setLocation] = useState('');
+    const [location, setLocation] = useState<string | null>(null); // Explicitly define type as string | null
     const [reminder, setReminder] = useState<Date | null>(null);
     const [selectedDueDate, setSelectedDueDate] = useState<CalendarDate | null>(null); // Changed to CalendarDate
     const [searchQuery, setSearchQuery] = useState('');
     const [priority, setPriority] = useState<Priority>('medium');
+    const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+
+
 
 
     const handleSave = async () => {
@@ -55,7 +58,7 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
                     title,
                     description: description,
                     date: dueDate ? dueDate.toDateString() : null,
-                    location,
+                    location: location,
                     reminder: reminder ? reminder.toDateString() : null,
                     createdAt: serverTimestamp(),
                     priority,
@@ -67,7 +70,7 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
                     description: description,
                     date: dueDate ? dueDate.toDateString() : 'No date specified',
                     priority: priority,
-                    location,
+                    location: location,
                     reminder: reminder ? reminder.toDateString() : 'No time specified',
                     createdAt: new Date(),
                 };
@@ -106,6 +109,8 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
             const calendarDate = new CalendarDate(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate())
             setDueDate(selectedDate);
             setSelectedDueDate(calendarDate);
+            setIsPopoverOpen(false); // Close the popover when a date is selected
+
         } else {
             setDueDate(null);
             setSelectedDueDate(null);
@@ -161,20 +166,28 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
             <MyEditor />
 
 
-            <div className="flex items-center mt-4">
+            <div className="flex items-center mt-4 gap-2">
                 <Popover placement="bottom-end" offset={-250} crossOffset={-150}
+                    onClose={() => setIsPopoverOpen(false)}
+                    showArrow={true}
+                    shouldBlockScroll={true}
+                    isOpen={isPopoverOpen} // Control the visibility of the popover
+
                 >
                     <PopoverTrigger>
-                        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                        <motion.div whileHover={{ scale: 1.1 }}>
                             <Chip
                                 className={`bg-primary-brand-700 dark:bg-cyan-700 text-white cursor-pointer ml-2 rounded-xl`}
                                 startContent={<FaCalendar className='ml-1' />}
                                 classNames={{ content: 'w-28 text-center flex justify-between items-center' }}
+                                onClick={() => setIsPopoverOpen(true)} // Open the popover when the trigger is clicked
+                                onClose={() => { setSelectedDueDate(null); setIsPopoverOpen(false) }}
+
+
                             >
                                 {selectedDueDate ? (
                                     <span className='flex justify-between items-center w-full'>
                                         {new Date(selectedDueDate.year, selectedDueDate.month - 1, selectedDueDate.day).toLocaleDateString('en-US', { timeZone: getLocalTimeZone() })}
-                                        <FaTimes onClick={() => setSelectedDueDate(null)} className="ml-2 cursor-pointer" />
                                     </span>
                                 ) : (
                                     'Due Date'
@@ -186,11 +199,15 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
                     <PopoverContent>
                         <div className="p-4">
                             <div className="mt-4">
-                                <DateSearcher dueDate={selectedDueDate} setDueDate={setSelectedDueDate} />
+                                <DateSearcher dueDate={selectedDueDate} setDueDate={setSelectedDueDate}
+                                    isPopoverOpen={isPopoverOpen} setPopoverOpen={setIsPopoverOpen}
+
+                                />
                             </div>
                             <Divider className='mb-2' />
                             <div className="flex flex-col space-y-2 mb-4">
                                 <DateSelectionButtons setSelectedDueDate={setSelectedDueDate} selectedDueDate={selectedDueDate}
+                                    isPopoverOpen={isPopoverOpen} setPopoverOpen={setIsPopoverOpen}
                                     setDueDate={setDueDate} dueDate={dueDate} />
                             </div>
 
@@ -216,15 +233,8 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
                     </PopoverContent>
 
                 </Popover>
-                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                    <Chip
-                        className="bg-primary-brand-700 dark:bg-cyan-700 text-white cursor-pointer ml-2 rounded-xl"
-                        onClick={() => { /* Logic to handle location input */ }}
-                        startContent={<FaMapMarkerAlt className='ml-1' />}
-                    >
-                        Location
-                    </Chip>
-                </motion.div>
+                <LocationChip location={location} setLocation={setLocation} />
+
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                     <Chip
                         className="bg-primary-brand-700 dark:bg-cyan-700 text-white cursor-pointer ml-2 rounded-xl"

@@ -7,9 +7,11 @@ const chrono = require('chrono-node');
 interface DateSearcherProps {
     dueDate: CalendarDate | null;
     setDueDate: (date: CalendarDate | null) => void;
+    isPopoverOpen: boolean;
+    setPopoverOpen: (isOpen: boolean) => void;
 }
 
-const DateSearcher: React.FC<DateSearcherProps> = ({ dueDate, setDueDate }) => {
+const DateSearcher: React.FC<DateSearcherProps> = ({ dueDate, setDueDate, setPopoverOpen, isPopoverOpen }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [parsedDate, setParsedDate] = useState<CalendarDate | null>(null);
 
@@ -32,6 +34,12 @@ const DateSearcher: React.FC<DateSearcherProps> = ({ dueDate, setDueDate }) => {
         }
     };
 
+    const handleKeyPress = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter' && parsedDate) {
+            setDueDate(parsedDate);
+            setPopoverOpen(false); // Close the popover
+        }
+    };
 
     return (
         <div className="date-searcher mb-3">
@@ -42,6 +50,7 @@ const DateSearcher: React.FC<DateSearcherProps> = ({ dueDate, setDueDate }) => {
                 spellCheck="false"
                 value={searchQuery}
                 onChange={(e) => handleSearch(e.target.value)}
+                onKeyDown={handleKeyPress}
                 startContent={
                     <div className='flex flex-row items-center justify-center'>
                         <FaSearch />

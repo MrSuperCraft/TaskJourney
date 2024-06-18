@@ -7,9 +7,11 @@ interface DSBProps {
     selectedDueDate: CalendarDate | null;
     setDueDate: (date: Date | null) => void; // Change type to Date
     dueDate: Date | null; // Change type to Date
+    isPopoverOpen: boolean;
+    setPopoverOpen: (isOpen: boolean) => void;
 }
 
-const DateSelectionButtons: React.FC<DSBProps> = ({ setSelectedDueDate, selectedDueDate, setDueDate, dueDate }) => {
+const DateSelectionButtons: React.FC<DSBProps> = ({ setSelectedDueDate, selectedDueDate, setDueDate, dueDate, isPopoverOpen, setPopoverOpen }) => {
 
     const handleDateSelection = (dateOffset: number) => {
         const today = new Date(); // Get today's date
@@ -48,7 +50,7 @@ const DateSelectionButtons: React.FC<DSBProps> = ({ setSelectedDueDate, selected
                 className="flex flex-row w-full hover:bg-gray-200 rounded-lg p-2 font-bold dark:hover:bg-slate-600 date-selection-button"
                 tabIndex={0}
                 onKeyDown={(e) => handleKeyDown(e, 0)}
-                onClick={() => handleDateSelection(0)}
+                onClick={() => { handleDateSelection(0); setPopoverOpen(false); }}
             >
                 <FaCalendar className="ml-5 text-xl text-emerald-500 mr-4" /> Today
                 <span className="ml-auto text-sm font-medium">{new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</span>
@@ -59,7 +61,7 @@ const DateSelectionButtons: React.FC<DSBProps> = ({ setSelectedDueDate, selected
                 className="flex flex-row w-full hover:bg-gray-200 rounded-lg p-2 font-bold dark:hover:bg-slate-600 date-selection-button"
                 tabIndex={0}
                 onKeyDown={(e) => handleKeyDown(e, 1)}
-                onClick={() => handleDateSelection(1)}
+                onClick={() => { handleDateSelection(1); setPopoverOpen(false); }}
             >
                 <FaSun className="ml-5 text-xl text-yellow-400 mr-4" /> Tomorrow
                 <span className="ml-auto text-sm font-medium">{new Date(new Date().setDate(new Date().getDate() + 1)).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</span>
@@ -70,7 +72,7 @@ const DateSelectionButtons: React.FC<DSBProps> = ({ setSelectedDueDate, selected
                 className="flex flex-row w-full hover:bg-gray-200 rounded-lg p-2 font-bold dark:hover:bg-slate-600 date-selection-button"
                 tabIndex={0}
                 onKeyDown={(e) => handleKeyDown(e, 5 - new Date().getDay())}
-                onClick={() => handleDateSelection(5 - new Date().getDay())}
+                onClick={() => { handleDateSelection(5 - new Date().getDay()); setPopoverOpen(false); }}
             >
                 <FaCouch className="ml-5 text-xl text-purple-500 mr-4" /> This Weekend
                 <span className="ml-auto text-sm font-medium">{new Date(new Date().setDate(new Date().getDate() + (5 - new Date().getDay()))).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</span>
@@ -81,7 +83,7 @@ const DateSelectionButtons: React.FC<DSBProps> = ({ setSelectedDueDate, selected
                 className="flex flex-row w-full hover:bg-gray-200 rounded-lg p-2 font-bold dark:hover:bg-slate-600 date-selection-button"
                 tabIndex={0}
                 onKeyDown={(e) => handleKeyDown(e, 7)}
-                onClick={() => handleDateSelection(7)}
+                onClick={() => { handleDateSelection(7); setPopoverOpen(false); }}
             >
                 <FaDoorOpen className="ml-5 text-xl text-blue-500 mr-4" /> Next Week
                 <span className="ml-auto text-sm font-medium">{new Date(new Date().setDate(new Date().getDate() + 7)).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</span>
