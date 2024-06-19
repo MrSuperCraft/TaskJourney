@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useEffect, useState, useCallback, useRef, useMemo } from 'react';
-import { useAuth } from '../../../contexts/AuthContext';
-import { db, storage } from '../../../firebase';
+import { useAuth } from '../../../../contexts/AuthContext';
+import { db, storage } from '../../../../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import {
     Input, User, Divider, Button, Select, Radio, RadioGroup, SelectItem, SelectSection
@@ -14,6 +14,7 @@ import { debounce } from '@/app/utils/debounce';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 import { useProfile } from '@/app/contexts/ProfileContext';
 import { query, collection, where, getDocs } from 'firebase/firestore';
+import DisplayNameInput from './DisplayNameInput';
 
 const AccountSettings: React.FC = () => {
     const { user } = useAuth();
@@ -246,16 +247,7 @@ const AccountSettings: React.FC = () => {
             <Divider className="mb-6" />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex flex-col">
-                    <span className="text-lg mb-2">Display Name</span>
-                    <Input
-                        type="text"
-                        className="border rounded-xl"
-                        value={userData.username || ''}
-                        onChange={(e) => handleInputChange('username', e.target.value)}
-                    />
-                    {usernameError && <p className="text-red-500 mt-2">{usernameError}</p>}
-                </div>
+                <DisplayNameInput handleInputChange={handleInputChange} userData={userData} usernameError={usernameError} />
 
                 <div className="flex flex-col">
                     <span className="text-lg mb-2">Email</span>

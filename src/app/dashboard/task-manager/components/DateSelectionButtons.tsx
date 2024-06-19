@@ -24,11 +24,6 @@ const DateSelectionButtons: React.FC<DSBProps> = ({ setSelectedDueDate, selected
 
         // Update dueDate with targetDate
         setDueDate(newDate);
-
-        // Log information
-        console.log('Selected Date:', newDate.toISOString()); // Log the ISO string format of the date
-        console.log('Selected Due Date (CalendarDate):', parsedDate); // Log the parsed CalendarDate object
-        console.log('Selected Due Date (Date):', newDate.toISOString()); // Log the ISO string format of the date
     };
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, dateOffset: number) => {

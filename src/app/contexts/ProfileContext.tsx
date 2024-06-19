@@ -23,14 +23,12 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({ children }) =>
 
     useEffect(() => {
         const fetchProfileDataFromFirestore = async () => {
-            console.log('Fetching profile data...');
             if (user && user.uid) {
                 const profileRef = doc(db, 'users', user.uid);
                 try {
                     const snapshot = await getDoc(profileRef);
                     if (snapshot.exists()) {
                         const data = snapshot.data();
-                        console.log('Profile data retrieved:', data);
                         setProfilePic(data?.photoURL);
                         setUsername(data?.username);
                     } else {
@@ -47,7 +45,6 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({ children }) =>
         fetchProfileDataFromFirestore();
     }, [user]);
 
-    console.log('Profile context values:', { profilePic, username });
 
     return (
         <ProfileContext.Provider value={{ profilePic, setProfilePic, username, setUsername }}>

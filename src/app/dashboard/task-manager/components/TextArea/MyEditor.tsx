@@ -5,7 +5,6 @@ import StarterKit from '@tiptap/starter-kit';
 import React, { useEffect } from 'react';
 import ReactComponent from './TextAreaNode'; // Import your custom component
 import { useDescription } from '@/app/contexts/EditorContext';
-import TextFormattingControls from './TextFormatting';
 
 const MyEditor: React.FC = () => {
     const { description, setDescription } = useDescription();
@@ -29,7 +28,6 @@ const MyEditor: React.FC = () => {
 
     return (
         <>
-            <TextFormattingControls editor={editor} />
             <EditorContent editor={editor} />
         </>
     );

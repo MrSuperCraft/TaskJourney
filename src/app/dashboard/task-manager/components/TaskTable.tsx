@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell, Chip, Button, Skeleton } from '@nextui-org/react';
-import Task from '../types';
+import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell, Chip, Button, Skeleton, Modal, ModalHeader, ModalBody, ModalFooter, ModalContent } from '@nextui-org/react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import Task from '../types';
 
 interface TaskTableProps {
     tasks: Task[];
@@ -12,6 +12,8 @@ interface TaskTableProps {
 
 const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, darkMode = false, onTaskRemove }) => {
     const [loading, setLoading] = useState(true);
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
 
     useEffect(() => {
         // Simulate API call delay
@@ -28,8 +30,15 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, darkMode = false, o
     };
 
     const handleDelete = (taskId: string) => {
-        // Handle delete task
-        onTaskRemove(taskId);
+        setSelectedTaskId(taskId);
+        setIsModalVisible(true);
+    };
+
+    const confirmDelete = () => {
+        if (selectedTaskId) {
+            onTaskRemove(selectedTaskId);
+        }
+        setIsModalVisible(false);
     };
 
     const getPriorityColor = (priority: string) => {
@@ -127,6 +136,29 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, darkMode = false, o
                     ))}
                 </TableBody>
             </Table>
+
+            <Modal isOpen={isModalVisible} onClose={() => setIsModalVisible(false)}>
+                <ModalContent>
+                    <ModalHeader>
+                        <h2 id="modal-title">
+                            Confirm Delete
+                        </h2>
+                    </ModalHeader>
+                    <ModalBody>
+                        <p>
+                            Are you sure you want to delete this task? This action cannot be undone.
+                        </p>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button onClick={() => setIsModalVisible(false)}>
+                            Cancel
+                        </Button>
+                        <Button onClick={confirmDelete} variant='flat' color="danger">
+                            Delete
+                        </Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
         </div>
     );
 };

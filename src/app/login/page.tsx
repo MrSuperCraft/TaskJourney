@@ -116,7 +116,7 @@ const LoginPage = () => {
         <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-slate-300 via-sky-blue to-teal dark:from-dark-teal dark:via-sky-blue dark:to-dark-primary-brand">
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden w-full max-w-3xl mx-8 md:max-w-6xl min-h-[600px] md:mx-auto flex">
                 <div className="hidden md:block w-3/5 bg-primary-brand">
-                    <Image src="/login.svg" alt="Login" width={800} height={400} className="object-cover w-full h-full" />
+                    <Image src="/login.svg" priority alt="Login" width={800} height={400} className="object-cover w-full h-full" />
                 </div>
                 <div className="w-full md:w-2/5 p-8 my-auto">
                     <h2 className="lg:text-5xl md:text-3xl sm:text-2xl font-bold mb-2 text-center font-inter">Welcome Back!</h2>

@@ -2,7 +2,7 @@
 'use client';
 import Sidebar from '../components/sidebar/Sidebar';
 import ThemeSettings from './components/ThemeSettings';
-import AccountSettings from './components/AccountSettings';
+import AccountSettings from './components/Account Settings/AccountSettings';
 import NotificationSettings from './components/NotificationSettings';
 import { ThemeProviderWithAttribute } from '../../contexts/ThemeContext';
 import useUserData from '../../hooks/useUserData';

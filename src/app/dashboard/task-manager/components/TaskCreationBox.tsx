@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Input, Textarea, Chip, Calendar, Popover, Button, PopoverContent, PopoverTrigger, Divider } from '@nextui-org/react';
-import { FaCalendar, FaClock, FaCouch, FaDoorOpen, FaMapMarkerAlt, FaSun, FaTimes, FaChevronDown } from 'react-icons/fa';
+import { FaCalendar, FaClock, FaCouch, FaDoorOpen, FaMapMarkerAlt, FaSun, FaTimes, FaChevronDown, FaCheck } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { db } from '@/app/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import MyEditor from './TextArea/MyEditor';
 import EditorProvider, { useDescription } from '@/app/contexts/EditorContext';
 import LocationChip from './LocationChip';
+import ReminderChip from './ReminderChip';
 
 
 type Priority = 'low' | 'medium' | 'high';
@@ -31,9 +32,9 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
     const [location, setLocation] = useState<string | null>(null); // Explicitly define type as string | null
     const [reminder, setReminder] = useState<Date | null>(null);
     const [selectedDueDate, setSelectedDueDate] = useState<CalendarDate | null>(null); // Changed to CalendarDate
-    const [searchQuery, setSearchQuery] = useState('');
     const [priority, setPriority] = useState<Priority>('medium');
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+    const [close, setClose] = useState(false);
 
 
 
@@ -58,8 +59,8 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
                     title,
                     description: description,
                     date: dueDate ? dueDate.toDateString() : null,
-                    location: location,
-                    reminder: reminder ? reminder.toDateString() : null,
+                    location: location ? location : null,
+                    reminder: reminder ? reminder : null,
                     createdAt: serverTimestamp(),
                     priority,
                 });
@@ -68,12 +69,13 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
                     id: newTaskRef.id,
                     title,
                     description: description,
-                    date: dueDate ? dueDate.toDateString() : 'No date specified',
+                    date: dueDate ? new Date(dueDate).toDateString() : 'No date specified',
                     priority: priority,
-                    location: location,
-                    reminder: reminder ? reminder.toDateString() : 'No time specified',
+                    location: location ? location : 'No location specified',
+                    reminder: reminder ? new Date(reminder).toUTCString() : 'No time specified',
                     createdAt: new Date(),
                 };
+
                 onTaskAdd(newTask);
                 onClose();
             } catch (error) {
@@ -117,6 +119,13 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
         }
     };
 
+
+    const handleSetReminder = (reminderDate: Date | null) => {
+        if (reminderDate) {
+            setReminder(reminderDate);
+        }
+
+    }
 
 
 
@@ -235,14 +244,8 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
                 </Popover>
                 <LocationChip location={location} setLocation={setLocation} />
 
-                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                    <Chip
-                        className="bg-primary-brand-700 dark:bg-cyan-700 text-white cursor-pointer ml-2 rounded-xl"
-                        onClick={() => { /* Logic to handle reminder input */ }}
-                        startContent={<FaClock className='ml-1' />}
-                    >
-                        Reminder
-                    </Chip>
+                <motion.div whileHover={{ scale: 1.1 }} >
+                    <ReminderChip date={selectedDueDate} onSetReminder={handleSetReminder} />
                 </motion.div>
                 <Popover>
                     <PopoverTrigger>
@@ -275,7 +278,23 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
                     </PopoverContent>
                 </Popover>
             </div>
-            <Button className="mt-4" onClick={handleSave}>Save Task</Button>
+            <Button
+                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-700 dark:hover:bg-blue-800 dark:focus:ring-blue-700"
+                onClick={handleSave}
+                endContent={<FaCheck />}
+            >
+                Save Task
+            </Button>
+            <Button
+                className="mt-4 ml-2 px-4 py-2 text-white rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2   dark:focus:ring-gray-600"
+                onClick={() => onClose()}
+                color='danger'
+                variant='shadow'
+                endContent={<FaTimes />}
+            >
+                Cancel
+            </Button>
+
         </motion.div >
     );
 };
