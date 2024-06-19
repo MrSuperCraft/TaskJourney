@@ -15,7 +15,6 @@ import { getStorage } from '@firebase/storage'
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 
-// TODO: SWITCH THE DAMN HARD - CODED VALUES FOR PRODUCTION.
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FBASE_API_KEY,
