@@ -19,7 +19,7 @@ const Footer: FC = () => {
                         <div>
                             <h4 className="text-lg font-semibold mb-4">About Us</h4>
                             <ul className="space-y-2">
-                                <li><Link href="#" className='text-primary-brand-400'>Our Story</Link></li>
+                                <li><Link href="/about" className='text-primary-brand-400'>Our Story</Link></li>
                                 <li><Link href="#" className='text-primary-brand-400'>Contact</Link></li>
                                 <li><Link href="#" className='text-primary-brand-400'>FAQ</Link></li>
                                 <li><Link href="#" className='text-primary-brand-400'>Terms of Service</Link></li>

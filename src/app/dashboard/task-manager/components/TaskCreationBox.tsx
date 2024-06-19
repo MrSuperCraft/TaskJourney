@@ -69,9 +69,9 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
                     id: newTaskRef.id,
                     title,
                     description: description,
-                    date: dueDate ? new Date(dueDate).toDateString() : 'No date specified',
+                    date: dueDate ? new Date(dueDate).toDateString() : 'N/A',
                     priority: priority,
-                    location: location ? location : 'No location specified',
+                    location: location ? location : 'N/A',
                     reminder: reminder ? new Date(reminder).toUTCString() : 'No time specified',
                     createdAt: new Date(),
                 };

@@ -19,9 +19,9 @@ const TaskManager: React.FC = () => {
     const { userData } = useUserData();
     const [tasks, setTasks] = useState<Task[]>([]);
 
-    const [highPriorityTasksToShow, setHighPriorityTasksToShow] = useState(10);
-    const [soonComingTasksToShow, setSoonComingTasksToShow] = useState(10);
-    const [dailyTasksToShow, setDailyTasksToShow] = useState(10);
+    const [highPriorityTasksToShow, setHighPriorityTasksToShow] = useState(5);
+    const [soonComingTasksToShow, setSoonComingTasksToShow] = useState(5);
+    const [dailyTasksToShow, setDailyTasksToShow] = useState(5);
     const [showTaskCreationBox, setShowTaskCreationBox] = useState(false);
     const { description, setDescription } = useDescription();
 
@@ -78,13 +78,35 @@ const TaskManager: React.FC = () => {
         }
     };
 
-    const highPriorityTasks = tasks.filter(task => task.priority === 'high');
-    const soonComingTasks = [...tasks].sort((a, b) => new Date(a.date ?? 0).getTime() - new Date(b.date ?? 0).getTime());
+    const priorityOrder = {
+        high: 1,
+        medium: 2,
+        low: 3
+    };
+    // High Priority Tasks: Sort by priority, then by date, with tasks without a date last
+    const highPriorityTasks = [...tasks].sort((a, b) => {
+        const priorityDifference = priorityOrder[a.priority] - priorityOrder[b.priority];
+        if (priorityDifference !== 0) {
+            return priorityDifference;
+        }
+        if (!a.date) return 1;
+        if (!b.date) return -1;
+        return new Date(a.date ?? 0).getTime() - new Date(b.date ?? 0).getTime();
+    });
+
+    // Almost Overdue Tasks: Sort by date, with tasks without a date last
+    const almostOverdueTasks = [...tasks].sort((a, b) => {
+        if (!a.date) return 1;
+        if (!b.date) return -1;
+        return new Date(a.date ?? 0).getTime() - new Date(b.date ?? 0).getTime();
+    });
+
+    // Daily Tasks: Filter tasks that include 'daily' in the title
     const dailyTasks = tasks.filter(task => task.title.toLowerCase().includes('daily'));
 
-    const loadMoreHighPriorityTasks = () => setHighPriorityTasksToShow(prev => prev + 10);
-    const loadMoreSoonComingTasks = () => setSoonComingTasksToShow(prev => prev + 10);
-    const loadMoreDailyTasks = () => setDailyTasksToShow(prev => prev + 10);
+    const loadMoreHighPriorityTasks = () => setHighPriorityTasksToShow(prev => prev + 5);
+    const loadMoreSoonComingTasks = () => setSoonComingTasksToShow(prev => prev + 5);
+    const loadMoreDailyTasks = () => setDailyTasksToShow(prev => prev + 5);
 
     return (
         <div className="p-8 min-h-screen">
@@ -102,21 +124,21 @@ const TaskManager: React.FC = () => {
             <TaskTable tasks={highPriorityTasks.slice(0, highPriorityTasksToShow)} title="High Priority Tasks" onTaskRemove={removeTask} />
             {highPriorityTasks.length > highPriorityTasksToShow && (
                 <Button color="primary" onClick={loadMoreHighPriorityTasks} className="mt-4">
-                    Load More High Priority Tasks
+                    Load More Tasks
                 </Button>
             )}
 
-            <TaskTable tasks={soonComingTasks.slice(0, soonComingTasksToShow)} title="Soon Coming Tasks" onTaskRemove={removeTask} />
-            {soonComingTasks.length > soonComingTasksToShow && (
+            <TaskTable tasks={almostOverdueTasks.slice(0, soonComingTasksToShow)} title="Almost Overdue" onTaskRemove={removeTask} />
+            {almostOverdueTasks.length > soonComingTasksToShow && (
                 <Button color="primary" onClick={loadMoreSoonComingTasks} className="mt-4">
-                    Load More Soon Coming Tasks
+                    Load More Tasks
                 </Button>
             )}
 
             <TaskTable tasks={dailyTasks.slice(0, dailyTasksToShow)} title="Daily Tasks" onTaskRemove={removeTask} />
             {dailyTasks.length > dailyTasksToShow && (
                 <Button color="primary" onClick={loadMoreDailyTasks} className="mt-4">
-                    Load More Daily Tasks
+                    Load More Tasks
                 </Button>
             )}
         </div>

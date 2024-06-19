@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell, Chip, Button, Skeleton, Modal, ModalHeader, ModalBody, ModalFooter, ModalContent } from '@nextui-org/react';
+import {
+    Table, TableHeader, TableBody, TableColumn, TableRow, TableCell, Chip, Button, Skeleton,
+    Modal, ModalHeader, ModalBody, ModalFooter, ModalContent
+} from '@nextui-org/react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import Task from '../types';
 
@@ -60,16 +63,16 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, darkMode = false, o
     };
 
     return (
-        <div className={`my-6 ${darkMode ? 'dark:text-white' : 'dark:text-gray-300'}`}>
+        <div className={`my-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
             <h2 className="text-2xl font-bold mb-4">{title}</h2>
-            <Table aria-label="Task Table" className={`min-w-full shadow-md rounded-lg`}>
+            <Table aria-label="Task Table" className="min-w-full shadow-md rounded-lg">
                 <TableHeader>
-                    <TableColumn className="dark:text-gray-300 text-sm">Title</TableColumn>
-                    <TableColumn className="dark:text-gray-300 text-sm">Description</TableColumn>
-                    <TableColumn className="dark:text-gray-300 text-sm">Priority</TableColumn>
-                    <TableColumn className="dark:text-gray-300 text-sm">Date</TableColumn>
-                    <TableColumn className="dark:text-gray-300 text-sm">Location</TableColumn>
-                    <TableColumn className="dark:text-gray-300 text-sm">Actions</TableColumn>
+                    <TableColumn className="text-sm">Title</TableColumn>
+                    <TableColumn className="hidden sm:table-cell text-sm">Description</TableColumn>
+                    <TableColumn className="text-sm">Priority</TableColumn>
+                    <TableColumn className="hidden sm:table-cell text-sm">Date</TableColumn>
+                    <TableColumn className="hidden lg:table-cell text-sm">Location</TableColumn>
+                    <TableColumn className="text-sm">Actions</TableColumn>
                 </TableHeader>
                 <TableBody emptyContent={"No tasks found. Create a new task with the \"Add Task\" button above."}>
                     {tasks.map((task) => (
@@ -77,21 +80,23 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, darkMode = false, o
                             <TableCell>
                                 {loading ? <Skeleton className='rounded-md'><span className="dark:text-gray-300">{task.title}</span></Skeleton> : <span className="dark:text-gray-300">{task.title}</span>}
                             </TableCell>
-                            <TableCell>
-                                {loading ? <Skeleton className='rounded-md'><span className="dark:text-gray-300">{task.description}</span></Skeleton> : <span className="dark:text-gray-300">{task.description}</span>}
+                            <TableCell className="hidden sm:table-cell">
+                                {loading ? <Skeleton className='rounded-md'><span className="dark:text-gray-300">{task.description && task.description.length > 25 ? task.description.substring(0, 25) + '...' : task.description}</span></Skeleton> :
+                                    <span className="dark:text-gray-300 truncate" title={task.description}>{task.description && task.description.length > 25 ? task.description.substring(0, 25) + '...' : task.description}</span>
+                                }
                             </TableCell>
                             <TableCell>
                                 {loading ? <Skeleton className='rounded-md'>{renderChip(task.priority)}</Skeleton> : renderChip(task.priority)}
                             </TableCell>
-                            <TableCell>
-                                {loading ? <Skeleton className='rounded-md'><span className="dark:text-gray-300">{task.date}</span></Skeleton> : <span className="dark:text-gray-300">{task.date}</span>}
+                            <TableCell className="hidden sm:table-cell">
+                                {loading ? <Skeleton className='rounded-md'><span className="dark:text-gray-300">{task.date != null ? task.date : 'N/A'}</span></Skeleton> : <span className="dark:text-gray-300">{task.date}</span>}
                             </TableCell>
-                            <TableCell>
-                                {loading ? <Skeleton className='rounded-md'><span className="dark:text-gray-300">{task.location}</span></Skeleton> : <span className="dark:text-gray-300">{task.location}</span>}
+                            <TableCell className="hidden lg:table-cell">
+                                {loading ? <Skeleton className='rounded-md'><span className="dark:text-gray-300">{task.location != null ? task.location : 'N/A'}</span></Skeleton> : <span className="dark:text-gray-300">{task.location}</span>}
                             </TableCell>
                             <TableCell>
                                 {loading ? (
-                                    <Skeleton >
+                                    <Skeleton>
                                         <Button
                                             onClick={() => handleEdit(task)}
                                             size="sm"
@@ -164,3 +169,4 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, darkMode = false, o
 };
 
 export default TaskTable;
+
