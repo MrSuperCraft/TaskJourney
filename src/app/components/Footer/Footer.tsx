@@ -38,7 +38,7 @@ const Footer: FC = () => {
                             <ul className="space-y-2">
                                 <li><Link href="#" className='text-primary-brand-400'>Documentation</Link></li>
                                 <li><Link href="#" className='text-primary-brand-400'>Tutorials</Link></li>
-                                <li><Link href="#" className='text-primary-brand-400'>Help Center</Link></li>
+                                <li><Link href="/help" className='text-primary-brand-400'>Help Center</Link></li>
                             </ul>
                         </div>
                     </div>

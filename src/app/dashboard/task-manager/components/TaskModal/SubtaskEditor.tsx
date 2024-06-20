@@ -4,7 +4,7 @@ interface SubtaskEditorProps {
     onSubtaskChange: (subtasks: string[]) => void;
 }
 
-const SubtaskEditor: React.FC<SubtaskEditorProps> = ({ onSubtaskChange }) => {
+const SubTaskEditor: React.FC<SubtaskEditorProps> = ({ onSubtaskChange }) => {
     const [subtasks, setSubtasks] = useState<string[]>([]);
 
     const handleAddSubtask = () => {
@@ -37,4 +37,4 @@ const SubtaskEditor: React.FC<SubtaskEditorProps> = ({ onSubtaskChange }) => {
     );
 };
 
-export default SubtaskEditor;
+export default SubTaskEditor;

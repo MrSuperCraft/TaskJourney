@@ -5,7 +5,6 @@ import LocationPicker from './LocationPicker';
 import PriorityPicker from './PriorityPicker';
 import ReminderPicker from './ReminderPicker';
 import CommentSection from './CommentSection';
-import SubtaskEditor from './SubTaskEditor';
 import useUserData from '@/app/hooks/useUserData';
 import Task from '../../types';
 import { db } from '@/app/firebase'
@@ -81,10 +80,6 @@ const TaskModal: React.FC<TaskEditorModalProps> = ({ isOpen, taskId, onClose }) 
         <Modal size="lg" isOpen={isOpen} onClose={onClose}>
             <ModalBody>
                 <link rel="preconnect" href="https://fonts.gstatic.com/" crossOrigin="" />
-                <link
-                    rel="stylesheet"
-                    href="https://fonts.googleapis.com/css2?display=swap&family=Inter:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900"
-                />
                 <div className="relative flex size-full min-h-screen flex-col bg-[#f9fbfb] justify-between group/design-root overflow-x-hidden">
                     <div>
                         <div className="flex items-center bg-[#f9fbfb] p-4 pb-2 justify-between">
@@ -231,7 +226,6 @@ const TaskModal: React.FC<TaskEditorModalProps> = ({ isOpen, taskId, onClose }) 
                             <LocationPicker onLocationChange={handleLocationChange} />
                             <PriorityPicker onPriorityChange={handlePriorityChange} />
                             <ReminderPicker onReminderChange={handleReminderChange} />
-                            <SubtaskEditor onSubtaskChange={handleSubtaskChange} />
                             <CommentSection onCommentChange={handleCommentChange} />
                         </div>
                     </div>
