@@ -5,6 +5,9 @@ import {
 } from '@nextui-org/react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import Task from '../types';
+import TaskEditorModal from './TaskEdit/TaskEditorModal';
+import TaskModal from './TaskModal/TaskModal';
+
 
 interface TaskTableProps {
     tasks: Task[];
@@ -18,6 +21,9 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, darkMode = false, o
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
 
+    const [editedTaskId, setEditedTaskId] = useState<string | null>(null);
+    const [editModalVisible, setEditModalVisible] = useState(false);
+
     useEffect(() => {
         // Simulate API call delay
         const timer = setTimeout(() => {
@@ -27,15 +33,21 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, darkMode = false, o
         return () => clearTimeout(timer);
     }, []);
 
-    const handleEdit = (task: Task) => {
-        // Handle edit task
-        console.log("Edit task", task);
-    };
+    const handleEdit = (taskId: string) => {
+        console.log("Edit task: ", taskId);
+        setEditedTaskId(taskId);
+        setEditModalVisible(true);
+        console.log("Edit modal visible: ", editModalVisible);
+    }
 
     const handleDelete = (taskId: string) => {
         setSelectedTaskId(taskId);
         setIsModalVisible(true);
     };
+
+    const handleSave = () => {
+        console.log("saved");
+    }
 
     const confirmDelete = () => {
         if (selectedTaskId) {
@@ -98,7 +110,7 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, darkMode = false, o
                                 {loading ? (
                                     <Skeleton>
                                         <Button
-                                            onClick={() => handleEdit(task)}
+                                            onClick={() => handleEdit(task.id)}
                                             size="sm"
                                             color={darkMode ? "primary" : "success"}
                                             className="mr-2 text-white"
@@ -118,7 +130,7 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, darkMode = false, o
                                 ) : (
                                     <>
                                         <Button
-                                            onClick={() => handleEdit(task)}
+                                            onClick={() => handleEdit(task.id)}
                                             size="sm"
                                             color={darkMode ? "primary" : "success"}
                                             className="mr-2 text-white"
@@ -164,9 +176,9 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, darkMode = false, o
                     </ModalFooter>
                 </ModalContent>
             </Modal>
+
         </div>
     );
 };
 
 export default TaskTable;
-
