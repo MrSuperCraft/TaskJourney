@@ -20,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <link rel="icon" href="/apple-touch-icon.png" />
+      <meta name="google-site-verification" content="HPRsI9jClQ_G3uLgK3lB-hELlLxJA-UB3DURj2_dTck" />
 
       <body className={inter.className}>
         <AuthContextProvider>

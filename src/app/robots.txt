@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /tmp/
+Sitemap: https://taskjourney-cb5d6.web.app/sitemap.xml
