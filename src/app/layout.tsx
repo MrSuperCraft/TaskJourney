@@ -8,7 +8,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "TaskJourney | Your Tasks, Gamified",
-  description: "TaskJourney: Your ultimate personal productivity assistant. Manage tasks, track goals, and achieve more with our intuitive and powerful platform."
+  description: "TaskJourney: Your ultimate personal productivity assistant. Manage tasks, track goals, and achieve more with our intuitive and powerful platform.",
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
@@ -18,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <link rel="icon" href="/icons/apple-touch-icon.png" />
+      <link rel="icon" href="/apple-touch-icon.png" />
 
       <body className={inter.className}>
         <AuthContextProvider>

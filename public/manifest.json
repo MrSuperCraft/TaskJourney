@@ -1,4 +1,5 @@
 {
+    "id": "1",
     "name": "TaskJourney",
     "short_name": "TaskJourney",
     "description": "Your ultimate personal productivity assistant.",
@@ -15,7 +16,21 @@
             "type": "image/png"
         }
     ],
+    "screenshots": [
+        {
+            "src": "/desktop-screenshot.png",
+            "sizes": "1277x717",
+            "type": "image/png",
+            "form_factor": "wide"
+        },
+        {
+            "src": "/mobile-screenshot.png",
+            "sizes": "376x842",
+            "type": "image/png"
+        }
+    ],
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
-    "display": "standalone"
+    "display": "standalone",
+    "orientation": "portrait"
 }
