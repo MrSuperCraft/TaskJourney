@@ -64,7 +64,7 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, darkMode = false, o
 
     return (
         <div className={`my-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-            <h2 className="text-2xl font-bold mb-4">{title}</h2>
+            <h2 className="text-2xl font-bold mb-4 dark:text-white">{title}</h2>
             <Table aria-label="Task Table" className="min-w-full shadow-md rounded-lg">
                 <TableHeader>
                     <TableColumn className="text-sm">Title</TableColumn>
