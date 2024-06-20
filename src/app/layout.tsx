@@ -10,6 +10,25 @@ export const metadata: Metadata = {
   title: "TaskJourney | Your Tasks, Gamified",
   description: "TaskJourney: Your ultimate personal productivity assistant. Manage tasks, track goals, and achieve more with our intuitive and powerful platform.",
   manifest: '/manifest.json',
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "TaskJourney | Your Tasks, Gamified",
+    description: "TaskJourney: Your ultimate personal productivity assistant. Manage tasks, track goals, and achieve more with our intuitive and powerful platform.",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}`,
+    siteName: 'TaskJourney',
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/ogimg.png`,
+        width: 1279,
+        height: 578,
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  }
 };
 
 export default function RootLayout({
