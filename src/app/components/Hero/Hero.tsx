@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
-                className="container mx-auto text-center relative z-10 text-black flex flex-col justify-center max-md:mt-5 items-center lg:flex-row lg:items-center lg:justify-center lg:space-x-8"
+                className="container mx-auto text-center relative z-10 text-black flex flex-col justify-center max-md:mt-10 items-center lg:flex-row lg:items-center lg:justify-center lg:space-x-8"
             >
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
