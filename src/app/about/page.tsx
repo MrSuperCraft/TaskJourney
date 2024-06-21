@@ -12,7 +12,6 @@ import PersonalJourneySection from './components/PersonalJourneySection';
 import MissionGoalsSection from './components/MissionGoalsSection';
 import LearningInnovationSection from './components/LearningInnovationSection';
 import FutureVisionSection from './components/FutureVisionSection';
-import ScrollAnimation from 'react-animate-on-scroll';
 import { motion } from 'framer-motion';
 import Timeline from './components/Timeline';
 
@@ -56,29 +55,19 @@ const AboutMePage = () => {
                         {/* Story sections */}
                         <section className="py-8 px-4 space-y-8">
                             {/* Introduction */}
-                            <ScrollAnimation animateIn="fadeIn" animateOnce>
-                                <IntroductionSection />
-                            </ScrollAnimation>
+                            <IntroductionSection />
 
                             {/* Personal Journey */}
-                            <ScrollAnimation animateIn="fadeIn" animateOnce>
-                                <PersonalJourneySection />
-                            </ScrollAnimation>
+                            <PersonalJourneySection />
 
                             {/* Mission and Goals */}
-                            <ScrollAnimation animateIn="fadeIn" animateOnce>
-                                <MissionGoalsSection />
-                            </ScrollAnimation>
+                            <MissionGoalsSection />
 
                             {/* Learning and Innovation */}
-                            <ScrollAnimation animateIn="fadeIn" animateOnce>
-                                <LearningInnovationSection />
-                            </ScrollAnimation>
+                            <LearningInnovationSection />
 
                             {/* Future Vision */}
-                            <ScrollAnimation animateIn="fadeIn" animateOnce>
-                                <FutureVisionSection />
-                            </ScrollAnimation>
+                            <FutureVisionSection />
 
                             {/* Timeline */}
 
