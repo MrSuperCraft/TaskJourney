@@ -32,6 +32,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
+    "./node_modules/@tailwindcss/typography/**/*.js",
   ],
   "exclude": [
     "node_modules"
