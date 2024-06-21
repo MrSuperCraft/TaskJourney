@@ -1,0 +1,3 @@
+article {
+    @apply prose prose-sm lg:prose-lg dark:prose-invert;
+}
