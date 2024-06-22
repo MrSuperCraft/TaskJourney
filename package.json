@@ -8,12 +8,12 @@
     "dev": "concurrently \"next dev\"",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "cf-export": "contentful space export --config contentful/export-config.json --mangagement-token $NEXT_PUBLIC_CONTENTFUL_MANAGEMENT_TOKEN --space-id $NEXT_PUBLIC_CONTENTFUL_SPACE_ID"
+    "lint": "next lint"
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^16.5.2",
     "@contentful/rich-text-react-renderer": "^15.21.2",
+    "@contentful/rich-text-types": "^16.5.2",
     "@firebase/storage": "^0.12.5",
     "@nextui-org/accordion": "^2.0.34",
     "@nextui-org/card": "^2.0.30",
