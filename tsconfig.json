@@ -33,6 +33,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "./node_modules/@tailwindcss/typography/**/*.js",
+    "src/app/help/[slug]/page.jsx",
+    "../getContenfulEnvironment.js",
   ],
   "exclude": [
     "node_modules"
