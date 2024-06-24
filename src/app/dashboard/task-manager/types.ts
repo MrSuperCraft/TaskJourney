@@ -9,8 +9,17 @@ interface Task {
     reminder?: string;
     priority: "low" | "medium" | "high";
     createdAt: Date;
+    subtasks: SubTask[];
+    completed: boolean;
     // Add more properties as needed
 }
+
+type SubTask = {
+    id: string;
+    parentTask: Task;
+    task: Task;
+}
+
 
 
 
