@@ -14,6 +14,8 @@ import LearningInnovationSection from './components/LearningInnovationSection';
 import FutureVisionSection from './components/FutureVisionSection';
 import { motion } from 'framer-motion';
 import Timeline from './components/Timeline';
+import Head from 'next/head';
+
 
 // AboutMePage component
 const AboutMePage = () => {
@@ -36,8 +38,20 @@ const AboutMePage = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
+    const [title, setTitle] = useState('Default Title');
+
+    // Example of setting title dynamically based on some client-side logic
+    useEffect(() => {
+        const newTitle = 'About Us | TaskJoruney';
+        setTitle(newTitle);
+    }, []);
+
     return (
         <>
+            <Head>
+                <title>{title}</title>
+                <meta name="description" content="Discover the story of TaskJourney and the impact it has on our community. Find more information about how this project began and what is the vision behind it." />
+            </Head>
             <ThemeProviderWithAttribute>
                 <Navbar />
                 <div className="relative w-full min-h-screen flex flex-col items-center justify-start pt-20 pb-10">

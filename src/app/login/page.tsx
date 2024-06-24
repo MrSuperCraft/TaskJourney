@@ -10,6 +10,9 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth, db } from '../firebase';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
+import Head from 'next/head';
+
+
 // Define the type for the sendEmail function
 type SendEmailFunction = (email: string, verificationCode: string) => Promise<EmailJSResponseStatus>;
 
@@ -113,36 +116,46 @@ const LoginPage = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-slate-300 via-sky-blue to-teal dark:from-dark-teal dark:via-sky-blue dark:to-dark-primary-brand">
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden w-full max-w-3xl mx-8 md:max-w-6xl min-h-[600px] md:mx-auto flex">
-                <div className="hidden md:block w-3/5 bg-primary-brand">
-                    <Image src="/login.svg" priority alt="Login" width={800} height={400} className="object-cover w-full h-full" />
-                </div>
-                <div className="w-full md:w-2/5 p-8 my-auto">
-                    <h2 className="lg:text-5xl md:text-3xl sm:text-2xl font-bold mb-2 text-center font-inter">Welcome Back!</h2>
-                    <h2 className="lg:text-2xl md:text-lg sm:text-md mb-6 text-center font-lato">Log in to your dashboard.</h2>
-
-                    {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-
-                    <div className="mt-4 flex justify-center items-center">
-                        <Button color="default" variant="bordered" className="flex items-center space-x-2" onClick={handleGoogleLogin} isLoading={loading}>
-                            <FaGoogle />
-                            <span>Sign in with Google</span>
-                        </Button>
+        <>
+            <Head>
+                <title>Login | TaskJourney</title>
+                <meta name="description" content="TaskJourney Login Page" />
+            </Head>
+            <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-slate-300 via-sky-blue to-teal dark:from-dark-teal dark:via-sky-blue dark:to-dark-primary-brand">
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden w-full max-w-3xl mx-8 md:max-w-6xl min-h-[600px] md:mx-auto flex flex-col md:flex-row">
+                    <div className="md:w-3/5 bg-primary-brand hidden md:block">
+                        <Image src="/signup.svg" priority alt="Signup" width={800} height={400} className="object-cover w-full h-full" />
                     </div>
-                    <div className="mt-4 text-center">
-                        <span className="text-gray-600 dark:text-gray-300">
-                            Don&apos;t have an account?
-                            <Link href="/signup">
-                                <span className="text-teal dark:text-primary-brand-light hover:underline ml-2">
-                                    Sign up today
-                                </span>
-                            </Link>
-                        </span>
+                    <div className="md:hidden w-full flex justify-center bg-primary-brand p-4">
+                        <Image src="/android-chrome-192x192.png" priority alt="Signup" width={160} height={160} className="object-cover w-40 h-40" />
+                    </div>
+
+                    <div className="w-full md:w-2/5 p-8 my-auto mt-0 md:mt-auto">
+                        <h2 className="lg:text-5xl text-3xl max-sm:text-2xl font-bold mb-2 text-center font-inter">Welcome Back!</h2>
+                        <h2 className="lg:text-2xl md:text-lg sm:text-md mb-6 text-center font-lato">Log in to your dashboard.</h2>
+
+                        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+
+                        <div className="mt-4 flex justify-center items-center">
+                            <Button color="default" variant="bordered" className="flex items-center space-x-2" onClick={handleGoogleLogin} isLoading={loading}>
+                                <FaGoogle />
+                                <span>Sign in with Google</span>
+                            </Button>
+                        </div>
+                        <div className="mt-4 text-center">
+                            <span className="text-gray-600 dark:text-gray-300">
+                                Don&apos;t have an account?
+                                <Link href="/signup">
+                                    <span className="text-teal dark:text-primary-brand-light hover:underline ml-2">
+                                        Sign up today
+                                    </span>
+                                </Link>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

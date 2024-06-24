@@ -2,6 +2,15 @@ import React from 'react'
 import { ThemeProviderWithAttribute } from '../contexts/ThemeContext'
 import Navbar from '../components/Navbar/Navbar'
 
+import { Metadata } from 'next'
+export const metadata: Metadata = {
+    title: 'Privacy Policy',
+    robots: {
+        index: false,
+        follow: true
+    }
+}
+
 const PrivacyPolicyPage = () => {
     return (
         <>

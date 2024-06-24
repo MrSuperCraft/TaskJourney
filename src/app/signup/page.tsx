@@ -10,13 +10,7 @@ import Header from './SignupHeader';
 import Buttons from './Buttons';
 import Footer from './Footer';
 import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
-import { Metadata } from 'next';
-
-
-
-export const metadata: Metadata = {
-    title: 'Sign Up',
-}
+import Head from 'next/head';
 
 
 
@@ -119,27 +113,33 @@ const SignupPage = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-slate-300 via-sky-blue to-teal dark:from-dark-teal dark:via-sky-blue dark:to-dark-primary-brand">
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden w-full max-w-3xl mx-8 md:max-w-6xl min-h-[600px] md:mx-auto flex flex-col md:flex-row">
-                <div className="md:w-3/5 bg-primary-brand hidden md:block">
-                    <Image src="/signup.svg" priority alt="Signup" width={800} height={400} className="object-cover w-full h-full" />
-                </div>
-                <div className="md:hidden w-full flex justify-center bg-primary-brand p-4">
-                    <Image src="/android-chrome-192x192.png" priority alt="Signup" width={160} height={160} className="object-cover w-40 h-40" />
-                </div>
-                <div className="w-full md:w-2/5 p-8 my-auto mt-0 md:mt-auto">
-                    <Header />
-                    <div className="space-y-4">
-                        <Buttons
-                            handleGoogleSignup={handleGoogleSignup}
-                            isLoading={isLoading} // Pass loading state
-                            error={error} // Pass error state
-                        />
+        <>
+            <Head>
+                <title>Sign Up | TaskJourney</title>
+                <meta name="description" content="Sign up for TaskJourney and start getting productive!" />
+            </Head>
+            <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-slate-300 via-sky-blue to-teal dark:from-dark-teal dark:via-sky-blue dark:to-dark-primary-brand">
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden w-full max-w-3xl mx-8 md:max-w-6xl min-h-[600px] md:mx-auto flex flex-col md:flex-row">
+                    <div className="md:w-3/5 bg-primary-brand hidden md:block">
+                        <Image src="/signup.svg" priority alt="Signup" width={800} height={400} className="object-cover w-full h-full" />
                     </div>
-                    <Footer />
+                    <div className="md:hidden w-full flex justify-center bg-primary-brand p-4">
+                        <Image src="/android-chrome-192x192.png" priority alt="Signup" width={160} height={160} className="object-cover w-40 h-40" />
+                    </div>
+                    <div className="w-full md:w-2/5 p-8 my-auto mt-0 md:mt-auto">
+                        <Header />
+                        <div className="space-y-4">
+                            <Buttons
+                                handleGoogleSignup={handleGoogleSignup}
+                                isLoading={isLoading} // Pass loading state
+                                error={error} // Pass error state
+                            />
+                        </div>
+                        <Footer />
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
