@@ -56,10 +56,10 @@ const Navbar = () => {
 
                             <Link href="/signup">
                                 <button
-                                    className="ml-2 sm:ml-4 px-3 sm:px-4 py-1 sm:py-2 max-sm:py-2 rounded-full text-white bg-darker-cyan dark:bg-dark-cyan hover:bg-teal dark:hover:bg-dark-teal transition-colors duration-300"
+                                    className="ml-2 sm:ml-4 px-3 sm:px-4 py-1 sm:py-2 max-sm:py-2 rounded-full text-white bg-darker-cyan dark:bg-dark-cyan hover:bg-teal dark:hover:bg-dark-teal transition-colors duration-300 min-w-[120px] sm:min-w-[100px] max-sm:min-w-[80px]"
                                     onClick={() => setClicked(true)}
                                 >
-                                    {clicked ? <Spinner color="primary" /> : "Sign Up"}
+                                    {clicked ? <Spinner color="default" /> : "Sign Up"}
                                 </button>
                             </Link>
 

@@ -19,8 +19,12 @@ const Buttons: React.FC<DataHandleInterface> = ({ handleGoogleSignup, isLoading,
         </div>
         <div className="mt-4 flex justify-center items-center">
             <Button color="default" variant="bordered" className="flex items-center space-x-2" onClick={handleGoogleSignup} disabled={isLoading}>
-                {isLoading ? <Spinner color="default" /> : <FaGoogle />}
-                <span>Sign up with Google</span>
+                {isLoading ? <Spinner color="default" /> : (
+                    <FaGoogle className='md:w-4 md:h-4' />
+                )}
+                <span className="block max-sm:hidden">Sign up with Google</span>
+                <span className="sm:hidden max-sm:block">Google</span>
+
             </Button>
         </div>
     </>
