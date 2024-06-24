@@ -7,7 +7,10 @@ import { AuthContextProvider } from "../app/contexts/AuthContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "TaskJourney | Your Tasks, Gamified",
+  title: {
+    default: "TaskJourney | Your Tasks, Gamified",
+    template: "%s | TaskJourney",
+  },
   description: "TaskJourney: Your ultimate personal productivity assistant. Manage tasks, track goals, and achieve more with our intuitive and powerful platform.",
   manifest: '/manifest.json',
   robots: {
