@@ -28,7 +28,7 @@ const SettingsPage: React.FC = () => {
             <ThemeProviderWithAttribute>
                 <div className="h-screen flex">
                     <Sidebar />
-                    <div className="container px-4 py-8 ml-20 overflow-auto ">
+                    <div className="container px-4 py-8 sm:ml-10 md:ml-16 lg:ml-20 overflow-auto ">
                         <h1 className="text-3xl font-bold mb-8">Settings</h1>
                         <Divider></Divider>
                         <AccountSettings />
