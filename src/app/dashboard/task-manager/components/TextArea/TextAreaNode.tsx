@@ -14,10 +14,8 @@ const Component: React.FC = () => {
 
     return (
         <NodeViewWrapper className="react-component">
-            <Textarea placeholder='Describe your task. Add detail and clear information for the best experience ^-^'
+            <Textarea placeholder='Describe your task. Add detail and clear information for the best experience.'
                 className='mt-4'
-                isRequired
-                required
                 size='lg'
                 label="Description"
                 value={description} // Bind value to the description prop

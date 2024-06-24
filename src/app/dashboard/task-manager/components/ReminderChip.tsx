@@ -68,7 +68,7 @@ const ReminderChip: React.FC<ReminderChipProps> = ({ date, onSetReminder }) => {
 
     return (
         <div>
-            <Popover isOpen={visible} onClose={handleClose} placement="bottom">
+            <Popover isOpen={visible} onClose={handleClose} placement="bottom" className="max-w-[300px]">
                 <motion.div whileHover={{ scale: 1.05 }}>
                     <PopoverTrigger>
                         <Chip
@@ -84,8 +84,8 @@ const ReminderChip: React.FC<ReminderChipProps> = ({ date, onSetReminder }) => {
                     </PopoverTrigger>
                 </motion.div>
 
-                <PopoverContent>
-                    <Card className='p-6 bg-white dark:bg-black shadow-lg rounded-lg'>
+                <PopoverContent className="max-w-[300px]">
+                    <Card className='p-6 bg-white dark:bg-black shadow-lg rounded-lg max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl'>
                         <h4 className="text-lg font-bold font-inter mb-2 text-gray-900 dark:text-gray-100">Set A Reminder</h4>
                         <Tabs selectedKey={selectedOption} onSelectionChange={handleOptionChange} variant='underlined'>
                             <Tab

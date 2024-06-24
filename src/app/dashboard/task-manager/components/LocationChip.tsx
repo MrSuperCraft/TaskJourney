@@ -24,9 +24,7 @@ const LocationChip: React.FC<{ setLocation: (location: string | null) => void, l
 
     return (
         <Popover
-            placement="bottom-end"
-            offset={-200}
-            crossOffset={-100}
+            placement="bottom"
             onClose={() => setIsPopoverOpen(false)} // Close popover when clicking outside or pressing Esc
             showArrow={true}
             shouldBlockScroll={true}

@@ -43,7 +43,7 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
         if (user) {
             // Check if title and description are not empty
             if (!title.trim() || !description.trim()) {
-                toast.error('Task title and description are required.', {
+                toast.error('Task title is required.', {
                     position: "bottom-right",
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -74,6 +74,8 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
                     location: location ? location : 'N/A',
                     reminder: reminder ? new Date(reminder).toUTCString() : 'No time specified',
                     createdAt: new Date(),
+                    subtasks: [],
+                    completed: false
                 };
 
                 onTaskAdd(newTask);
@@ -175,7 +177,7 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
             <MyEditor />
 
 
-            <div className="flex items-center mt-4 gap-2">
+            <div className="flex md:items-center items-start mt-4 gap-2 flex-col md:flex-row">
                 <Popover placement="bottom-end" offset={-250} crossOffset={-150}
                     onClose={() => setIsPopoverOpen(false)}
                     showArrow={true}
@@ -247,7 +249,7 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
                 <motion.div whileHover={{ scale: 1.1 }} >
                     <ReminderChip date={selectedDueDate} onSetReminder={handleSetReminder} />
                 </motion.div>
-                <Popover>
+                <Popover placement='bottom'>
                     <PopoverTrigger>
                         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                             <Chip

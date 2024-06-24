@@ -1,8 +1,8 @@
 'use client'
 
 
-import React, { useState } from 'react';
-import { Divider, Button } from '@nextui-org/react';
+import React from 'react';
+import { Divider } from '@nextui-org/react';
 import Sidebar from '../components/sidebar/Sidebar';
 import useUserData from '../../hooks/useUserData';
 import { useRouter } from 'next/navigation';
@@ -12,6 +12,7 @@ import { ThemeProviderWithAttribute } from '@/app/contexts/ThemeContext';
 import TaskManager from './components/TaskManager';
 import { Providers } from '@/app/Providers';
 import { EditorProvider } from '@/app/contexts/EditorContext';
+
 
 const TaskManagerPage: React.FC = () => {
     const { loading, authenticated, user, userData } = useUserData();
@@ -32,8 +33,8 @@ const TaskManagerPage: React.FC = () => {
                     <ThemeProviderWithAttribute>
                         <div className="h-screen flex">
                             <Sidebar />
-                            <div className="container px-4 py-8 ml-20 overflow-auto">
-                                <h1 className="text-3xl font-bold mb-8">Task Manager</h1>
+                            <div className="container  py-8 sm:ml-10 md:ml-16 lg:ml-20 overflow-auto">
+                                <h1 className="text-3xl font-bold mb-8 px-4">Task Manager</h1>
                                 <Divider />
                                 <TaskManager />
                             </div>
