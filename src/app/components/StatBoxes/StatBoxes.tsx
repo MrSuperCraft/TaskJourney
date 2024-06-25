@@ -53,14 +53,11 @@ const StatBoxes: React.FC = () => {
                     {displayedStats.map((stat, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.2 + 1, ease: 'easeInOut' }}
                             className="p-6 bg-gray-100 dark:bg-gray-900 rounded-lg shadow-lg"
                         >
-                            <h3 className="text-2xl font-bold text-teal dark:text-sky-blue">
+                            <h4 className="text-2xl font-bold text-teal dark:text-sky-blue">
                                 {formatNumber(stat.displayedValue)}
-                            </h3>
+                            </h4>
                             <p className="text-gray-600 dark:text-gray-300 mt-2">{stat.title}</p>
                         </motion.div>
                     ))}

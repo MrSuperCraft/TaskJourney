@@ -47,8 +47,9 @@ const Navbar = () => {
                             <Button
                                 isIconOnly
                                 variant="shadow"
-                                className="p-1 sm:p-2 bg-gray-200 dark:bg-gray-700 text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
+                                className="ml-2 p-1 sm:p-2 bg-gray-200 dark:bg-gray-700 text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
                                 onClick={toggleTheme}
+                                aria-label='Toggle theme from light to dark or vice versa'
                             >
                                 {theme === 'light' ? <FaMoon className="w-4 h-4 sm:w-5 sm:h-5 text-sky-700" /> : <FaSun className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400" />}
                             </Button>
@@ -56,14 +57,16 @@ const Navbar = () => {
 
                             <Link href="/signup">
                                 <button
-                                    className="ml-2 sm:ml-4 px-3 sm:px-4 py-1 sm:py-2 max-sm:py-2 rounded-full text-white bg-darker-cyan dark:bg-dark-cyan hover:bg-teal dark:hover:bg-dark-teal transition-colors duration-300 min-w-[120px] sm:min-w-[100px] max-sm:min-w-[80px]"
+                                    className="ml-2 sm:ml-3 px-3 sm:px-6 py-2 sm:py-4 rounded-full text-white bg-darker-cyan dark:bg-dark-cyan hover:bg-teal dark:hover:bg-dark-teal transition-colors duration-300 min-w-[120px] sm:min-w-[140px] max-sm:min-w-[100px]"
                                     onClick={() => setClicked(true)}
+                                    style={{ minHeight: '44px', minWidth: '44px' }}
                                 >
                                     {clicked ? <Spinner color="default" /> : "Sign Up"}
                                 </button>
                             </Link>
 
                             <button
+                                aria-label='Open sidebar'
                                 className="p-1 sm:p-2 rounded-md text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors duration-300"
                                 onClick={toggleSidebar}
                             >

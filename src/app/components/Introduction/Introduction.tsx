@@ -1,10 +1,8 @@
-// src/components/Introduction.tsx
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardBody, Button } from '@nextui-org/react';
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Introduction: React.FC = () => {
     return (
@@ -20,13 +18,14 @@ const Introduction: React.FC = () => {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.5 }}
+                            style={{ width: '100%', height: 'auto' }}
                         >
                             <Image
                                 src="/completed-task-31.svg"
                                 alt="TaskJourney Mockup"
                                 className="object-cover object-center w-full h-auto"
-                                width={300}
-                                height={300}
+                                width={500}
+                                height={500}
                             />
                         </motion.div>
                     </div>
@@ -54,7 +53,6 @@ const Introduction: React.FC = () => {
                                 </div>
                             </CardBody>
                         </Card>
-
                     </div>
                 </div>
             </div>

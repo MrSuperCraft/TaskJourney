@@ -1,14 +1,12 @@
-"use client";
-
-import { Accordion, AccordionItem } from '@nextui-org/react'; // Import Accordion components from NextUI
-import { FaQuestionCircle, FaRobot, FaGamepad, FaBell, FaLock, FaComments, FaHeadset } from 'react-icons/fa'; // Import Font Awesome icons
+import { Accordion, AccordionItem } from '@nextui-org/react';
+import { FaQuestionCircle, FaRobot, FaGamepad, FaBell, FaLock, FaComments, FaHeadset } from 'react-icons/fa';
 
 const FAQ: React.FC = () => {
     return (
-        <div className="w-full h-min-screen bg-slate-300 dark:bg-dark-teal">
+        <div className="w-full min-h-screen bg-slate-300 dark:bg-dark-teal">
             <div className="max-w-3xl mx-auto p-10">
                 <h2 className="text-3xl font-bold mb-6 p-4 text-center">Frequently Asked Questions</h2>
-                <Accordion variant='shadow'>
+                <Accordion variant="shadow">
                     <AccordionItem
                         title={
                             <span className="font-bold flex items-center max-sm:text-md">

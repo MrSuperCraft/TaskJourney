@@ -17,7 +17,7 @@ const Footer: FC = () => {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-16 justify-center">
                         <div>
-                            <h4 className="text-lg font-semibold mb-4">About Us</h4>
+                            <h5 className="text-lg font-semibold mb-4">About Us</h5>
                             <ul className="space-y-2">
                                 <li><Link href="/about" className='text-primary-brand-400'>Our Story</Link></li>
                                 <li><Link href="#" className='text-primary-brand-400'>Contact</Link></li>
@@ -26,7 +26,7 @@ const Footer: FC = () => {
                             </ul>
                         </div>
                         <div>
-                            <h4 className="text-lg font-semibold mb-4">Community</h4>
+                            <h5 className="text-lg font-semibold mb-4">Community</h5>
                             <ul className="space-y-2">
                                 <li><Link href="#" className='text-primary-brand-400'>Forum</Link></li>
                                 <li><Link href="#" className='text-primary-brand-400'>Blog</Link></li>
@@ -34,7 +34,7 @@ const Footer: FC = () => {
                             </ul>
                         </div>
                         <div>
-                            <h4 className="text-lg font-semibold mb-4">Resources</h4>
+                            <h5 className="text-lg font-semibold mb-4">Resources</h5>
                             <ul className="space-y-2">
                                 <li><Link href="#" className='text-primary-brand-400'>Documentation</Link></li>
                                 <li><Link href="#" className='text-primary-brand-400'>Tutorials</Link></li>
