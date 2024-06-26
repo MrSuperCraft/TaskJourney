@@ -1,10 +1,7 @@
-'use client';
-
 import React from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import Image from 'next/image';
 import Footer from '../components/Footer/Footer';
-import { motion } from 'framer-motion';
 import { Input } from '@nextui-org/react';
 import { FiSettings, FiUser, FiGrid, FiHelpCircle, FiArrowRight, FiSearch } from 'react-icons/fi';
 import { ThemeProviderWithAttribute } from '../contexts/ThemeContext';
@@ -27,11 +24,10 @@ const HelpCenter = () => {
 
                     {/* Content */}
                     <div
-
                         className="container mx-auto text-center relative z-10 text-black dark:text-white flex flex-col justify-center max-md:mt-5 items-center lg:flex-row lg:items-center lg:justify-center lg:space-x-8"
                     >
                         <div>
-                            <Image src="/Chat bubble.png" alt='Chat bubble Hero Image' width={700} height={700} priority />
+                            <Image src="/Chat bubble.png" alt='Chat bubble Hero Image' className='w-full h-full' width={700} height={700} priority />
                         </div>
                     </div>
                 </div>
@@ -52,10 +48,7 @@ const HelpCenter = () => {
                             />
                         </div>
 
-
-
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                             <div className="bg-white dark:bg-gray-900 shadow-lg rounded-lg p-6 border border-gray-300 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-300 transition-border duration-300 hover:shadow-xl">
                                 <div className="flex items-center mb-4">
                                     <FiSettings className="text-red-500 dark:text-red-400 w-6 h-6 mr-3" />

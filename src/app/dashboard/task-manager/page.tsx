@@ -1,49 +1,22 @@
-'use client'
+import React from 'react'
+import TaskManagerPage from './TaskManagerPage'
+import { Metadata } from 'next'
 
-
-import React from 'react';
-import { Divider } from '@nextui-org/react';
-import Sidebar from '../components/sidebar/Sidebar';
-import useUserData from '../../hooks/useUserData';
-import { useRouter } from 'next/navigation';
-import Loading from '../../Loading';
-import { ProfileProvider } from '@/app/contexts/ProfileContext';
-import { ThemeProviderWithAttribute } from '@/app/contexts/ThemeContext';
-import TaskManager from './components/TaskManager';
-import { Providers } from '@/app/Providers';
-import { EditorProvider } from '@/app/contexts/EditorContext';
-
-
-const TaskManagerPage: React.FC = () => {
-    const { loading, authenticated, user, userData } = useUserData();
-    const router = useRouter();
-
-    if (loading) {
-        return <Loading />;
+export const metadata: Metadata = {
+    title: 'Task Manager',
+    description: 'Your task manager, used to handle tasks with ease.',
+    keywords: 'task manager, task, tasks, task manager app, task manager app, task manager website, task manager web app',
+    robots: {
+        index: false,
+        follow: false
     }
+}
 
-    if (!authenticated) {
-        return null;
-    }
 
+const page = () => {
     return (
-        <ProfileProvider>
-            <EditorProvider>
-                <Providers>
-                    <ThemeProviderWithAttribute>
-                        <div className="h-screen flex">
-                            <Sidebar />
-                            <div className="container  py-8 sm:ml-10 md:ml-16 lg:ml-20 overflow-auto">
-                                <h1 className="text-3xl font-bold mb-8 px-4">Task Manager</h1>
-                                <Divider />
-                                <TaskManager />
-                            </div>
-                        </div>
-                    </ThemeProviderWithAttribute>
-                </Providers>
-            </EditorProvider>
-        </ProfileProvider>
-    );
-};
+        <TaskManagerPage />
+    )
+}
 
-export default TaskManagerPage;
+export default page
