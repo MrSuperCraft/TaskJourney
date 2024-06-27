@@ -405,7 +405,7 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, tableType, darkMode
                             Confirm Delete
                         </ModalHeader>
                         <ModalBody>
-                            <p>Are you sure you want to delete the task "{selectedTask.title}"?</p>
+                            <p>{`Are you sure you want to delete the task ${selectedTask.title}?`}</p>
                         </ModalBody>
                         <ModalFooter>
                             <Button onClick={() => setIsModalVisible(false)} variant='ghost'>
