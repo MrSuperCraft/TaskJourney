@@ -36,18 +36,6 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, tableType, darkMode
     const [page, setPage] = useState(1);
     const rowsPerPage = 5; // Number of tasks per page
     const pages = Math.ceil(tasks.length / rowsPerPage);
-    const [sortedTasks, setSortedTasks] = useState(tasks);
-
-
-    const startIndex = (page - 1) * rowsPerPage;
-    const endIndex = startIndex + rowsPerPage;
-
-    const handlePageChange = (page: number) => {
-        setPage(page);
-    };
-
-
-
 
     // States for sorting
     const [sortCriteria, setSortCriteria] = useState<'title' | 'date' | 'priority'>('title');
@@ -76,7 +64,7 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, tableType, darkMode
             return 0;
         });
 
-        setSortedTasks(sortedTasks);
+        onUpdateTasks(sortedTasks);
 
         // Adjust page to the last page if it's beyond the new total pages
         const newPages = Math.ceil(sortedTasks.length / rowsPerPage);
@@ -159,9 +147,29 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, tableType, darkMode
     };
 
     const renderTasks = () => {
+        // Sort tasks based on criteria and order
+        const sortedTasks = [...tasks].sort((a, b) => {
+            if (sortCriteria === 'title') {
+                return sortOrder === 'asc' ? a[sortCriteria].localeCompare(b[sortCriteria]) : b[sortCriteria].localeCompare(a[sortCriteria]);
+            } else if (sortCriteria === 'date') {
+                if (!a.date && !b.date) {
+                    return 0;
+                } else if (!a.date) {
+                    return 1;
+                } else if (!b.date) {
+                    return -1;
+                }
+                return sortOrder === 'asc' ? new Date(a.date).getTime() - new Date(b.date).getTime() : new Date(b.date).getTime() - new Date(a.date).getTime();
+            } else if (sortCriteria === 'priority') {
+                const priorityOrder = { low: 1, medium: 2, high: 3 };
+                return sortOrder === 'asc' ? priorityOrder[a[sortCriteria]] - priorityOrder[b[sortCriteria]] : priorityOrder[b[sortCriteria]] - priorityOrder[a[sortCriteria]];
+            }
+            return 0;
+        });
 
         // Pagination
-        const paginatedTasks = sortedTasks.slice(startIndex, endIndex);
+        const startIndex = (page - 1) * rowsPerPage;
+        const paginatedTasks = sortedTasks.slice(startIndex, startIndex + rowsPerPage);
 
         return paginatedTasks.map((task: Task) => (
             <TableRow key={task.id}>
@@ -273,7 +281,7 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, tableType, darkMode
 
     const renderStackedTasks = () => {
         // Limit the rendering based on the amount of tasks
-        const slicedTasks = tasks.slice(startIndex, endIndex);
+        const slicedTasks = tasks.slice(0, 5);
 
         return slicedTasks.map((task) => (
             <div key={task.id} className="border-b border-gray-300 dark:border-gray-700 p-4 transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:shadow-md">
@@ -351,12 +359,16 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, tableType, darkMode
         ));
     };
 
+    const totalPages = Math.ceil(tasks.length / 5); // Calculate the total number of pages
+    const handlePageChange = (page: number) => {
+        setPage(page);
+    };
 
     const renderPagination = () => {
         return (
             <Pagination
                 className="flex justify-center mt-4"
-                total={pages}
+                total={totalPages}
                 page={page}
                 onChange={handlePageChange}
                 isCompact
@@ -364,7 +376,7 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, tableType, darkMode
                 showShadow
             />
         );
-    };
+    }
 
 
     const isMobile = window.innerWidth <= 768; // Check if device is mobile
@@ -377,6 +389,7 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, title, tableType, darkMode
                 renderStackedTasks()
             ) : (
                 <Table aria-label="Task Table" className='mb-6' bottomContent={
+
                     <Pagination
                         className="flex justify-center mt-4"
                         total={pages}
