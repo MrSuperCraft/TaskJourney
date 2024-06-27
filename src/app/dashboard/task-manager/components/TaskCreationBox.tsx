@@ -42,7 +42,7 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
     const handleSave = async () => {
         if (user) {
             // Check if title and description are not empty
-            if (!title.trim() || !description.trim()) {
+            if (!title.trim()) {
                 toast.error('Task title is required.', {
                     position: "bottom-right",
                     autoClose: 2000,
@@ -75,7 +75,8 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
                     reminder: reminder ? new Date(reminder).toUTCString() : 'No time specified',
                     createdAt: new Date(),
                     subtasks: [],
-                    completed: false
+                    complete: false,
+                    completedAt: null
                 };
 
                 onTaskAdd(newTask);

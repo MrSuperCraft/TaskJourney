@@ -5,12 +5,12 @@ interface Task {
     date?: string;
     description?: string;
     location?: string | null;
-    image?: string;
     reminder?: string;
     priority: "low" | "medium" | "high";
     createdAt: Date;
     subtasks: SubTask[];
-    completed: boolean;
+    complete: boolean;
+    completedAt: string | null;
     // Add more properties as needed
 }
 

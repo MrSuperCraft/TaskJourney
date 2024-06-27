@@ -69,11 +69,21 @@ const EditTaskModal: React.FC<EditTaskModalProps> = ({ isOpen, onClose, task, on
     setSelectedDueDate(convertToCalendarDate(task?.date || ''));
   }, [task]);
 
-  function convertToCalendarDate(dateString: string): CalendarDate | null {
-    if (!dateString) return null;
-    const date = new Date(dateString);
-    const isoString = date.toISOString().split('T')[0]; // Get the ISO string in YYYY-MM-DD format
-    return parseDate(isoString);
+  function convertToCalendarDate(dateString: string | undefined): CalendarDate | null {
+    try {
+      if (!dateString || !dateString.trim()) return null; // Return null if dateString is empty or undefined
+
+      const date = new Date(dateString);
+      if (isNaN(date.getTime())) {
+        throw new Error('Invalid date string'); // Throw an error if date parsing fails
+      }
+
+      const isoString = date.toISOString().split('T')[0]; // Get the ISO string in YYYY-MM-DD format
+      return parseDate(isoString);
+    } catch (error) {
+      console.error('Error converting date:', error);
+      return null; // Return null in case of any parsing error
+    }
   }
 
   function formatDate(date: CalendarDate | null): string {

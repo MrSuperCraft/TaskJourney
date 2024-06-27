@@ -13,7 +13,7 @@ const AddTaskButton: React.FC<{ onClick: () => void }> = ({ onClick }) => {
                 alignItems: 'center',
                 justifyContent: 'center',
             }}
-            className='mb-10'
+            className='mb-10 mt-5'
             startContent={<FaPlus />}
             variant="shadow"
         >

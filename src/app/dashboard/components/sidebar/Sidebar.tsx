@@ -262,7 +262,7 @@ const Sidebar: React.FC = () => {
             </motion.div>
 
             {/* Mobile Sidebar Toggle Button */}
-            <div className="fixed bottom-4 right-4 md:hidden">
+            <div className="fixed bottom-4 right-4 md:hidden" style={{ zIndex: 1000 }}>
                 <Tooltip content="Open Sidebar" color="foreground" placement="left">
                     <Button isIconOnly className="bg-primary-brand-200 dark:bg-gray-700" onClick={handleMobileSidebarToggle} aria-label="Open Sidebar">
                         <FaPlus className="text-cyan-700 dark:text-primary-brand-600 text-xl" />
