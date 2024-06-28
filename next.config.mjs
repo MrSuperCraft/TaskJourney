@@ -27,6 +27,7 @@ const nextConfig = withPWAInit({
                     pathname: '**',
                 },
             ],
+            unoptimized: true,  // Disable image optimization
         },
     });
 
