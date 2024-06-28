@@ -27,7 +27,7 @@ const HelpCenter = () => {
                         className="container mx-auto text-center relative z-10 text-black dark:text-white flex flex-col justify-center max-md:mt-5 items-center lg:flex-row lg:items-center lg:justify-center lg:space-x-8"
                     >
                         <div>
-                            <Image src="/Chat bubble.png" alt='Chat bubble Hero Image' className='w-full h-full' width={700} height={700} priority />
+                            <Image src="/Chat bubble.png" alt='Chat bubble Hero Image' className='w-full h-full' width={700} height={700} />
                         </div>
                     </div>
                 </div>

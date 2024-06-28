@@ -62,7 +62,6 @@ const AboutMePage = () => {
                             layout="fill"
                             objectFit="cover"
                             className="opacity-80 mix-blend-soft-light"
-                            priority
                         />
                     </div>
                     <div className="about-page bg-primary-brand-50 dark:bg-gray-900 text-gray-800 dark:text-primary-brand-50 p-6 rounded-lg shadow-lg relative z-10 mt-20 mb-10 mx-4 max-w-3xl w-full">

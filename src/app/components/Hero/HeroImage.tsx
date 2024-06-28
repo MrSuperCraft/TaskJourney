@@ -21,7 +21,6 @@ const HeroImage: React.FC<HeroImageProps> = ({ src, alt, ariaLabel, className, s
             style={style}
             width={200}
             height={200}
-            priority
         />
     );
 };

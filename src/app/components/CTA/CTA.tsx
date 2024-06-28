@@ -10,7 +10,6 @@ const CTASection = () => {
                 <div className="w-full flex justify-center">
                     <div className="w-full max-w-md md:max-w-lg lg:max-w-xl">
                         <Image
-                            as={NextImage}
                             src="/completed-1.svg"
                             alt="Image"
                             width={500}
