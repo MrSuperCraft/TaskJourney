@@ -434,27 +434,28 @@ const TaskTable: React.FC<TaskTableProps> = ({
                                     >
                                         <FaEdit className="w-4 h-4 " />
                                     </Button>
-                                    <Button
-                                        onClick={() => handleDelete(task.id)}
-                                        size="sm"
-                                        aria-label="Delete Task"
-                                        isIconOnly
-                                    >
-                                        <FaTrash className="w-4 h-4 bg-red-500" />
-                                    </Button>
                                 </>
                             )}
+                            <Button
+                                onClick={() => handleDelete(task.id)}
+                                size="sm"
+                                aria-label="Delete Task"
+                                className="bg-red-500 text-white"
+                                isIconOnly
+                            >
+                                <FaTrash className="w-4 h-4" />
+                            </Button>
                         </>
                     )}
                 </div>
             </div>
-        ));
+        )).concat(renderPagination())
     };
 
     const renderPagination = () => {
         return (
             <Pagination
-                className="flex justify-center mt-4"
+                className="flex justify-center mt-4 mb-10"
                 total={pages}
                 page={page}
                 onChange={handlePageChange}
@@ -472,7 +473,9 @@ const TaskTable: React.FC<TaskTableProps> = ({
             <h2 className="text-xl font-bold mb-4">{title}</h2>
 
             {isMobile ? (
-                renderStackedTasks()
+                <>
+                    {renderStackedTasks()}
+                </>
             ) : (
                 <Table
                     aria-label="Task Table"

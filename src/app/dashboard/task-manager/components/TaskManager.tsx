@@ -38,7 +38,7 @@ const TaskManager: React.FC = () => {
             setActiveTasks(fetchedTasks.filter((task) => !task.complete));
             setDailyTasks(
                 fetchedTasks.filter(
-                    (task) => task.title.toLowerCase().includes("daily") && !task.complete
+                    (task) => task.title && task.title.toLowerCase().includes("daily") && !task.complete
                 )
             );
             setCompletedTasks(fetchedTasks.filter((task) => task.complete));
