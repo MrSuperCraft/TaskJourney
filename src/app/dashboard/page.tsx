@@ -13,6 +13,8 @@ import Loading from '../Loading';
 import WelcomeMessage from './components/WelcomeMessageOnDash';
 import { doc, getDoc } from 'firebase/firestore';
 import { ProfileProvider } from '../contexts/ProfileContext';
+import LevelTracker from './components/Widgets/LevelTracker/LevelTracker';
+
 
 const DashboardPage = () => {
     const [loading, setLoading] = useState(true);
@@ -70,6 +72,7 @@ const DashboardPage = () => {
         return null;
     }
 
+
     return (
         <ProfileProvider>
             <AuthContextProvider>
@@ -79,6 +82,10 @@ const DashboardPage = () => {
                         <div className="flex-1 overflow-y-auto max-h-screen px-4 py-8">
                             <WelcomeMessage name={userName} />
                             {/* Add feed sections here */}
+                            <LevelTracker
+                                currentExp={1000}
+                                level={10}
+                            />
                         </div>
                     </div>
                 </ThemeProviderWithAttribute>
