@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Key } from "react";
 import TaskTable from "./Table/TaskTable";
-import Task from "../types";
+import { Task } from "../../types";
 import useUserData from "../../../hooks/useUserData";
 import { Button } from "@nextui-org/react";
 import AddTaskButton from "./AddTaskButton";

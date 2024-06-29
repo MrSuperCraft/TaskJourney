@@ -25,7 +25,7 @@ import {
     FaRegCalendarAlt,
     FaMapMarkerAlt,
 } from "react-icons/fa";
-import Task from "../../types";
+import { Task } from "../../../types";
 import EditTaskModal from "../EditModal";
 
 interface TaskTableProps {
@@ -258,40 +258,35 @@ const TaskTable: React.FC<TaskTableProps> = ({
                     </TableCell>
                 ) : (
                     <TableCell className="flex">
-                        {tableType === "daily" ? null : (
-                            <Button
-                                onClick={() => handleComplete(task.id)}
-                                size="sm"
-                                color="success"
-                                className="text-white mr-2"
-                                isIconOnly
-                                aria-label="Complete Task"
-                            >
-                                <FaCheck aria-hidden="true" className="w-4 h-4" />
-                            </Button>
-                        )}
-                        {tableType === "daily" ? null : (
-                            <Button
-                                onClick={() => handleEdit(task.id)}
-                                size="sm"
-                                className="mr-2 text-white bg-primary-brand-700 hover:bg-primary-600 dark:bg-teal ease-in-out dark:ease-in-out dark:hover:bg-sky-600 transition-all dark:transition-all dark:duration-300 duration-300"
-                                aria-label="Edit Task"
-                                isIconOnly
-                            >
-                                <FaEdit aria-hidden="true" className="w-4 h-4" />
-                            </Button>
-                        )}
-                        {tableType === "daily" ? null : (
-                            <Button
-                                onClick={() => handleDelete(task.id)}
-                                size="sm"
-                                className="bg-red-500 mr-2 text-white"
-                                aria-label="Delete Task"
-                                isIconOnly
-                            >
-                                <FaTrash aria-hidden="true" className="w-4 h-4" />
-                            </Button>
-                        )}
+                        <Button
+                            onClick={() => handleComplete(task.id)}
+                            size="sm"
+                            color="success"
+                            className="text-white mr-2"
+                            isIconOnly
+                            aria-label="Complete Task"
+                        >
+                            <FaCheck aria-hidden="true" className="w-4 h-4" />
+                        </Button>
+
+                        <Button
+                            onClick={() => handleEdit(task.id)}
+                            size="sm"
+                            className="mr-2 text-white bg-primary-brand-700 hover:bg-primary-600 dark:bg-teal ease-in-out dark:ease-in-out dark:hover:bg-sky-600 transition-all dark:transition-all dark:duration-300 duration-300"
+                            aria-label="Edit Task"
+                            isIconOnly
+                        >
+                            <FaEdit aria-hidden="true" className="w-4 h-4" />
+                        </Button>
+                        <Button
+                            onClick={() => handleDelete(task.id)}
+                            size="sm"
+                            className="bg-red-500 mr-2 text-white"
+                            aria-label="Delete Task"
+                            isIconOnly
+                        >
+                            <FaTrash aria-hidden="true" className="w-4 h-4" />
+                        </Button>
                     </TableCell>
                 )}
             </TableRow>

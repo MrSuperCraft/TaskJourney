@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, User as FirebaseUser } from 'firebase/auth';
 import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
 import { auth, db } from '../firebase'; // Adjust the import path according to your setup
-import Task from '../dashboard/task-manager/types';
+import { Task } from '../dashboard/types';
 
 interface UserData {
     uid: string;

@@ -23,7 +23,7 @@ import DateSearcher from './DateSearcher';
 import DateSelectionButtons from './DateSelectionButtons';
 import { CalendarDate } from '@nextui-org/react';
 import { getLocalTimeZone, today, parseDate } from '@internationalized/date';
-import Task from '../types';
+import { Task } from '../../types';
 import { db } from '@/app/firebase';
 import useUserData from '@/app/hooks/useUserData';
 import { doc, updateDoc, getDoc } from 'firebase/firestore';
