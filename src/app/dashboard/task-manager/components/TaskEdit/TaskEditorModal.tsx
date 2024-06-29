@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button, ModalContent, Chip, Popover, PopoverTrigger, PopoverContent, Calendar, Divider } from '@nextui-org/react';
 import { db } from '@/app/firebase';
 import { doc, getDoc } from 'firebase/firestore';
-import Task from '../../types';
+import { Task } from '@/app/dashboard/types';
 import useUserData from '@/app/hooks/useUserData';
 import { FaCalendar } from 'react-icons/fa';
 import { DateValue } from '@nextui-org/react';

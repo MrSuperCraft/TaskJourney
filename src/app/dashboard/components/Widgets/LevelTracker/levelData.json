@@ -1,0 +1,1104 @@
+{
+  "levels": [
+    {
+      "level": 1,
+      "expForNextLevel": 150,
+      "color": "from-green-200 to-green-400",
+      "rewards": [
+        "Badge 1",
+        "Bonus Points 100"
+      ],
+      "description": "You have started your journey!",
+      "progress": 0
+    },
+    {
+      "level": 2,
+      "expForNextLevel": 200,
+      "color": "from-green-400 to-green-600",
+      "rewards": [
+        "Badge 2",
+        "Bonus Points 200"
+      ],
+      "description": "You are making great progress!",
+      "progress": 0
+    },
+    {
+      "level": 3,
+      "expForNextLevel": 250,
+      "color": "from-green-600 to-green-800",
+      "rewards": [
+        "Badge 3",
+        "Bonus Points 300"
+      ],
+      "description": "Keep going, you are doing amazing!",
+      "progress": 0
+    },
+    {
+      "level": 4,
+      "expForNextLevel": 300,
+      "color": "from-blue-200 to-blue-400",
+      "rewards": [
+        "Badge 4",
+        "Bonus Points 400"
+      ],
+      "description": "Your hard work is paying off!",
+      "progress": 0
+    },
+    {
+      "level": 5,
+      "expForNextLevel": 350,
+      "color": "from-blue-400 to-blue-600",
+      "rewards": [
+        "Badge 5",
+        "Bonus Points 500"
+      ],
+      "description": "You are halfway to mastery!",
+      "progress": 0
+    },
+    {
+      "level": 6,
+      "expForNextLevel": 400,
+      "color": "from-blue-600 to-blue-800",
+      "rewards": [
+        "Badge 6",
+        "Bonus Points 600"
+      ],
+      "description": "You are becoming a true expert!",
+      "progress": 0
+    },
+    {
+      "level": 7,
+      "expForNextLevel": 450,
+      "color": "from-purple-200 to-purple-400",
+      "rewards": [
+        "Badge 7",
+        "Bonus Points 700"
+      ],
+      "description": "Your skills are growing rapidly!",
+      "progress": 0
+    },
+    {
+      "level": 8,
+      "expForNextLevel": 500,
+      "color": "from-purple-400 to-purple-600",
+      "rewards": [
+        "Badge 8",
+        "Bonus Points 800"
+      ],
+      "description": "You are on the path to greatness!",
+      "progress": 0
+    },
+    {
+      "level": 9,
+      "expForNextLevel": 550,
+      "color": "from-purple-600 to-purple-800",
+      "rewards": [
+        "Badge 9",
+        "Bonus Points 900"
+      ],
+      "description": "Your dedication is inspiring!",
+      "progress": 0
+    },
+    {
+      "level": 10,
+      "expForNextLevel": 600,
+      "color": "from-red-200 to-red-400",
+      "rewards": [
+        "Badge 10",
+        "Bonus Points 1000"
+      ],
+      "description": "You are unstoppable!",
+      "progress": 0
+    },
+    {
+      "level": 11,
+      "expForNextLevel": 175,
+      "color": "from-red-400 to-red-600",
+      "rewards": [
+        "Badge 11",
+        "Bonus Points 1100"
+      ],
+      "description": "Congratulations on reaching this level!",
+      "progress": 0
+    },
+    {
+      "level": 12,
+      "expForNextLevel": 212,
+      "color": "from-red-600 to-red-800",
+      "rewards": [
+        "Badge 12",
+        "Bonus Points 1200"
+      ],
+      "description": "You are on the threshold of a new era!",
+      "progress": 0
+    },
+    {
+      "level": 13,
+      "expForNextLevel": 268,
+      "color": "from-orange-200 to-orange-400",
+      "rewards": [
+        "Badge 13",
+        "Bonus Points 1300"
+      ],
+      "description": "You are truly remarkable!",
+      "progress": 0
+    },
+    {
+      "level": 14,
+      "expForNextLevel": 353,
+      "color": "from-orange-400 to-orange-600",
+      "rewards": [
+        "Badge 14",
+        "Bonus Points 1400"
+      ],
+      "description": "Your achievements are a testament to your determination!",
+      "progress": 0
+    },
+    {
+      "level": 15,
+      "expForNextLevel": 479,
+      "color": "from-orange-600 to-orange-800",
+      "rewards": [
+        "Badge 15",
+        "Bonus Points 1500"
+      ],
+      "description": "You are a beacon of hope and inspiration!",
+      "progress": 0
+    },
+    {
+      "level": 16,
+      "expForNextLevel": 669,
+      "color": "from-yellow-200 to-yellow-400",
+      "rewards": [
+        "Badge 16",
+        "Bonus Points 1600"
+      ],
+      "description": "Congratulations on reaching this milestone!",
+      "progress": 0
+    },
+    {
+      "level": 17,
+      "expForNextLevel": 954,
+      "color": "from-yellow-400 to-yellow-600",
+      "rewards": [
+        "Badge 17",
+        "Bonus Points 1700"
+      ],
+      "description": "Keep up the great work!",
+      "progress": 0
+    },
+    {
+      "level": 18,
+      "expForNextLevel": 1381,
+      "color": "from-yellow-600 to-yellow-800",
+      "rewards": [
+        "Badge 18",
+        "Bonus Points 1800"
+      ],
+      "description": "You are shining bright!",
+      "progress": 0
+    },
+    {
+      "level": 19,
+      "expForNextLevel": 2022,
+      "color": "from-pink-200 to-pink-400",
+      "rewards": [
+        "Badge 19",
+        "Bonus Points 1900"
+      ],
+      "description": "Your journey is inspiring others!",
+      "progress": 0
+    },
+    {
+      "level": 20,
+      "expForNextLevel": 2983,
+      "color": "from-pink-400 to-pink-600",
+      "rewards": [
+        "Badge 20",
+        "Bonus Points 2000"
+      ],
+      "description": "You are a role model!",
+      "progress": 0
+    },
+    {
+      "level": 21,
+      "expForNextLevel": 4424,
+      "color": "from-pink-600 to-pink-800",
+      "rewards": [
+        "Badge 21",
+        "Bonus Points 2100"
+      ],
+      "description": "You are making waves!",
+      "progress": 0
+    },
+    {
+      "level": 22,
+      "expForNextLevel": 6587,
+      "color": "from-gray-200 to-gray-400",
+      "rewards": [
+        "Badge 22",
+        "Bonus Points 2200"
+      ],
+      "description": "Keep pushing forward!",
+      "progress": 0
+    },
+    {
+      "level": 23,
+      "expForNextLevel": 9830,
+      "color": "from-gray-400 to-gray-600",
+      "rewards": [
+        "Badge 23",
+        "Bonus Points 2300"
+      ],
+      "description": "You are climbing the ladder of success!",
+      "progress": 0
+    },
+    {
+      "level": 24,
+      "expForNextLevel": 14696,
+      "color": "from-gray-600 to-gray-800",
+      "rewards": [
+        "Badge 24",
+        "Bonus Points 2400"
+      ],
+      "description": "You are an example of excellence!",
+      "progress": 0
+    },
+    {
+      "level": 25,
+      "expForNextLevel": 21994,
+      "color": "from-teal-200 to-teal-400",
+      "rewards": [
+        "Badge 25",
+        "Bonus Points 2500"
+      ],
+      "description": "Your journey is admirable!",
+      "progress": 0
+    },
+    {
+      "level": 26,
+      "expForNextLevel": 32942,
+      "color": "from-teal-400 to-teal-600",
+      "rewards": [
+        "Badge 26",
+        "Bonus Points 2600"
+      ],
+      "description": "You are setting new standards!",
+      "progress": 0
+    },
+    {
+      "level": 27,
+      "expForNextLevel": 49363,
+      "color": "from-teal-600 to-teal-800",
+      "rewards": [
+        "Badge 27",
+        "Bonus Points 2700"
+      ],
+      "description": "You are making great progress!",
+      "progress": 0
+    },
+    {
+      "level": 28,
+      "expForNextLevel": 73994,
+      "color": "from-indigo-200 to-indigo-400",
+      "rewards": [
+        "Badge 28",
+        "Bonus Points 2800"
+      ],
+      "description": "Keep going, you are doing amazing!",
+      "progress": 0
+    },
+    {
+      "level": 29,
+      "expForNextLevel": 110941,
+      "color": "from-indigo-400 to-indigo-600",
+      "rewards": [
+        "Badge 29",
+        "Bonus Points 2900"
+      ],
+      "description": "Your hard work is paying off!",
+      "progress": 0
+    },
+    {
+      "level": 30,
+      "expForNextLevel": 166362,
+      "color": "from-indigo-600 to-indigo-800",
+      "rewards": [
+        "Badge 30",
+        "Bonus Points 3000"
+      ],
+      "description": "You are halfway to mastery!",
+      "progress": 0
+    },
+    {
+      "level": 31,
+      "expForNextLevel": 249494,
+      "color": "from-lime-200 to-lime-400",
+      "rewards": [
+        "Badge 31",
+        "Bonus Points 3100"
+      ],
+      "description": "You are becoming a true expert!",
+      "progress": 0
+    },
+    {
+      "level": 32,
+      "expForNextLevel": 374191,
+      "color": "from-lime-400 to-lime-600",
+      "rewards": [
+        "Badge 32",
+        "Bonus Points 3200"
+      ],
+      "description": "Your skills are growing rapidly!",
+      "progress": 0
+    },
+    {
+      "level": 33,
+      "expForNextLevel": 561237,
+      "color": "from-lime-600 to-lime-800",
+      "rewards": [
+        "Badge 33",
+        "Bonus Points 3300"
+      ],
+      "description": "You are on the path to greatness!",
+      "progress": 0
+    },
+    {
+      "level": 34,
+      "expForNextLevel": 841805,
+      "color": "from-green-200 to-green-400",
+      "rewards": [
+        "Badge 34",
+        "Bonus Points 3400"
+      ],
+      "description": "Your dedication is inspiring!",
+      "progress": 0
+    },
+    {
+      "level": 35,
+      "expForNextLevel": 1262658,
+      "color": "from-green-400 to-green-600",
+      "rewards": [
+        "Badge 35",
+        "Bonus Points 3500"
+      ],
+      "description": "You are unstoppable!",
+      "progress": 0
+    },
+    {
+      "level": 36,
+      "expForNextLevel": 1893937,
+      "color": "from-green-600 to-green-800",
+      "rewards": [
+        "Badge 36",
+        "Bonus Points 3600"
+      ],
+      "description": "Congratulations on reaching this level!",
+      "progress": 0
+    },
+    {
+      "level": 37,
+      "expForNextLevel": 2840856,
+      "color": "from-blue-200 to-blue-400",
+      "rewards": [
+        "Badge 37",
+        "Bonus Points 3700"
+      ],
+      "description": "You are on the threshold of a new era!",
+      "progress": 0
+    },
+    {
+      "level": 38,
+      "expForNextLevel": 4261234,
+      "color": "from-blue-400 to-blue-600",
+      "rewards": [
+        "Badge 38",
+        "Bonus Points 3800"
+      ],
+      "description": "You are truly remarkable!",
+      "progress": 0
+    },
+    {
+      "level": 39,
+      "expForNextLevel": 6391801,
+      "color": "from-blue-600 to-blue-800",
+      "rewards": [
+        "Badge 39",
+        "Bonus Points 3900"
+      ],
+      "description": "Your achievements are a testament to your determination!",
+      "progress": 0
+    },
+    {
+      "level": 40,
+      "expForNextLevel": 9587652,
+      "color": "from-purple-200 to-purple-400",
+      "rewards": [
+        "Badge 40",
+        "Bonus Points 4000"
+      ],
+      "description": "You are a beacon of hope and inspiration!",
+      "progress": 0
+    },
+    {
+      "level": 41,
+      "expForNextLevel": 14381429,
+      "color": "from-purple-400 to-purple-600",
+      "rewards": [
+        "Badge 41",
+        "Bonus Points 4100"
+      ],
+      "description": "Congratulations on reaching this milestone!",
+      "progress": 0
+    },
+    {
+      "level": 42,
+      "expForNextLevel": 21572094,
+      "color": "from-purple-600 to-purple-800",
+      "rewards": [
+        "Badge 42",
+        "Bonus Points 4200"
+      ],
+      "description": "Keep up the great work!",
+      "progress": 0
+    },
+    {
+      "level": 43,
+      "expForNextLevel": 32358091,
+      "color": "from-red-200 to-red-400",
+      "rewards": [
+        "Badge 43",
+        "Bonus Points 4300"
+      ],
+      "description": "You are shining bright!",
+      "progress": 0
+    },
+    {
+      "level": 44,
+      "expForNextLevel": 48537086,
+      "color": "from-red-400 to-red-600",
+      "rewards": [
+        "Badge 44",
+        "Bonus Points 4400"
+      ],
+      "description": "Your journey is inspiring others!",
+      "progress": 0
+    },
+    {
+      "level": 45,
+      "expForNextLevel": 72805580,
+      "color": "from-red-600 to-red-800",
+      "rewards": [
+        "Badge 45",
+        "Bonus Points 4500"
+      ],
+      "description": "You are a role model!",
+      "progress": 0
+    },
+    {
+      "level": 46,
+      "expForNextLevel": 109208320,
+      "color": "from-orange-200 to-orange-400",
+      "rewards": [
+        "Badge 46",
+        "Bonus Points 4600"
+      ],
+      "description": "You are making waves!",
+      "progress": 0
+    },
+    {
+      "level": 47,
+      "expForNextLevel": 163812430,
+      "color": "from-orange-400 to-orange-600",
+      "rewards": [
+        "Badge 47",
+        "Bonus Points 4700"
+      ],
+      "description": "Keep pushing forward!",
+      "progress": 0
+    },
+    {
+      "level": 48,
+      "expForNextLevel": 245718596,
+      "color": "from-orange-600 to-orange-800",
+      "rewards": [
+        "Badge 48",
+        "Bonus Points 4800"
+      ],
+      "description": "You are climbing the ladder of success!",
+      "progress": 0
+    },
+    {
+      "level": 49,
+      "expForNextLevel": 368577844,
+      "color": "from-yellow-200 to-yellow-400",
+      "rewards": [
+        "Badge 49",
+        "Bonus Points 4900"
+      ],
+      "description": "You are an example of excellence!",
+      "progress": 0
+    },
+    {
+      "level": 50,
+      "expForNextLevel": 552866716,
+      "color": "from-yellow-400 to-yellow-600",
+      "rewards": [
+        "Badge 50",
+        "Bonus Points 5000"
+      ],
+      "description": "Your journey is admirable!",
+      "progress": 0
+    },
+    {
+      "level": 51,
+      "expForNextLevel": 300,
+      "color": "from-red-200 via-orange-300 to-yellow-400",
+      "rewards": [
+        "Badge 51",
+        "Bonus Points 5100"
+      ],
+      "description": "You are setting new standards!",
+      "progress": 0
+    },
+    {
+      "level": 52,
+      "expForNextLevel": 500,
+      "color": "from-teal-200 via-blue-300 to-indigo-400",
+      "rewards": [
+        "Badge 52",
+        "Bonus Points 5200"
+      ],
+      "description": "You are making great progress!",
+      "progress": 0
+    },
+    {
+      "level": 53,
+      "expForNextLevel": 900,
+      "color": "from-purple-200 via-pink-300 to-red-400",
+      "rewards": [
+        "Badge 53",
+        "Bonus Points 5300"
+      ],
+      "description": "Keep going, you are doing amazing!",
+      "progress": 0
+    },
+    {
+      "level": 54,
+      "expForNextLevel": 1700,
+      "color": "from-yellow-200 via-orange-300 to-red-400",
+      "rewards": [
+        "Badge 54",
+        "Bonus Points 5400"
+      ],
+      "description": "Your hard work is paying off!",
+      "progress": 0
+    },
+    {
+      "level": 55,
+      "expForNextLevel": 3300,
+      "color": "from-gray-200 via-teal-300 to-green-400",
+      "rewards": [
+        "Badge 55",
+        "Bonus Points 5500"
+      ],
+      "description": "You are halfway to mastery!",
+      "progress": 0
+    },
+    {
+      "level": 56,
+      "expForNextLevel": 6500,
+      "color": "from-pink-200 via-purple-300 to-indigo-400",
+      "rewards": [
+        "Badge 56",
+        "Bonus Points 5600"
+      ],
+      "description": "You are becoming a true expert!",
+      "progress": 0
+    },
+    {
+      "level": 57,
+      "expForNextLevel": 12900,
+      "color": "from-indigo-200 via-blue-300 to-teal-400",
+      "rewards": [
+        "Badge 57",
+        "Bonus Points 5700"
+      ],
+      "description": "Your skills are growing rapidly!",
+      "progress": 0
+    },
+    {
+      "level": 58,
+      "expForNextLevel": 25700,
+      "color": "from-lime-200 via-yellow-300 to-orange-400",
+      "rewards": [
+        "Badge 58",
+        "Bonus Points 5800"
+      ],
+      "description": "You are on the path to greatness!",
+      "progress": 0
+    },
+    {
+      "level": 59,
+      "expForNextLevel": 51300,
+      "color": "from-red-200 via-pink-300 to-purple-400",
+      "rewards": [
+        "Badge 59",
+        "Bonus Points 5900"
+      ],
+      "description": "Your dedication is inspiring!",
+      "progress": 0
+    },
+    {
+      "level": 60,
+      "expForNextLevel": 102500,
+      "color": "from-blue-200 via-green-300 to-teal-400",
+      "rewards": [
+        "Badge 60",
+        "Bonus Points 6000"
+      ],
+      "description": "You are unstoppable!",
+      "progress": 0
+    },
+    {
+      "level": 61,
+      "expForNextLevel": 204900,
+      "color": "from-purple-200 via-indigo-300 to-blue-400",
+      "rewards": [
+        "Badge 61",
+        "Bonus Points 6100"
+      ],
+      "description": "Congratulations on reaching this level!",
+      "progress": 0
+    },
+    {
+      "level": 62,
+      "expForNextLevel": 409700,
+      "color": "from-yellow-200 via-lime-300 to-green-400",
+      "rewards": [
+        "Badge 62",
+        "Bonus Points 6200"
+      ],
+      "description": "You are on the threshold of a new era!",
+      "progress": 0
+    },
+    {
+      "level": 63,
+      "expForNextLevel": 819300,
+      "color": "from-teal-200 via-cyan-300 to-blue-400",
+      "rewards": [
+        "Badge 63",
+        "Bonus Points 6300"
+      ],
+      "description": "You are truly remarkable!",
+      "progress": 0
+    },
+    {
+      "level": 64,
+      "expForNextLevel": 1638500,
+      "color": "from-orange-200 via-red-300 to-pink-400",
+      "rewards": [
+        "Badge 64",
+        "Bonus Points 6400"
+      ],
+      "description": "Your achievements are a testament to your determination!",
+      "progress": 0
+    },
+    {
+      "level": 65,
+      "expForNextLevel": 3276900,
+      "color": "from-gray-200 via-gray-400 to-gray-600",
+      "rewards": [
+        "Badge 65",
+        "Bonus Points 6500"
+      ],
+      "description": "You are a beacon of hope and inspiration!",
+      "progress": 0
+    },
+    {
+      "level": 66,
+      "expForNextLevel": 6553700,
+      "color": "from-green-200 via-teal-300 to-blue-400",
+      "rewards": [
+        "Badge 66",
+        "Bonus Points 6600"
+      ],
+      "description": "Congratulations on reaching this milestone!",
+      "progress": 0
+    },
+    {
+      "level": 67,
+      "expForNextLevel": 13107300,
+      "color": "from-indigo-200 via-purple-300 to-pink-400",
+      "rewards": [
+        "Badge 67",
+        "Bonus Points 6700"
+      ],
+      "description": "Keep up the great work!",
+      "progress": 0
+    },
+    {
+      "level": 68,
+      "expForNextLevel": 26214500,
+      "color": "from-pink-200 via-red-300 to-orange-400",
+      "rewards": [
+        "Badge 68",
+        "Bonus Points 6800"
+      ],
+      "description": "You are shining bright!",
+      "progress": 0
+    },
+    {
+      "level": 69,
+      "expForNextLevel": 52428900,
+      "color": "from-lime-200 via-green-300 to-blue-400",
+      "rewards": [
+        "Badge 69",
+        "Bonus Points 6900"
+      ],
+      "description": "Your journey is inspiring others!",
+      "progress": 0
+    },
+    {
+      "level": 70,
+      "expForNextLevel": 104857700,
+      "color": "from-cyan-200 via-teal-300 to-indigo-400",
+      "rewards": [
+        "Badge 70",
+        "Bonus Points 7000"
+      ],
+      "description": "You are a role model!",
+      "progress": 0
+    },
+    {
+      "level": 71,
+      "expForNextLevel": 209715300,
+      "color": "from-orange-200 via-yellow-300 to-red-400",
+      "rewards": [
+        "Badge 71",
+        "Bonus Points 7100"
+      ],
+      "description": "You are making waves!",
+      "progress": 0
+    },
+    {
+      "level": 72,
+      "expForNextLevel": 419430500,
+      "color": "from-purple-200 via-blue-300 to-green-400",
+      "rewards": [
+        "Badge 72",
+        "Bonus Points 7200"
+      ],
+      "description": "Keep pushing forward!",
+      "progress": 0
+    },
+    {
+      "level": 73,
+      "expForNextLevel": 838860900,
+      "color": "from-green-200 via-yellow-300 to-red-400",
+      "rewards": [
+        "Badge 73",
+        "Bonus Points 7300"
+      ],
+      "description": "You are climbing the ladder of success!",
+      "progress": 0
+    },
+    {
+      "level": 74,
+      "expForNextLevel": 1677721700,
+      "color": "from-blue-200 via-purple-300 to-pink-400",
+      "rewards": [
+        "Badge 74",
+        "Bonus Points 7400"
+      ],
+      "description": "You are an example of excellence!",
+      "progress": 0
+    },
+    {
+      "level": 75,
+      "expForNextLevel": 3355443300,
+      "color": "from-red-200 via-orange-300 to-yellow-400",
+      "rewards": [
+        "Badge 75",
+        "Bonus Points 7500"
+      ],
+      "description": "Your journey is admirable!",
+      "progress": 0
+    },
+    {
+      "level": 76,
+      "expForNextLevel": 6710886500,
+      "color": "from-teal-200 via-blue-300 to-indigo-400",
+      "rewards": [
+        "Badge 76",
+        "Bonus Points 7600"
+      ],
+      "description": "You are setting new standards!",
+      "progress": 0
+    },
+    {
+      "level": 77,
+      "expForNextLevel": 13421772900,
+      "color": "from-purple-200 via-pink-300 to-red-400",
+      "rewards": [
+        "Badge 77",
+        "Bonus Points 7700"
+      ],
+      "description": "You are making great progress!",
+      "progress": 0
+    },
+    {
+      "level": 78,
+      "expForNextLevel": 26843545700,
+      "color": "from-yellow-200 via-orange-300 to-red-400",
+      "rewards": [
+        "Badge 78",
+        "Bonus Points 7800"
+      ],
+      "description": "Keep going, you are doing amazing!",
+      "progress": 0
+    },
+    {
+      "level": 79,
+      "expForNextLevel": 53687091300,
+      "color": "from-gray-200 via-teal-300 to-green-400",
+      "rewards": [
+        "Badge 79",
+        "Bonus Points 7900"
+      ],
+      "description": "Your hard work is paying off!",
+      "progress": 0
+    },
+    {
+      "level": 80,
+      "expForNextLevel": 107374182500,
+      "color": "from-pink-200 via-purple-300 to-indigo-400",
+      "rewards": [
+        "Badge 80",
+        "Bonus Points 8000"
+      ],
+      "description": "You are halfway to mastery!",
+      "progress": 0
+    },
+    {
+      "level": 81,
+      "expForNextLevel": 214748364900,
+      "color": "from-indigo-200 via-blue-300 to-teal-400",
+      "rewards": [
+        "Badge 81",
+        "Bonus Points 8100"
+      ],
+      "description": "You are becoming a true expert!",
+      "progress": 0
+    },
+    {
+      "level": 82,
+      "expForNextLevel": 429496729700,
+      "color": "from-lime-200 via-yellow-300 to-orange-400",
+      "rewards": [
+        "Badge 82",
+        "Bonus Points 8200"
+      ],
+      "description": "Your skills are growing rapidly!",
+      "progress": 0
+    },
+    {
+      "level": 83,
+      "expForNextLevel": 858993459300,
+      "color": "from-red-200 via-pink-300 to-purple-400",
+      "rewards": [
+        "Badge 83",
+        "Bonus Points 8300"
+      ],
+      "description": "You are on the path to greatness!",
+      "progress": 0
+    },
+    {
+      "level": 84,
+      "expForNextLevel": 1717986918500,
+      "color": "from-blue-200 via-green-300 to-teal-400",
+      "rewards": [
+        "Badge 84",
+        "Bonus Points 8400"
+      ],
+      "description": "Your dedication is inspiring!",
+      "progress": 0
+    },
+    {
+      "level": 85,
+      "expForNextLevel": 3435973836900,
+      "color": "from-purple-200 via-indigo-300 to-blue-400",
+      "rewards": [
+        "Badge 85",
+        "Bonus Points 8500"
+      ],
+      "description": "You are unstoppable!",
+      "progress": 0
+    },
+    {
+      "level": 86,
+      "expForNextLevel": 6871947673700,
+      "color": "from-yellow-200 via-lime-300 to-green-400",
+      "rewards": [
+        "Badge 86",
+        "Bonus Points 8600"
+      ],
+      "description": "Congratulations on reaching this level!",
+      "progress": 0
+    },
+    {
+      "level": 87,
+      "expForNextLevel": 13743895347300,
+      "color": "from-teal-200 via-cyan-300 to-blue-400",
+      "rewards": [
+        "Badge 87",
+        "Bonus Points 8700"
+      ],
+      "description": "You are on the threshold of a new era!",
+      "progress": 0
+    },
+    {
+      "level": 88,
+      "expForNextLevel": 27487790694500,
+      "color": "from-orange-200 via-red-300 to-pink-400",
+      "rewards": [
+        "Badge 88",
+        "Bonus Points 8800"
+      ],
+      "description": "You are truly remarkable!",
+      "progress": 0
+    },
+    {
+      "level": 89,
+      "expForNextLevel": 54975581388900,
+      "color": "from-gray-200 via-gray-400 to-gray-600",
+      "rewards": [
+        "Badge 89",
+        "Bonus Points 8900"
+      ],
+      "description": "Your achievements are a testament to your determination!",
+      "progress": 0
+    },
+    {
+      "level": 90,
+      "expForNextLevel": 109951162777700,
+      "color": "from-green-200 via-teal-300 to-blue-400",
+      "rewards": [
+        "Badge 90",
+        "Bonus Points 9000"
+      ],
+      "description": "You are a beacon of hope and inspiration!",
+      "progress": 0
+    },
+    {
+      "level": 91,
+      "expForNextLevel": 219902325555300,
+      "color": "from-indigo-200 via-purple-300 to-pink-400",
+      "rewards": [
+        "Badge 91",
+        "Bonus Points 9100"
+      ],
+      "description": "Congratulations on reaching this milestone!",
+      "progress": 0
+    },
+    {
+      "level": 92,
+      "expForNextLevel": 439804651110500,
+      "color": "from-pink-200 via-red-300 to-orange-400",
+      "rewards": [
+        "Badge 92",
+        "Bonus Points 9200"
+      ],
+      "description": "Keep up the great work!",
+      "progress": 0
+    },
+    {
+      "level": 93,
+      "expForNextLevel": 879609302220900,
+      "color": "from-lime-200 via-green-300 to-blue-400",
+      "rewards": [
+        "Badge 93",
+        "Bonus Points 9300"
+      ],
+      "description": "You are shining bright!",
+      "progress": 0
+    },
+    {
+      "level": 94,
+      "expForNextLevel": 1759218604441700,
+      "color": "from-cyan-200 via-teal-300 to-indigo-400",
+      "rewards": [
+        "Badge 94",
+        "Bonus Points 9400"
+      ],
+      "description": "Your journey is inspiring others!",
+      "progress": 0
+    },
+    {
+      "level": 95,
+      "expForNextLevel": 3518437208883300,
+      "color": "from-orange-200 via-yellow-300 to-red-400",
+      "rewards": [
+        "Badge 95",
+        "Bonus Points 9500"
+      ],
+      "description": "You are a role model!",
+      "progress": 0
+    },
+    {
+      "level": 96,
+      "expForNextLevel": 7036874417766500,
+      "color": "from-purple-200 via-blue-300 to-green-400",
+      "rewards": [
+        "Badge 96",
+        "Bonus Points 9600"
+      ],
+      "description": "You are making waves!",
+      "progress": 0
+    },
+    {
+      "level": 97,
+      "expForNextLevel": 14073748835532900,
+      "color": "from-green-200 via-yellow-300 to-red-400",
+      "rewards": [
+        "Badge 97",
+        "Bonus Points 9700"
+      ],
+      "description": "Keep pushing forward!",
+      "progress": 0
+    },
+    {
+      "level": 98,
+      "expForNextLevel": 28147497671065700,
+      "color": "from-blue-200 via-purple-300 to-pink-400",
+      "rewards": [
+        "Badge 98",
+        "Bonus Points 9800"
+      ],
+      "description": "You are climbing the ladder of success!",
+      "progress": 0
+    },
+    {
+      "level": 99,
+      "expForNextLevel": 56294995342131300,
+      "color": "from-red-200 via-orange-300 to-yellow-400",
+      "rewards": [
+        "Badge 99",
+        "Bonus Points 9900"
+      ],
+      "description": "You are an example of excellence!",
+      "progress": 0
+    },
+    {
+      "level": 100,
+      "expForNextLevel": 112589990684262500,
+      "color": "from-teal-200 via-blue-300 to-indigo-400",
+      "rewards": [
+        "Badge 100",
+        "Bonus Points 10000"
+      ],
+      "description": "Your journey is admirable!",
+      "progress": 0
+    }
+  ]
+}

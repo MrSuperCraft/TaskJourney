@@ -85,6 +85,19 @@ const AccountSettings: React.FC = () => {
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
+        // If the file is too big, cancel the switch and display an error with a toast
+        if (file && file.size > Math.pow(1024, 2)) {
+            toast.error('File size exceeds the limit of 1 MB.', {
+                position: "bottom-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
         setSelectedFile(file || null);
         handleUploadImage(file || null); // Pass the file to handleUploadImage
     };
@@ -211,25 +224,26 @@ const AccountSettings: React.FC = () => {
         <div className="mb-6">
             <ToastContainer />
             <h2 className="text-2xl font-semibold mb-4 mt-4">Account Settings</h2>
-            <div className="flex items-center mb-6">
+            <div className="flex flex-col sm:flex-row items-center mb-6">
                 {/* Profile Picture */}
-                <User
-                    name={userData.username}
-                    description="Profile picture should be JPG or PNG, less than 1MB"
-
-                    avatarProps={{
-                        src: userData.photoURL || (user && user.photoURL) || '', style: { width: '100px', height: '100px' },
-                        className: 'border shadow-md' // Adjust the width and height as needed
-                    }}
-                    className="mr-4"
-                    classNames={{
-                        name: 'text-lg font-semibold'
-                    }}
-
-                />
+                <div className="flex flex-col items-center sm:items-start w-full sm:w-auto sm:mr-4 mb-4 sm:mb-0">
+                    <User
+                        name={userData.username}
+                        description="Profile picture should be JPG or PNG, less than 1MB"
+                        avatarProps={{
+                            src: userData.photoURL || (user && user.photoURL) || '',
+                            className: 'border shadow-md w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32'
+                        }}
+                        className="sm:text-left"
+                        classNames={{
+                            wrapper: 'w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 ml-2',
+                            name: 'text-md sm:text-lg md:text-xl lg:text-2xl font-semibold mt-5',
+                        }}
+                    />
+                </div>
 
                 {/* Upload Button */}
-                <div>
+                <div className="flex flex-col items-center sm:items-start w-full sm:w-auto">
                     <input
                         type="file"
                         accept="image/*"
@@ -237,7 +251,8 @@ const AccountSettings: React.FC = () => {
                         ref={fileInputRef}
                         style={{ display: 'none' }}
                     />
-                    <Button className="bg-gray-200 text-black flex items-center" aria-label="Upload Image"
+                    <Button className="bg-gray-200 text-black flex items-center px-4 py-2 sm:px-6 sm:py-3 ml-6 mt-5"
+                        aria-label="Upload Image"
                         onClick={() => fileInputRef.current?.click()}>
                         <FaUpload className="mr-2" /> Upload Image
                     </Button>

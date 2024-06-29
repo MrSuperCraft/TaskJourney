@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { db } from '@/app/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { useAuth } from '@/app/contexts/AuthContext';
-import Task from '../types';
+import { Task } from '../../types';
 import { today, getLocalTimeZone, DateValue, CalendarDate } from "@internationalized/date";
 import DateSearcher from './DateSearcher';
 import DateSelectionButtons from './DateSelectionButtons';

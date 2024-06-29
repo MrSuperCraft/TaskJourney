@@ -1,7 +1,7 @@
 'use client'
 
 import { useContext, useState, useEffect } from 'react';
-import { FaTasks, FaCalendarAlt, FaBell, FaUserCircle, FaCog, FaPlus, FaMoon, FaSun, FaCommentAlt, FaComment, FaChevronLeft } from 'react-icons/fa';
+import { FaTasks, FaCalendarAlt, FaBell, FaUserCircle, FaCog, FaPlus, FaMoon, FaSun, FaCommentAlt, FaComment, FaTrophy, FaStar, FaChartPie, FaEllipsisH } from 'react-icons/fa';
 
 import { TbLayoutSidebarLeftCollapse } from 'react-icons/tb';
 import TabButton from './TabButton';
@@ -60,7 +60,7 @@ const Sidebar: React.FC = () => {
                             </Button>
                         </Tooltip>
                         <Tooltip content="Get AI Assistance" color="foreground" placement="bottom">
-                            <Button isIconOnly className="bg-primary-brand-200 dark:bg-gray-700" onClick={handleNewChat} aria-label="Get AI Assistance">
+                            <Button isIconOnly className="bg-primary-brand-200 dark:bg-gray-700" onClick={() => handleTabClick("ai-assistance")} aria-label="Get AI Assistance">
                                 <FaComment className="text-cyan-700 dark:text-primary-brand-600 text-xl" />
                             </Button>
                         </Tooltip>
@@ -134,31 +134,55 @@ const Sidebar: React.FC = () => {
                     </div>
 
                     {/* Settings, Notifications, and Theme Toggle Icons */}
-                    <div className="flex mt-auto mb-5 justify-center">
-                        <Tooltip content="Send Feedback" color="foreground" placement="top">
-                            <Button isIconOnly className="mr-4 bg-primary-brand-200 dark:bg-gray-700 cursor-pointer" aria-label="Send Feedback">
-                                {loadingTab === 'feedback' ? <Spinner color='current' /> : <FaCommentAlt className="text-cyan-700 dark:text-primary-brand-600 text-xl" />}
-                            </Button>
-                        </Tooltip>
-                        <Tooltip content="Settings" color="foreground" placement="top">
-                            <Button isIconOnly className="bg-primary-brand-200 dark:bg-gray-700 cursor-pointer" onClick={() => handleTabClick('settings')} aria-label="Settings">
-                                {loadingTab === 'settings' ? <Spinner color='current' /> : <FaCog className="text-cyan-700 dark:text-primary-brand-600 text-xl" />}
-                            </Button>
-                        </Tooltip>
-                        <Tooltip content="Notifications" color="foreground" placement="top">
-                            <Button isIconOnly className="ml-4 bg-primary-brand-200 dark:bg-gray-700 cursor-pointer" onClick={() => handleTabClick('notifications')} aria-label="Notifications">
-                                {loadingTab === 'notifications' ? <Spinner color='current' /> : <FaBell className="text-cyan-700 dark:text-primary-brand-600 text-xl" />}
-                            </Button>
-                        </Tooltip>
-                        <Tooltip content="Toggle Theme" color="foreground" placement="top">
-                            <Button isIconOnly className="ml-4 bg-primary-brand-200 dark:bg-gray-700 cursor-pointer" onClick={toggleTheme} aria-label="Toggle Theme">
-                                {theme === 'dark' ? (
-                                    <FaSun className="text-cyan-700 dark:text-primary-brand-600 text-xl" />
-                                ) : (
-                                    <FaMoon className="text-cyan-700 dark:text-primary-brand-600 text-xl" />
-                                )}
-                            </Button>
-                        </Tooltip>
+                    <div className="flex flex-col items-center mt-auto mb-5">
+                        <div className="flex justify-center mb-4">
+                            <Tooltip content="Send Feedback" color="foreground" placement="top">
+                                <Button isIconOnly className="mr-4 bg-primary-brand-200 dark:bg-gray-700 cursor-pointer" aria-label="Send Feedback">
+                                    {loadingTab === 'feedback' ? <Spinner color='current' /> : <FaCommentAlt className="text-cyan-700 dark:text-primary-brand-600 text-xl" />}
+                                </Button>
+                            </Tooltip>
+                            <Tooltip content="Settings" color="foreground" placement="top">
+                                <Button isIconOnly className="bg-primary-brand-200 dark:bg-gray-700 cursor-pointer" onClick={() => handleTabClick('settings')} aria-label="Settings">
+                                    {loadingTab === 'settings' ? <Spinner color='current' /> : <FaCog className="text-cyan-700 dark:text-primary-brand-600 text-xl" />}
+                                </Button>
+                            </Tooltip>
+                            <Tooltip content="Notifications" color="foreground" placement="top">
+                                <Button isIconOnly className="ml-4 bg-primary-brand-200 dark:bg-gray-700 cursor-pointer" onClick={() => handleTabClick('notifications')} aria-label="Notifications">
+                                    {loadingTab === 'notifications' ? <Spinner color='current' /> : <FaBell className="text-cyan-700 dark:text-primary-brand-600 text-xl" />}
+                                </Button>
+                            </Tooltip>
+                            <Tooltip content="Toggle Theme" color="foreground" placement="top">
+                                <Button isIconOnly className="ml-4 bg-primary-brand-200 dark:bg-gray-700 cursor-pointer" onClick={toggleTheme} aria-label="Toggle Theme">
+                                    {theme === 'dark' ? (
+                                        <FaSun className="text-cyan-700 dark:text-primary-brand-600 text-xl" />
+                                    ) : (
+                                        <FaMoon className="text-cyan-700 dark:text-primary-brand-600 text-xl" />
+                                    )}
+                                </Button>
+                            </Tooltip>
+                        </div>
+                        <div className="flex justify-center">
+                            <Tooltip content="Achievements" color="foreground" placement="top">
+                                <Button isIconOnly className="mr-4 bg-primary-brand-200 dark:bg-gray-700 cursor-pointer" onClick={() => handleTabClick('achievements')} aria-label="Achievements">
+                                    {loadingTab === 'achievements' ? <Spinner color='current' /> : <FaStar className="text-cyan-700 dark:text-primary-brand-600 text-xl" />}
+                                </Button>
+                            </Tooltip>
+                            <Tooltip content="Leaderboards" color="foreground" placement="top">
+                                <Button isIconOnly className="bg-primary-brand-200 dark:bg-gray-700 cursor-pointer" onClick={() => handleTabClick('leaderboards')} aria-label="Leaderboards">
+                                    {loadingTab === 'leaderboards' ? <Spinner color='current' /> : <FaTrophy className="text-cyan-700 dark:text-primary-brand-600 text-xl" />}
+                                </Button>
+                            </Tooltip>
+                            <Tooltip content="Statistics" color="foreground" placement="top">
+                                <Button isIconOnly className="ml-4 bg-primary-brand-200 dark:bg-gray-700 cursor-pointer" onClick={() => handleTabClick('statistics')} aria-label="Statistics">
+                                    {loadingTab === 'statistics' ? <Spinner color='current' /> : <FaChartPie className="text-cyan-700 dark:text-primary-brand-600 text-xl" />}
+                                </Button>
+                            </Tooltip>
+                            <Tooltip content="More" color="foreground" placement="top">
+                                <Button isIconOnly className="ml-4 bg-primary-brand-200 dark:bg-gray-700 cursor-pointer" onClick={() => handleTabClick('more')} aria-label="More">
+                                    {loadingTab === 'more' ? <Spinner color='current' /> : <FaEllipsisH className="text-cyan-700 dark:text-primary-brand-600 text-xl" />}
+                                </Button>
+                            </Tooltip>
+                        </div>
                     </div>
                 </div>
             </motion.div>
@@ -182,7 +206,7 @@ const Sidebar: React.FC = () => {
                             </Button>
                         </Tooltip>
                         <Tooltip content="Get AI Assistance" color="foreground" placement="bottom">
-                            <Button isIconOnly className="bg-primary-brand-200 dark:bg-gray-700" onClick={handleNewChat} aria-label="Get AI Assistance">
+                            <Button isIconOnly className="bg-primary-brand-200 dark:bg-gray-700" onClick={() => handleTabClick("ai-assistance")} aria-label="Get AI Assistance">
                                 <FaComment className="text-cyan-700 dark:text-primary-brand-600 text-xl" />
                             </Button>
                         </Tooltip>

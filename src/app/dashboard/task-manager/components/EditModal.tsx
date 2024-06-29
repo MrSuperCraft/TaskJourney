@@ -23,10 +23,10 @@ import DateSearcher from './DateSearcher';
 import DateSelectionButtons from './DateSelectionButtons';
 import { CalendarDate } from '@nextui-org/react';
 import { getLocalTimeZone, today, parseDate } from '@internationalized/date';
-import Task from '../types';
+import { Task } from '../../types';
 import { db } from '@/app/firebase';
 import useUserData from '@/app/hooks/useUserData';
-import { doc, updateDoc } from 'firebase/firestore';
+import { doc, updateDoc, getDoc } from 'firebase/firestore';
 
 interface EditTaskModalProps {
   isOpen: boolean;
@@ -119,28 +119,38 @@ const EditTaskModal: React.FC<EditTaskModalProps> = ({ isOpen, onClose, task, on
       return;
     }
 
-    const taskDoc = doc(db, `users/${uid}/tasks/${task?.id}`);
-    await updateDoc(taskDoc, {
-      ...task,
-      id: task.id, // Ensure the ID is valid
+    const taskDocRef = doc(db, `users/${uid}/tasks/${task?.id}`);
+    const snapshot = await getDoc(taskDocRef);
+    if (!snapshot.exists()) {
+      console.error("No document to update");
+      return;
+    }
+
+    const dateValue = dueDate ? dueDate.toDate(getLocalTimeZone()).toDateString() : '';
+
+    await updateDoc(taskDocRef, {
+      ...snapshot.data(),
       title,
       description,
-      date: dueDate?.toDate(getLocalTimeZone()).toDateString(),
+      date: dateValue,
       location,
       priority,
     });
 
-    const updatedTask = { // Create an object with the updated task details
-      ...task,
+    const updatedTask: Task = {
       id: task.id, // Ensure the ID is valid
       title,
       description,
-      date: dueDate?.toDate(getLocalTimeZone()).toDateString(),
+      date: dateValue,
       location,
       priority,
+      createdAt: snapshot.data().createdAt,
+      subtasks: snapshot.data().subtasks,
+      complete: snapshot.data().complete,
+      completedAt: snapshot.data().completedAt,
     };
 
-    onUpdate(updatedTask); // Call the onUpdate prop with the updated task
+    onUpdate(updatedTask);
 
     onClose();
   };
