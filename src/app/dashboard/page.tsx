@@ -14,6 +14,7 @@ import WelcomeMessage from './components/WelcomeMessageOnDash';
 import { doc, getDoc } from 'firebase/firestore';
 import { ProfileProvider } from '../contexts/ProfileContext';
 import LevelTracker from './components/Widgets/LevelTracker/LevelTracker';
+import Streak from './components/Widgets/Streak/Streak';
 
 
 const DashboardPage = () => {
@@ -83,9 +84,10 @@ const DashboardPage = () => {
                             <WelcomeMessage name={userName} />
                             {/* Add feed sections here */}
                             <LevelTracker
-                                currentExp={1000}
-                                level={10}
+                                currentExp={500000000000}
+                                level={70}
                             />
+                            <Streak days={2} />
                         </div>
                     </div>
                 </ThemeProviderWithAttribute>
