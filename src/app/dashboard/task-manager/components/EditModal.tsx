@@ -148,6 +148,7 @@ const EditTaskModal: React.FC<EditTaskModalProps> = ({ isOpen, onClose, task, on
       subtasks: snapshot.data().subtasks,
       complete: snapshot.data().complete,
       completedAt: snapshot.data().completedAt,
+      isDaily: snapshot.data().isDaily ?? false,
     };
 
     onUpdate(updatedTask);

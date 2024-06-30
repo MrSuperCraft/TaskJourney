@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Input, Textarea, Chip, Calendar, Popover, Button, PopoverContent, PopoverTrigger, Divider } from '@nextui-org/react';
+import { Input, Textarea, Chip, Calendar, Popover, Button, PopoverContent, PopoverTrigger, Divider, Checkbox } from '@nextui-org/react';
 import { FaCalendar, FaClock, FaCouch, FaDoorOpen, FaMapMarkerAlt, FaSun, FaTimes, FaChevronDown, FaCheck } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { db } from '@/app/firebase';
@@ -35,6 +35,7 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
     const [priority, setPriority] = useState<Priority>('medium');
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
     const [close, setClose] = useState(false);
+    const [isDaily, setIsDaily] = useState(false);
 
 
 
@@ -58,25 +59,30 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
                 const newTaskRef = await addDoc(collection(db, `users/${user.user?.uid}/tasks`), {
                     title,
                     description: description,
-                    date: dueDate ? dueDate.toDateString() : null,
-                    location: location ? location : null,
-                    reminder: reminder ? reminder : null,
-                    createdAt: serverTimestamp(),
-                    priority,
-                });
-
-                const newTask: Task = {
-                    id: newTaskRef.id,
-                    title,
-                    description: description,
-                    date: dueDate ? new Date(dueDate).toDateString() : 'N/A',
+                    date: isDaily ? 'Refreshes Daily' : (dueDate ? new Date(dueDate).toDateString() : 'N/A'),
                     priority: priority,
                     location: location ? location : 'N/A',
                     reminder: reminder ? new Date(reminder).toUTCString() : 'No time specified',
                     createdAt: new Date(),
                     subtasks: [],
                     complete: false,
-                    completedAt: null
+                    completedAt: null,
+                    isDaily: isDaily
+                });
+
+                const newTask: Task = {
+                    id: newTaskRef.id,
+                    title,
+                    description: description,
+                    date: isDaily ? 'Refreshes Daily' : (dueDate ? new Date(dueDate).toDateString() : 'N/A'),
+                    priority: priority,
+                    location: location ? location : 'N/A',
+                    reminder: reminder ? new Date(reminder).toUTCString() : 'No time specified',
+                    createdAt: new Date(),
+                    subtasks: [],
+                    complete: false,
+                    completedAt: null,
+                    isDaily: isDaily
                 };
 
                 onTaskAdd(newTask);
@@ -280,6 +286,7 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
                         </div>
                     </PopoverContent>
                 </Popover>
+                <Checkbox defaultChecked={false} onChange={(e) => setIsDaily(e.target.checked)}>Daily Task</Checkbox>
             </div>
             <Button
                 className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-700 dark:hover:bg-blue-800 dark:focus:ring-blue-700"

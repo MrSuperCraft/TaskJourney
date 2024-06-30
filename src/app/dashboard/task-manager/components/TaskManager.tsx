@@ -1,8 +1,8 @@
 import React, { useState, useEffect, Key } from "react";
 import TaskTable from "./Table/TaskTable";
+import DailyTasksTable from "./Table/DailyTasksTable";
 import { Task } from "../../types";
 import useUserData from "../../../hooks/useUserData";
-import { Button } from "@nextui-org/react";
 import AddTaskButton from "./AddTaskButton";
 import TaskCreationBox from "./TaskCreationBox";
 import {
@@ -11,7 +11,9 @@ import {
     updateDoc,
     addDoc,
     collection,
-    setDoc,
+    where,
+    query,
+    getDocs
 } from "firebase/firestore";
 import { db } from "@/app/firebase";
 import { ToastContainer, toast } from "react-toastify";
@@ -20,7 +22,6 @@ import { useDescription } from "@/app/contexts/EditorContext";
 import { Tabs, Tab } from "@nextui-org/react";
 import { FaCheckSquare, FaThumbtack } from "react-icons/fa";
 
-type AvailableTasksTables = "active-tasks" | "completed-tasks";
 
 const TaskManager: React.FC = () => {
     const { userData } = useUserData();
@@ -35,32 +36,25 @@ const TaskManager: React.FC = () => {
     useEffect(() => {
         if (userData) {
             const fetchedTasks: Task[] = userData.tasks ?? [];
-            setActiveTasks(fetchedTasks.filter((task) => !task.complete));
+            setActiveTasks(fetchedTasks.filter((task) => !task.complete && !task.isDaily));
             setDailyTasks(
-                fetchedTasks.filter(
-                    (task) => task.title && task.title.toLowerCase().includes("daily") && !task.complete
-                )
-            );
+                fetchedTasks.filter((task) => task.isDaily));
             setCompletedTasks(fetchedTasks.filter((task) => task.complete));
         }
     }, [userData]);
 
+
     const addTask = async (newTask: Task) => {
         try {
             if (userData?.uid) {
-                const taskRef = await addDoc(
-                    collection(db, `users/${userData.uid}/tasks`),
-                    newTask
-                );
 
                 // Update local state based on task type
-                if (!newTask.complete) {
-                    setActiveTasks((prev) => [...prev, { ...newTask, id: taskRef.id }]);
+                if (!newTask.complete && !newTask.isDaily) {
+                    setActiveTasks((prev) => [...prev, { ...newTask, id: newTask.id }]);
+                } else if (newTask.isDaily) {
+                    setDailyTasks((prev) => [...prev, { ...newTask, id: newTask.id }]);
                 } else {
-                    setCompletedTasks((prev) => [
-                        ...prev,
-                        { ...newTask, id: taskRef.id },
-                    ]);
+                    setCompletedTasks((prev) => [...prev, { ...newTask, id: newTask.id }]);
                 }
 
                 // Show success toast
@@ -99,15 +93,27 @@ const TaskManager: React.FC = () => {
      */
     const removeTask = async (taskId: string): Promise<void> => {
         try {
+            console.log("Attempting to remove task with ID:", taskId);
             if (userData?.uid) {
-                const taskDoc = doc(db, `users/${userData.uid}/tasks/${taskId}`);
-                await deleteDoc(taskDoc);
+                const taskDocRef = doc(db, `users/${userData.uid}/tasks`, taskId);
 
+                await deleteDoc(taskDocRef);
+
+                console.log("Deleting task with ID:", taskId);
                 // Update local state based on task type
-                setActiveTasks((prev: Task[]) => prev.filter((task: Task) => task.id !== taskId));
-                setDailyTasks((prev: Task[]) => prev.filter((task: Task) => task.id !== taskId));
-                setCompletedTasks((prev: Task[]) => prev.filter((task: Task) => task.id !== taskId));
+                const activeTasksFiltered = (prev: Task[]) =>
+                    prev.filter((task: Task) => task.id !== taskId);
+                setActiveTasks(activeTasksFiltered);
 
+                const dailyTasksFiltered = (prev: Task[]) =>
+                    prev.filter((task: Task) => task.id !== taskId);
+                setDailyTasks(dailyTasksFiltered);
+
+                const completedTasksFiltered = (prev: Task[]) =>
+                    prev.filter((task: Task) => task.id !== taskId);
+                setCompletedTasks(completedTasksFiltered);
+
+                console.log("Successfully removed task with ID:", taskId);
                 // Show success toast
                 toast.success("Task successfully removed!", {
                     position: "bottom-right",
@@ -119,6 +125,7 @@ const TaskManager: React.FC = () => {
                     progress: undefined,
                 });
             } else {
+                console.log("User not authenticated. Failed to remove task with ID:", taskId);
                 toast.error("Failed to remove the task. Try again soon.", {
                     position: "bottom-right",
                     autoClose: 2000,
@@ -131,9 +138,9 @@ const TaskManager: React.FC = () => {
                 throw new Error("User not authenticated");
             }
         } catch (error: any) {
+            console.error(`Failed to delete task with ID: ${taskId}`, error);
             // Show error toast
             toast.error(`Failed to remove task: ${error.message}`);
-            console.error(`Failed to delete task with ID: ${taskId}`, error);
         }
     };
 
@@ -262,7 +269,7 @@ const TaskManager: React.FC = () => {
                             onCompleteTask={setTaskAsCompleted}
                         />
 
-                        <TaskTable
+                        <DailyTasksTable
                             tableType="daily"
                             tasks={dailyTasks}
                             title="Daily Tasks"

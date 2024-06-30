@@ -11,6 +11,7 @@ interface Task {
     subtasks: SubTask[];
     complete: boolean;
     completedAt: string | null;
+    isDaily: boolean;
     // Add more properties as needed
 }
 

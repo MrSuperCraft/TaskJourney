@@ -27,7 +27,6 @@ import {
 } from "react-icons/fa";
 import { Task } from "../../../types";
 import EditTaskModal from "../EditModal";
-import { toast } from "react-toastify";
 
 interface TaskTableProps {
     tasks: Task[];
@@ -45,7 +44,7 @@ enum Priority {
     high = 3,
 }
 
-const TaskTable: React.FC<TaskTableProps> = ({
+const DailyTasksTable: React.FC<TaskTableProps> = ({
     tasks,
     title,
     tableType,
@@ -163,17 +162,7 @@ const TaskTable: React.FC<TaskTableProps> = ({
 
     const confirmDelete = () => {
         if (selectedTask) {
-            onTaskRemove(selectedTask.id);
-        } else {
-            return toast.error("No task selected", {
-                position: "bottom-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            onTaskRemove(selectedTask?.id);
         }
         setIsModalVisible(false);
     };
@@ -219,7 +208,6 @@ const TaskTable: React.FC<TaskTableProps> = ({
     const renderTasks = () => {
         const paginatedTasks = sortedTasks.slice(startIndex, endIndex);
 
-        console.log(paginatedTasks);
 
         return paginatedTasks.map((task: Task) => (
             <TableRow key={task.id}>
@@ -230,25 +218,12 @@ const TaskTable: React.FC<TaskTableProps> = ({
                         task.title
                     )}
                 </TableCell>
-                <TableCell className="dark:text-white">
-                    {loading ? (
-                        <Skeleton className="w-56 h-8 dark:text-gray-500 rounded-md" />
-                    ) : (
-                        task.description || "N/A"
-                    )}
-                </TableCell>
+
                 <TableCell className="dark:text-white">
                     {loading ? (
                         <Skeleton className="w-32 h-8 dark:text-gray-500 rounded-md" />
                     ) : (
                         task.date || "N/A"
-                    )}
-                </TableCell>
-                <TableCell className="dark:text-white">
-                    {loading ? (
-                        <Skeleton className="w-32 h-8 dark:text-gray-500 rounded-md" />
-                    ) : (
-                        task.location || "N/A"
                     )}
                 </TableCell>
                 <TableCell>
@@ -258,47 +233,39 @@ const TaskTable: React.FC<TaskTableProps> = ({
                         renderChip(task.priority)
                     )}
                 </TableCell>
-                {tableType === "completed" ? (
-                    <TableCell>
-                        {loading ? (
-                            <Skeleton className="w-32 h-8 dark:text-gray-500 rounded-md" />
-                        ) : (
-                            task.completedAt || "N/A"
-                        )}
-                    </TableCell>
-                ) : (
-                    <TableCell className="flex">
-                        <Button
-                            onClick={() => handleComplete(task.id)}
-                            size="sm"
-                            color="success"
-                            className="text-white mr-2"
-                            isIconOnly
-                            aria-label="Complete Task"
-                        >
-                            <FaCheck aria-hidden="true" className="w-4 h-4" />
-                        </Button>
 
-                        <Button
-                            onClick={() => handleEdit(task.id)}
-                            size="sm"
-                            className="mr-2 text-white bg-primary-brand-700 hover:bg-primary-600 dark:bg-teal ease-in-out dark:ease-in-out dark:hover:bg-sky-600 transition-all dark:transition-all dark:duration-300 duration-300"
-                            aria-label="Edit Task"
-                            isIconOnly
-                        >
-                            <FaEdit aria-hidden="true" className="w-4 h-4" />
-                        </Button>
-                        <Button
-                            onClick={() => handleDelete(task.id)}
-                            size="sm"
-                            className="bg-red-500 mr-2 text-white"
-                            aria-label="Delete Task"
-                            isIconOnly
-                        >
-                            <FaTrash aria-hidden="true" className="w-4 h-4" />
-                        </Button>
-                    </TableCell>
-                )}
+                <TableCell className="flex">
+                    <Button
+                        onClick={() => handleComplete(task.id)}
+                        size="sm"
+                        color="success"
+                        className="text-white mr-2"
+                        isIconOnly
+                        aria-label="Complete Task"
+                    >
+                        <FaCheck aria-hidden="true" className="w-4 h-4" />
+                    </Button>
+
+                    <Button
+                        onClick={() => handleEdit(task.id)}
+                        size="sm"
+                        className="mr-2 text-white bg-primary-brand-700 hover:bg-primary-600 dark:bg-teal ease-in-out dark:ease-in-out dark:hover:bg-sky-600 transition-all dark:transition-all dark:duration-300 duration-300"
+                        aria-label="Edit Task"
+                        isIconOnly
+                    >
+                        <FaEdit aria-hidden="true" className="w-4 h-4" />
+                    </Button>
+                    <Button
+                        onClick={() => handleDelete(task.id)}
+                        size="sm"
+                        className="bg-red-500 mr-2 text-white"
+                        aria-label="Delete Task"
+                        isIconOnly
+                    >
+                        <FaTrash aria-hidden="true" className="w-4 h-4" />
+                    </Button>
+                </TableCell>
+
             </TableRow>
         ));
     };
@@ -308,12 +275,6 @@ const TaskTable: React.FC<TaskTableProps> = ({
             return (
                 <TableHeader>
                     <TableColumn>
-                        <Skeleton className="w-20 h-8 dark:text-gray-500 rounded-md" />
-                    </TableColumn>
-                    <TableColumn>
-                        <Skeleton className="w-40 h-8 dark:text-gray-500 rounded-md" />
-                    </TableColumn>
-                    <TableColumn>
                         <Skeleton className="w-28 h-8 dark:text-gray-500 rounded-md" />
                     </TableColumn>
                     <TableColumn>
@@ -322,15 +283,9 @@ const TaskTable: React.FC<TaskTableProps> = ({
                     <TableColumn>
                         <Skeleton className="w-28 h-8 dark:text-gray-500 rounded-md" />
                     </TableColumn>
-                    {tableType === "completed" ? (
-                        <TableColumn>
-                            <Skeleton className="w-28 h-8 dark:text-gray-500 rounded-md" />
-                        </TableColumn>
-                    ) : (
-                        <TableColumn>
-                            <Skeleton className="w-28 h-8 dark:text-gray-300" />
-                        </TableColumn>
-                    )}
+                    <TableColumn>
+                        <Skeleton className="w-28 h-8 dark:text-gray-300" />
+                    </TableColumn>
                 </TableHeader>
             );
         }
@@ -343,25 +298,21 @@ const TaskTable: React.FC<TaskTableProps> = ({
                 >
                     Title {renderSortIndicator("title")}
                 </TableColumn>
-                <TableColumn className="dark:text-white">Description</TableColumn>
                 <TableColumn
                     className="dark:text-white cursor-pointer"
                     onClick={() => sortTasks("date", sortOrder)}
                 >
                     Date {renderSortIndicator("date")}
                 </TableColumn>
-                <TableColumn className="dark:text-white">Location</TableColumn>
                 <TableColumn
                     className="dark:text-white cursor-pointer"
                     onClick={() => sortTasks("priority", sortOrder)}
                 >
                     Priority {renderSortIndicator("priority")}
                 </TableColumn>
-                {tableType === "completed" ? (
-                    <TableColumn className="dark:text-white">Completed At</TableColumn>
-                ) : (
-                    <TableColumn className="dark:text-white">Actions</TableColumn>
-                )}
+
+                <TableColumn className="dark:text-white">Actions</TableColumn>
+
             </TableHeader>
         );
     };
@@ -411,47 +362,39 @@ const TaskTable: React.FC<TaskTableProps> = ({
                     </div>
                 </div>
                 <div className="flex flex-row justify-end space-x-4 mt-2">
-                    {tableType === "completed" ? (
-                        <p className="text-sm text-gray-700 dark:text-gray-200">
-                            {task.completedAt || "No completion date available"}
-                        </p>
-                    ) : (
-                        <>
-                            {tableType !== "daily" && (
-                                <>
-                                    <Button
-                                        onClick={() => handleComplete(task.id)}
-                                        size="sm"
-                                        color="success"
-                                        className="text-white"
-                                        isIconOnly
-                                        aria-label="Complete Task"
-                                    >
-                                        <FaCheck className="w-4 h-4 " />
-                                    </Button>
-                                    <Button
-                                        onClick={() => handleEdit(task.id)}
-                                        size="sm"
-                                        color="primary"
-                                        className="text-white"
-                                        aria-label="Edit Task"
-                                        isIconOnly
-                                    >
-                                        <FaEdit className="w-4 h-4 " />
-                                    </Button>
-                                </>
-                            )}
-                            <Button
-                                onClick={() => handleDelete(task.id)}
-                                size="sm"
-                                aria-label="Delete Task"
-                                className="bg-red-500 text-white"
-                                isIconOnly
-                            >
-                                <FaTrash className="w-4 h-4" />
-                            </Button>
-                        </>
-                    )}
+
+                    <>
+                        <Button
+                            onClick={() => handleComplete(task.id)}
+                            size="sm"
+                            color="success"
+                            className="text-white"
+                            isIconOnly
+                            aria-label="Complete Task"
+                        >
+                            <FaCheck className="w-4 h-4 " />
+                        </Button>
+                        <Button
+                            onClick={() => handleEdit(task.id)}
+                            size="sm"
+                            color="primary"
+                            className="text-white"
+                            aria-label="Edit Task"
+                            isIconOnly
+                        >
+                            <FaEdit className="w-4 h-4 " />
+                        </Button>
+
+                        <Button
+                            onClick={() => handleDelete(task.id)}
+                            size="sm"
+                            aria-label="Delete Task"
+                            className="bg-red-500 text-white"
+                            isIconOnly
+                        >
+                            <FaTrash className="w-4 h-4" />
+                        </Button>
+                    </>
                 </div>
             </div>
         )).concat(renderPagination())
@@ -540,4 +483,4 @@ const TaskTable: React.FC<TaskTableProps> = ({
     );
 };
 
-export default TaskTable;
+export default DailyTasksTable;
