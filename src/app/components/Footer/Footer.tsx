@@ -22,7 +22,9 @@ const Footer: FC = () => {
                                 <li><Link href="/about" className='text-primary-brand-400'>Our Story</Link></li>
                                 <li><Link href="#" className='text-primary-brand-400'>Contact</Link></li>
                                 <li><Link href="#" className='text-primary-brand-400'>FAQ</Link></li>
-                                <li><Link href="#" className='text-primary-brand-400'>Terms of Service</Link></li>
+                                <li><Link href="/terms-of-service" className='text-primary-brand-400'>Terms of Service</Link></li>
+                                <li><Link href="/privacy-policy" className='text-primary-brand-400'>Privacy Policy</Link></li>
+
                             </ul>
                         </div>
                         <div>
