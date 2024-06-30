@@ -28,7 +28,7 @@ const AiChat: React.FC = () => {
                     <Image src="/android-chrome-192x192.png" width={192} height={192} alt="Logo" className="w-12 h-12" />
                 </div>
                 <Spacer y={1} />
-                <h1 className="text-3xl font-bold mb-1 mt-2">Hi, I'm TaskBot!</h1>
+                <h1 className="text-3xl font-bold mb-1 mt-2">Hi, I&apos;m TaskBot!</h1>
                 <h1 className="text-3xl font-bold mb-2">How can I help you?</h1>
                 <h1 className='font-bold text-2xl mb-2'>*Not functional at the moment*</h1>
             </div>
