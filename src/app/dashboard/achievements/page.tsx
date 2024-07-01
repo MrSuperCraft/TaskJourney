@@ -107,10 +107,14 @@ const AchievementList: React.FC<{ achievements: Achievement[] }> = ({ achievemen
                     )}
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-300">{achievement.description}</p>
-                <p className={`text-xs text-gray-500 ${achievement.completed ? 'dark:text-primary-brand-600 text-primary-brand-800' : ''}`}>
-                    Progress: {achievement.progress}% {achievement.completed && '✅'}
-                </p>
-                <Progress value={achievement.progress} className="my-2" />
+                <Progress value={achievement.progress} className="my-2"
+                    label="Achievement Progress"
+                    showValueLabel={true}
+                    classNames={{
+                        value: 'font-semibold',
+                        indicator: `${achievement.completed ? 'bg-primary-brand-600 dark:bg-primary-brand-500' : 'bg-gray-200 dark:bg-gray-800'}`,
+                    }}
+                />
                 {achievement.completed && (
                     <p className="text-xs text-gray-500">Completed on: {achievement.dateCompleted?.toLocaleDateString()}</p>
                 )}
