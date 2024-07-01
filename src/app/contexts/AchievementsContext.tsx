@@ -9,13 +9,12 @@ interface AchievementContextProps {
     updateBadge: (updatedBadge: Badge) => void;
 }
 
-const initialAchievements: Achievement[] = [
-    { id: '1', category: 'Productivity', name: 'Task Master', description: 'Complete 100 tasks', progress: 100, completed: true, dateCompleted: new Date() },
-    // More achievements
-];
+import achievementsData from '../dashboard/achievements/data';
+
+const initialAchievements: Achievement[] = achievementsData;
 
 const initialBadges: Badge[] = [
-    { id: '1', name: 'Beginner', description: 'Complete your first task', icon: '/icons/beginner.png', earned: true, dateEarned: new Date() },
+    { id: 1, name: 'Beginner', description: 'Complete your first task', icon: '/icons/beginner.png', earned: false },
     // More badges
 ];
 
