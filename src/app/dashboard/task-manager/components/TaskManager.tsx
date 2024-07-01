@@ -28,6 +28,7 @@ const TaskManager: React.FC = () => {
         useState<Key>("active-tasks");
     const [showTaskCreationBox, setShowTaskCreationBox] = useState(false);
     const { description, setDescription } = useDescription();
+    const [timers, setTimers] = useState<Record<string, string>>({});
 
     useEffect(() => {
         if (userData) {
@@ -49,6 +50,26 @@ const TaskManager: React.FC = () => {
             });
         }
     }, [userData]);
+
+    const updateTaskTimer = (taskId: string, refreshTime: number) => {
+        const interval = setInterval(() => {
+            const currentTime = new Date().getTime();
+            const remainingTime = refreshTime - currentTime;
+            if (remainingTime <= 0) {
+                clearInterval(interval);
+                handleTaskRefresh(taskId);
+            } else {
+                const hours = Math.floor((remainingTime / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((remainingTime / (1000 * 60)) % 60);
+                const seconds = Math.floor((remainingTime / 1000) % 60);
+                setTimers(prev => ({
+                    ...prev,
+                    [taskId]: `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+                }));
+            }
+        }, 1000);
+    };
+
 
 
     const addTask = async (newTask: Task) => {
@@ -231,27 +252,6 @@ const TaskManager: React.FC = () => {
         }
     };
 
-
-    const [timers, setTimers] = useState<Record<string, string>>({});
-
-    const updateTaskTimer = (taskId: string, refreshTime: number) => {
-        const interval = setInterval(() => {
-            const currentTime = new Date().getTime();
-            const remainingTime = refreshTime - currentTime;
-            if (remainingTime <= 0) {
-                clearInterval(interval);
-                handleTaskRefresh(taskId);
-            } else {
-                const hours = Math.floor((remainingTime / (1000 * 60 * 60)) % 24);
-                const minutes = Math.floor((remainingTime / (1000 * 60)) % 60);
-                const seconds = Math.floor((remainingTime / 1000) % 60);
-                setTimers(prev => ({
-                    ...prev,
-                    [taskId]: `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
-                }));
-            }
-        }, 1000);
-    };
 
     const handleTaskRefresh = async (taskId: string) => {
         if (userData?.uid) {
