@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, createContext, useContext, ReactNode, useEffect } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import useUserData from '../hooks/useUserData';
