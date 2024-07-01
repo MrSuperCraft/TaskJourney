@@ -36,6 +36,7 @@ interface TaskTableProps {
     onTaskRemove: (taskId: string) => void;
     onUpdateTasks: (updatedTasks: Task[]) => void; // Add onUpdateTasks prop
     onCompleteTask: (taskId: string) => void;
+    timers: Record<string, string>;
 }
 
 enum Priority {
@@ -52,6 +53,7 @@ const DailyTasksTable: React.FC<TaskTableProps> = ({
     onTaskRemove,
     onUpdateTasks,
     onCompleteTask,
+    timers
 }) => {
     const [loading, setLoading] = useState(true);
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -235,35 +237,45 @@ const DailyTasksTable: React.FC<TaskTableProps> = ({
                 </TableCell>
 
                 <TableCell className="flex">
-                    <Button
-                        onClick={() => handleComplete(task.id)}
-                        size="sm"
-                        color="success"
-                        className="text-white mr-2"
-                        isIconOnly
-                        aria-label="Complete Task"
-                    >
-                        <FaCheck aria-hidden="true" className="w-4 h-4" />
-                    </Button>
+                    {loading ? (
+                        <Skeleton className="w-32 h-8 dark:text-gray-500 rounded-md" />
+                    ) : (
+                        task.isDaily && task.complete ? (
+                            <span>{"Refreshes in: " + timers[task.id] || <Skeleton className="w-32 h-8 dark:text-gray-500 rounded-md" />}</span>
+                        ) : (
+                            <>
+                                <Button
+                                    onClick={() => handleComplete(task.id)}
+                                    size="sm"
+                                    color="success"
+                                    className="text-white mr-2"
+                                    isIconOnly
+                                    aria-label="Complete Task"
+                                >
+                                    <FaCheck aria-hidden="true" className="w-4 h-4" />
+                                </Button>
 
-                    <Button
-                        onClick={() => handleEdit(task.id)}
-                        size="sm"
-                        className="mr-2 text-white bg-primary-brand-700 hover:bg-primary-600 dark:bg-teal ease-in-out dark:ease-in-out dark:hover:bg-sky-600 transition-all dark:transition-all dark:duration-300 duration-300"
-                        aria-label="Edit Task"
-                        isIconOnly
-                    >
-                        <FaEdit aria-hidden="true" className="w-4 h-4" />
-                    </Button>
-                    <Button
-                        onClick={() => handleDelete(task.id)}
-                        size="sm"
-                        className="bg-red-500 mr-2 text-white"
-                        aria-label="Delete Task"
-                        isIconOnly
-                    >
-                        <FaTrash aria-hidden="true" className="w-4 h-4" />
-                    </Button>
+                                <Button
+                                    onClick={() => handleEdit(task.id)}
+                                    size="sm"
+                                    className="mr-2 text-white bg-primary-brand-700 hover:bg-primary-600 dark:bg-teal ease-in-out dark:ease-in-out dark:hover:bg-sky-600 transition-all dark:transition-all dark:duration-300 duration-300"
+                                    aria-label="Edit Task"
+                                    isIconOnly
+                                >
+                                    <FaEdit aria-hidden="true" className="w-4 h-4" />
+                                </Button>
+                                <Button
+                                    onClick={() => handleDelete(task.id)}
+                                    size="sm"
+                                    className="bg-red-500 mr-2 text-white"
+                                    aria-label="Delete Task"
+                                    isIconOnly
+                                >
+                                    <FaTrash aria-hidden="true" className="w-4 h-4" />
+                                </Button>
+                            </>
+                        )
+                    )}
                 </TableCell>
 
             </TableRow>

@@ -12,6 +12,7 @@ interface Task {
     complete: boolean;
     completedAt: string | null;
     isDaily: boolean;
+    refreshTime?: string | null;
     // Add more properties as needed
 }
 
@@ -32,7 +33,7 @@ interface Level {
 }
 
 interface Badge {
-    id: string;
+    id: number;
     name: string;
     description: string;
     icon: string;
@@ -41,13 +42,13 @@ interface Badge {
 }
 
 interface Achievement {
-    id: string;
+    id: number;
     category: string;
     name: string;
     description: string;
     progress: number; // 0 to 100
     completed: boolean;
-    dateCompleted?: Date;
+    dateCompleted: Date | null; // Allow null for dateCompleted
 }
 
 
