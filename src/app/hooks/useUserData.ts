@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, User as FirebaseUser } from 'firebase/auth';
 import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
 import { auth, db } from '../firebase'; // Adjust the import path according to your setup
-import { Task } from '../dashboard/types';
+import { Task, Event } from '../dashboard/types';
 
 interface UserData {
     uid: string;
@@ -13,6 +13,7 @@ interface UserData {
     photoURL: string;
     description: string;
     tasks: Task[]; // Assuming Task is a type representing your task structure
+    events: Event[];
 }
 
 const useUserData = () => {
@@ -47,6 +48,7 @@ const useUserData = () => {
                     if (docSnapshot.exists()) {
                         const data = docSnapshot.data();
                         const tasks = await fetchUserTasks(userId); // Fetch tasks from the subcollection
+                        const events = await fetchUserEvents(userId);
 
                         setUserData({
                             uid: user.uid,
@@ -55,6 +57,7 @@ const useUserData = () => {
                             photoURL: data?.photoURL || '',
                             description: data?.description || '',
                             tasks: tasks, // Assign fetched tasks here
+                            events: events,
                         });
                     } else {
                         console.log('User document does not exist.');
@@ -84,7 +87,27 @@ const useUserData = () => {
         return tasks;
     };
 
+    // Function to fetch user Events for the calendar
+    const fetchUserEvents = async (userId: string): Promise<Event[]> => {
+        const eventsRef = collection(db, `users/${userId}/events`);
+        const eventsSnapshot = await getDocs(eventsRef);
+        const events: Event[] = [];
+
+        eventsSnapshot.forEach((doc) => {
+            events.push({
+                id: doc.id,
+                start: doc.data().start.toDate(),
+                end: doc.data().end.toDate(),
+                title: doc.data().title,
+                description: doc.data().description,
+            } as Event);
+        });
+
+        return events;
+    };
+
     return { loading, authenticated, user, userData };
 };
 
 export default useUserData;
+

@@ -16,6 +16,16 @@ interface Task {
     // Add more properties as needed
 }
 
+
+type Event = {
+    id: string;
+    start: Date;
+    end: Date;
+    title: string;
+    description?: string;
+};
+
+
 type SubTask = {
     id: string;
     parentTask: Task;
@@ -54,4 +64,4 @@ interface Achievement {
 
 
 
-export type { Task, Level, Badge, Achievement };
+export type { Task, Level, Badge, Achievement, Event };
