@@ -15,6 +15,8 @@ import { doc, getDoc } from 'firebase/firestore';
 import { ProfileProvider } from '../contexts/ProfileContext';
 import LevelTracker from './components/Widgets/LevelTracker/LevelTracker';
 import Streak from './components/Widgets/Streak/Streak';
+import { AchievementProvider, useAchievements } from '../contexts/AchievementsContext';
+import useUserData from '../hooks/useUserData';
 
 
 const DashboardPage = () => {
@@ -25,6 +27,9 @@ const DashboardPage = () => {
 
     const [userName, setUserName] = useState<string>('Guest');
     const router = useRouter();
+
+    const { userData } = useUserData();
+    const { trackProgress } = useAchievements();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (authUser) => {
@@ -74,25 +79,29 @@ const DashboardPage = () => {
     }
 
 
+
     return (
-        <ProfileProvider>
-            <AuthContextProvider>
-                <ThemeProviderWithAttribute>
-                    <div className="h-screen flex">
-                        <Sidebar />
-                        <div className="flex-1 overflow-y-auto max-h-screen px-4 py-8">
-                            <WelcomeMessage name={userName} />
-                            {/* Add feed sections here */}
-                            <LevelTracker
-                                currentExp={500000000000}
-                                level={70}
-                            />
-                            <Streak days={2} />
+        <AchievementProvider>
+            <ProfileProvider>
+                <AuthContextProvider>
+                    <ThemeProviderWithAttribute>
+                        <div className="h-screen flex">
+                            <Sidebar />
+                            <div className="flex-1 overflow-y-auto max-h-screen px-4 py-8">
+                                <WelcomeMessage name={userName} />
+                                {/* Temporarily disabled due to excessive read / write actions
+                                <LevelTracker
+                                    currentExp={userData?.statistics?.exp || 0}
+                                    level={userData?.statistics.level || 0}
+                                />
+                                */}
+                                <Streak days={userData?.statistics.streaks || 0} />
+                            </div>
                         </div>
-                    </div>
-                </ThemeProviderWithAttribute>
-            </AuthContextProvider>
-        </ProfileProvider>
+                    </ThemeProviderWithAttribute>
+                </AuthContextProvider>
+            </ProfileProvider>
+        </AchievementProvider>
     );
 };
 

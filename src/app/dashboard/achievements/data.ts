@@ -1,5 +1,4 @@
-import { Achievement } from "../types";
-
+import { Achievement } from "../types"
 
 const achievementsData: Achievement[] = [
     {
@@ -7,18 +6,20 @@ const achievementsData: Achievement[] = [
         category: 'Task Setting',
         name: 'Task Starter',
         description: 'Create your first task in TaskJourney.',
-        progress: 100,
-        completed: true,
-        dateCompleted: new Date(),
+        progress: 0,
+        completed: false,
+        dateCompleted: null,
+        requirements: { tasksCreated: 1 },
     },
     {
         id: 2,
         category: 'Task Setting',
         name: 'Daily Task Achiever',
         description: 'Complete your daily tasks for 7 consecutive days.',
-        progress: 0,  // Start with 0 progress
+        progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { streaks: 7 },
     },
     {
         id: 4,
@@ -28,8 +29,8 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { streaks: 5 },
     },
-
     {
         id: 6,
         category: 'Task Completion',
@@ -38,6 +39,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { tasksCompleted: 50 },
     },
     {
         id: 8,
@@ -47,6 +49,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { tasksCompleted: 100 },
     },
     {
         id: 10,
@@ -56,6 +59,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { calendarEvents: 7 },
     },
     {
         id: 11,
@@ -65,6 +69,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { calendarEvents: 30 },
     },
     {
         id: 12,
@@ -74,6 +79,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { calendarEvents: 5 },
     },
     {
         id: 13,
@@ -83,6 +89,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { achievementsUnlocked: 999 },
     },
     {
         id: 14,
@@ -92,6 +99,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { achievementsUnlocked: 999 },
     },
     {
         id: 15,
@@ -101,6 +109,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { achievementsUnlocked: 999 },
     },
     {
         id: 16,
@@ -110,6 +119,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { achievementsUnlocked: 999 },
     },
     {
         id: 17,
@@ -119,6 +129,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { achievementsUnlocked: 999 },
     },
     {
         id: 18,
@@ -128,6 +139,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { achievementsUnlocked: 999 },
     },
     {
         id: 19,
@@ -137,6 +149,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { achievementsUnlocked: 999 },
     },
     {
         id: 20,
@@ -146,6 +159,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { tasksCompleted: 250 },
     },
     {
         id: 21,
@@ -155,6 +169,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { streaks: 30 },
     },
     {
         id: 22,
@@ -164,6 +179,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { achievementsUnlocked: 999 },
     },
     {
         id: 23,
@@ -173,6 +189,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { badgesEarned: 1 },
     },
     {
         id: 24,
@@ -182,6 +199,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { achievementsUnlocked: 999 },
     },
     {
         id: 25,
@@ -191,6 +209,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { achievementsUnlocked: 999 },
     },
     {
         id: 26,
@@ -200,6 +219,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { streaks: 7 },
     },
     {
         id: 27,
@@ -209,6 +229,7 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { streaks: 14 },
     },
     {
         id: 28,
@@ -218,15 +239,17 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { streaks: 30 },
     },
     {
         id: 29,
         category: 'Streak',
         name: 'Streak Setter IV',
-        description: 'Achieve a 90-day streak.',
+        description: 'Achieve a 60-day streak.',
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { streaks: 60 },
     },
     {
         id: 30,
@@ -236,8 +259,9 @@ const achievementsData: Achievement[] = [
         progress: 0,
         completed: false,
         dateCompleted: null,
+        requirements: { streaks: 365 },
     }
-];
 
+]
 
 export default achievementsData;

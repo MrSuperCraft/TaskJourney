@@ -1,10 +1,11 @@
 // hooks/useUserData.ts
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'; // Corrected import
 import { onAuthStateChanged, User as FirebaseUser } from 'firebase/auth';
 import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
 import { auth, db } from '../firebase'; // Adjust the import path according to your setup
-import { Task, Event } from '../dashboard/types';
+import { Task, Event, Statistics, Achievement } from '../dashboard/types';
+import { initialStatistics } from '../contexts/AchievementsContext';
 
 interface UserData {
     uid: string;
@@ -12,8 +13,10 @@ interface UserData {
     email: string;
     photoURL: string;
     description: string;
-    tasks: Task[]; // Assuming Task is a type representing your task structure
+    tasks: Task[];
     events: Event[];
+    achievements: Achievement[];
+    statistics: Statistics;
 }
 
 const useUserData = () => {
@@ -47,8 +50,10 @@ const useUserData = () => {
                     const docSnapshot = await getDoc(userRef);
                     if (docSnapshot.exists()) {
                         const data = docSnapshot.data();
-                        const tasks = await fetchUserTasks(userId); // Fetch tasks from the subcollection
+                        const tasks = await fetchUserTasks(userId);
                         const events = await fetchUserEvents(userId);
+                        const achievements = await fetchAchivements(userId);
+                        const stats = await fetchUserStatistics(userId);
 
                         setUserData({
                             uid: user.uid,
@@ -56,8 +61,10 @@ const useUserData = () => {
                             email: user.email || '',
                             photoURL: data?.photoURL || '',
                             description: data?.description || '',
-                            tasks: tasks, // Assign fetched tasks here
+                            tasks: tasks,
                             events: events,
+                            achievements: achievements,
+                            statistics: stats,
                         });
                     } else {
                         console.log('User document does not exist.');
@@ -71,7 +78,6 @@ const useUserData = () => {
         }
     }, [user]);
 
-    // Function to fetch tasks from the tasks subcollection
     const fetchUserTasks = async (userId: string): Promise<Task[]> => {
         const tasksRef = collection(db, `users/${userId}/tasks`);
         const tasksSnapshot = await getDocs(tasksRef);
@@ -87,7 +93,6 @@ const useUserData = () => {
         return tasks;
     };
 
-    // Function to fetch user Events for the calendar
     const fetchUserEvents = async (userId: string): Promise<Event[]> => {
         const eventsRef = collection(db, `users/${userId}/events`);
         const eventsSnapshot = await getDocs(eventsRef);
@@ -106,8 +111,41 @@ const useUserData = () => {
         return events;
     };
 
+    const fetchAchivements = async (userId: string): Promise<Achievement[]> => {
+        const achievementsRef = collection(db, `users/${userId}/achievements`);
+        const achievementsSnapshot = await getDocs(achievementsRef);
+        const achievements: Achievement[] = [];
+
+        achievementsSnapshot.forEach((doc) => {
+            achievements.push({
+                ...doc.data(),
+            } as Achievement);
+        });
+
+        return achievements;
+    };
+
+    const fetchUserStatistics = async (userId: string): Promise<Statistics> => {
+        const statisticsRef = doc(db, `users/${userId}/statistics/stats`);
+
+        try {
+            const statisticsSnapshot = await getDoc(statisticsRef);
+
+            if (statisticsSnapshot.exists()) {
+                const statisticsData = statisticsSnapshot.data() as Statistics;
+                console.log('Fetched statistics:', statisticsData);
+                return statisticsData;
+            } else {
+                console.log('Statistics document does not exist for user:', userId);
+                return initialStatistics;
+            }
+        } catch (error) {
+            console.error('Error fetching user statistics:', error);
+            throw error;
+        }
+    };
+
     return { loading, authenticated, user, userData };
 };
 
 export default useUserData;
-

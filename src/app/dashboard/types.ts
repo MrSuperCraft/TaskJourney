@@ -50,18 +50,33 @@ interface Badge {
     earned: boolean;
     dateEarned?: Date;
 }
-
 interface Achievement {
     id: number;
     category: string;
     name: string;
     description: string;
-    progress: number; // 0 to 100
+    progress: number;
     completed: boolean;
-    dateCompleted: Date | null; // Allow null for dateCompleted
+    dateCompleted: Date | string | null;
+    requirements: Record<string, number>;  // New property for requirements
+}
+
+
+interface Statistics {
+    id: string;
+    tasksCreated: number;
+    tasksCompleted: number;
+    streaks: number;
+    calendarEvents: number;
+    dailyQuestsCompleted: number;
+    achievementsUnlocked: number;
+    badgesEarned: number;
+    tasksCreatedToday: number;
+    tasksCompletedToday: number;
+    exp: number;
+    level: number;
 }
 
 
 
-
-export type { Task, Level, Badge, Achievement, Event };
+export type { Task, Level, Badge, Achievement, Event, Statistics };

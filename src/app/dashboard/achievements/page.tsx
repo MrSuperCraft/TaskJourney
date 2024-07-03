@@ -4,15 +4,15 @@ import { useState } from 'react';
 import { Card, Progress, Tabs, Tab, Tooltip, Divider } from '@nextui-org/react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useAchievements } from '@/app/contexts/AchievementsContext';
+import { AchievementProvider, useAchievements } from '@/app/contexts/AchievementsContext';
 import Sidebar from '../components/sidebar/Sidebar';
 import { ThemeProviderWithAttribute } from '@/app/contexts/ThemeContext';
 import { ProfileProvider } from '@/app/contexts/ProfileContext';
 import { Achievement, Badge } from '../types';
 import { FaLock, FaCheckCircle } from 'react-icons/fa';
 import Image from 'next/image';
-
-import achievementsData from './data';
+import useUserData from '@/app/hooks/useUserData';
+import { format } from 'date-fns'
 
 
 
@@ -52,45 +52,49 @@ const badgesData: Badge[] = [
 const AchievementPage: React.FC = () => {
     const [selectedCategory, setSelectedCategory] = useState<string>('All');
     // Assuming badgesData is fetched or initialized from useAchievements
-    const { badges } = useAchievements();
+    const { userData } = useUserData();
+    const { statistics } = useAchievements();
 
-    // Extract unique categories from achievementsData
-    const categories = Array.from(new Set(achievementsData.map(ach => ach.category)));
+    const achievements: Achievement[] = userData?.achievements || [];
+    // Extract unique categories from achievements
+    const categories = Array.from(new Set(achievements.map(ach => ach.category)));
 
     // Filter achievements based on selected category
     const filteredAchievements = selectedCategory === 'All'
-        ? achievementsData
-        : achievementsData.filter(ach => ach.category === selectedCategory);
+        ? achievements
+        : achievements.filter(ach => ach.category === selectedCategory);
 
     return (
         <div className='flex h-screen'>
-            <ProfileProvider>
-                <ThemeProviderWithAttribute>
-                    <ToastContainer />
-                    <Sidebar />
-                    <div className="p-4 flex-grow pl-20 overflow-auto">
-                        <h1 className="text-3xl mb-4 font-bold">Achievements</h1>
-                        <Divider />
-                        <div className="flex items-center mb-4">
-                            <span className="text-xl">Level 10</span>
-                            <Progress value={70} className="ml-4 flex-grow" />
-                        </div>
-                        <Tabs onSelectionChange={(key) => setSelectedCategory(key as string)}>
-                            <Tab key="All" title="All">
-                                <AchievementList achievements={filteredAchievements} />
-                            </Tab>
-                            {categories.map(category => (
-                                <Tab key={category} title={category}>
-                                    <AchievementList achievements={filteredAchievements.filter(ach => ach.category === category)} />
-                                </Tab>
-                            ))}
-                        </Tabs>
-                        <h2 className="text-2xl mt-6 mb-4">Badges</h2>
-                        <BadgeGallery badges={badgesData} />
+            <AchievementProvider>
+                <ProfileProvider>
+                    <ThemeProviderWithAttribute>
                         <ToastContainer />
-                    </div>
-                </ThemeProviderWithAttribute>
-            </ProfileProvider>
+                        <Sidebar />
+                        <div className="p-4 flex-grow pl-20 overflow-auto">
+                            <h1 className="text-3xl mb-4 font-bold">Achievements</h1>
+                            <Divider />
+                            <div className="flex items-center mb-4">
+                                <span className="text-xl">Level {statistics.level}</span>
+                                <Progress value={1} className="ml-4 flex-grow" />
+                            </div>
+                            <Tabs onSelectionChange={(key) => setSelectedCategory(key as string)}>
+                                <Tab key="All" title="All">
+                                    <AchievementList achievements={filteredAchievements} />
+                                </Tab>
+                                {categories.map(category => (
+                                    <Tab key={category} title={category}>
+                                        <AchievementList achievements={filteredAchievements.filter(ach => ach.category === category)} />
+                                    </Tab>
+                                ))}
+                            </Tabs>
+                            <h2 className="text-2xl mt-6 mb-4">Badges</h2>
+                            <BadgeGallery badges={badgesData} />
+                            <ToastContainer />
+                        </div>
+                    </ThemeProviderWithAttribute>
+                </ProfileProvider>
+            </AchievementProvider>
         </div>
     );
 };
@@ -115,9 +119,11 @@ const AchievementList: React.FC<{ achievements: Achievement[] }> = ({ achievemen
                         indicator: `${achievement.completed ? 'bg-primary-brand-600 dark:bg-primary-brand-500' : 'bg-gray-200 dark:bg-gray-800'}`,
                     }}
                 />
-                {achievement.completed && (
-                    <p className="text-xs text-gray-500">Completed on: {achievement.dateCompleted?.toLocaleDateString()}</p>
-                )}
+                {achievement.completed && achievement.dateCompleted ? (
+                    <p className="text-xs text-gray-500">
+                        Completed on: {format(achievement.dateCompleted, 'MMMM d, yyyy')}
+                    </p>
+                ) : null}
             </Card>
         ))}
     </div>

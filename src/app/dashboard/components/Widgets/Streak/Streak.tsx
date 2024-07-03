@@ -34,7 +34,7 @@ const Streak: NextPage<StreakType> = ({
                     Streak
                 </h1>
                 <b className="mt-1 text-2xl">
-                    {days} Days
+                    {days} {days === 1 ? "Day" : "Days"}
                 </b>
             </div>
         </div>

@@ -17,6 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDescription } from "@/app/contexts/EditorContext";
 import { Tabs, Tab } from "@nextui-org/react";
 import { FaCheckSquare, FaThumbtack } from "react-icons/fa";
+import { useAchievements } from "@/app/contexts/AchievementsContext";
 
 
 const TaskManager: React.FC = () => {
@@ -29,6 +30,8 @@ const TaskManager: React.FC = () => {
     const [showTaskCreationBox, setShowTaskCreationBox] = useState(false);
     const { description, setDescription } = useDescription();
     const [timers, setTimers] = useState<Record<string, string>>({});
+
+    const { trackProgress } = useAchievements();
 
     useEffect(() => {
         if (userData) {
@@ -95,6 +98,10 @@ const TaskManager: React.FC = () => {
                     draggable: true,
                     progress: undefined,
                 });
+
+                // Track achievement progress
+                trackProgress('taskCreation', { date: new Date() });
+
             } else {
                 toast.error("Failed to add the task. Try again soon.", {
                     position: "bottom-right",
@@ -196,6 +203,9 @@ const TaskManager: React.FC = () => {
 
                     // Set up timer to update the UI
                     updateTaskTimer(taskId, refreshTime.getTime());
+
+                    trackProgress("dailyQuestCompletion");
+
                 } else {
                     await updateDoc(taskDoc, {
                         complete: true,
@@ -215,6 +225,9 @@ const TaskManager: React.FC = () => {
                             { ...task, complete: true, completedAt: completedAt },
                         ]);
                     }
+
+                    trackProgress("taskCompletion");
+
                 }
 
                 toast.success("Task marked as completed!", {

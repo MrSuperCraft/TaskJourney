@@ -231,12 +231,12 @@ const DailyPlannerSidebar: React.FC<DailyPlannerSidebarProps> = ({
                                 </div>
                             </DropdownTrigger>
                             <DropdownMenu
-                                className="bg-white shadow-md rounded-md"
+                                className="bg-white dark:bg-gray-700 shadow-md rounded-md"
                             >
-                                <DropdownItem onClick={() => handleEditEvent(event.id)}>
+                                <DropdownItem onClick={() => handleEditEvent(event.id)} className='dark:hover:bg-gray-800'>
                                     <span className='flex flex-row'> Edit <FaPencilAlt className='ml-2 text-primary-brand-600 dark:text-primary-brand-500' /></span>
                                 </DropdownItem>
-                                <DropdownItem onClick={() => handleDeleteEvent(event.id)}>
+                                <DropdownItem onClick={() => handleDeleteEvent(event.id)} className='dark:hover:bg-gray-800'>
                                     <span className='flex flex-row'> Delete <FaTrash className='ml-2 text-primary-brand-600 dark:text-primary-brand-500' /> </span>
                                 </DropdownItem>
                             </DropdownMenu>
