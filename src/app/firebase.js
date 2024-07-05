@@ -4,7 +4,7 @@ import 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { doc, getFirestore } from "firebase/firestore";
 import { getStorage } from '@firebase/storage'
-
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 
 
@@ -38,9 +38,28 @@ export const verifyIdToken = (token) => {
 };
 
 
+const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_KEY);
+const model = genAI.getGenerativeModel({ model: 'gemini-1.5flash' });
+
+async function generateAI(userPrompt) {
+    try {
 
 
-export { app, auth, db, storage };  // Export app and auth for use in other modules
+        const prompt = userPrompt;
+        const result = await model.generateContent(prompt);
+        const response = result.response;
+        const text = response.text();
+        return text;
+    } catch (error) {
+        console.error('Error generating AI content:', error);
+        return 'Sorry, something went wrong while generating the response.';
+    }
+}
+
+
+
+
+export { app, auth, db, storage, generateAI };  // Export app and auth for use in other modules
 
 
 

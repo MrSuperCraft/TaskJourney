@@ -6,7 +6,6 @@ import React from 'react'
 import Sidebar from '../components/sidebar/Sidebar'
 import { ThemeProviderWithAttribute } from '@/app/contexts/ThemeContext';
 import { ProfileProvider } from '@/app/contexts/ProfileContext';
-import AIChat from './components/AiChat';
 import AiChat from './components/AiChat';
 
 const AiPage = () => {
