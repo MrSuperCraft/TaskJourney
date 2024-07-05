@@ -100,7 +100,7 @@ const TaskManager: React.FC = () => {
                 });
 
                 // Track achievement progress
-                trackProgress('taskCreation', { date: new Date() });
+                /* trackProgress('taskCreation', { date: new Date() }); */
 
             } else {
                 toast.error("Failed to add the task. Try again soon.", {
@@ -204,7 +204,7 @@ const TaskManager: React.FC = () => {
                     // Set up timer to update the UI
                     updateTaskTimer(taskId, refreshTime.getTime());
 
-                    trackProgress("dailyQuestCompletion");
+                    /* trackProgress("dailyQuestCompletion"); */
 
                 } else {
                     await updateDoc(taskDoc, {
@@ -226,7 +226,7 @@ const TaskManager: React.FC = () => {
                         ]);
                     }
 
-                    trackProgress("taskCompletion");
+                    /* trackProgress("taskCompletion"); */
 
                 }
 
