@@ -18,7 +18,8 @@ TaskJourney is a comprehensive productivity and well-being application designed 
 ## Usage
 
 - **Creating Tasks**: Add new tasks easily with details like task name, description, due date, location, reminder, and priority.
-- **Date Selection**: Utilize the date selection methods put in place to set your due dates right.
+- **Calendar Events**: Create events, set them on your calendar and access them at any time from your personal dashboard.
+- **Goals & More**: Set long term goals and things you want to achieve, while tracking your progress with ease.
 - **Customization**: Access the settings to personalize your TaskJourney experience.
 
 ## Configuration
@@ -36,20 +37,19 @@ TaskJourney uses Tailwind CSS for styling, and the configuration is defined in t
 - [x] Authentication via Google Account (Oauth)
 - [x] Customizable Settings
 - [x] Dark mode support 
-- [x] Semi - finalizied task manager tab
+- [x] Task Manager
+- [x] Calendar
+- [x] Goal Setter 
+- [x] Achievement Tracker & Gamification elements (In Progress)
+- [x] Pomodoro Timer: Integrated timer for focused work sessions.
 
 ### Upcoming Features
-- [ ] Custom AI Assistant (self - made)
-- [ ] Achievement Tracker
-- [ ] Calendar
 - [ ] Notifications
-- [ ] Customizable Settings
 - [ ] User Profile
 - [ ] In-Site Blog
 - [ ] Leaderboards
 - [ ] Feedback and Support
 - [ ] Task Templates: Predefined templates for common tasks.
-- [ ] Pomodoro Timer: Integrated timer for focused work sessions.
 - [ ] Habit Tracker: Track daily habits and routines.
 - [ ] Goal Setting: Define and track long-term goals.
 - [ ] Social Integration: Share achievements on social media.
