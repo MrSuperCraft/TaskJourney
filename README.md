@@ -51,7 +51,6 @@ TaskJourney uses Tailwind CSS for styling, and the configuration is defined in t
 - [ ] Feedback and Support
 - [ ] Task Templates: Predefined templates for common tasks.
 - [ ] Habit Tracker: Track daily habits and routines.
-- [ ] Goal Setting: Define and track long-term goals.
 - [ ] Social Integration: Share achievements on social media.
 - [ ] Collaboration Tools: Share tasks and collaborate with others.
 - [ ] Mobile App & complete mobile support: Native apps and web responsiveness for all platforms.
