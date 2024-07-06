@@ -18,7 +18,8 @@ TaskJourney is a comprehensive productivity and well-being application designed 
 ## Usage
 
 - **Creating Tasks**: Add new tasks easily with details like task name, description, due date, location, reminder, and priority.
-- **Date Selection**: Utilize the date selection methods put in place to set your due dates right.
+- **Calendar Events**: Create events, set them on your calendar and access them at any time from your personal dashboard.
+- **Goals & More**: Set long term goals and things you want to achieve, while tracking your progress with ease.
 - **Customization**: Access the settings to personalize your TaskJourney experience.
 
 ## Configuration
