@@ -79,4 +79,20 @@ interface Statistics {
 
 
 
-export type { Task, Level, Badge, Achievement, Event, Statistics };
+type Goal = {
+    id?: string;
+    name: string;
+    category: string;
+    tags: string[];
+    description: string;
+    stages: any[];
+    createdAt: Date | string;
+    updatedAt: Date | string;
+    archived: boolean;
+    archivedAt?: Date;
+}
+
+
+
+
+export type { Task, Level, Badge, Achievement, Event, Statistics, Goal };
