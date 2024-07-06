@@ -52,8 +52,7 @@ const useUserData = () => {
                         const data = docSnapshot.data();
                         const tasks = await fetchUserTasks(userId);
                         const events = await fetchUserEvents(userId);
-                        const achievements = await fetchAchivements(userId);
-                        const stats = await fetchUserStatistics(userId);
+
 
                         setUserData({
                             uid: user.uid,
@@ -63,8 +62,8 @@ const useUserData = () => {
                             description: data?.description || '',
                             tasks: tasks,
                             events: events,
-                            achievements: achievements,
-                            statistics: stats,
+                            achievements: data?.achievements || [],
+                            statistics: data?.statistics || [],
                         });
                     } else {
                         console.log('User document does not exist.');
