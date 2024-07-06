@@ -17,13 +17,15 @@ import {
   FaChartPie,
   FaEllipsisH,
 } from "react-icons/fa";
+import { TbTargetArrow } from "react-icons/tb";
+import { HiMiniSparkles } from "react-icons/hi2";
 
 import { TbLayoutSidebarLeftCollapse } from "react-icons/tb";
 import TabButton from "./TabButton";
-import { Button, Spinner, Tooltip } from "@nextui-org/react";
-import { ThemeContext } from "../../../contexts/ThemeContext"; 
+import { Button, Modal, Spinner, Tooltip, ModalBody, ModalContent } from "@nextui-org/react";
+import { ThemeContext } from "../../../contexts/ThemeContext";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 import { useProfile } from "@/app/contexts/ProfileContext";
 import Image from "next/image";
 import { auth } from "@/app/firebase";
@@ -31,6 +33,7 @@ import { auth } from "@/app/firebase";
 const Sidebar: React.FC = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [loadingTab, setLoadingTab] = useState<string | null>(null);
+  const [isNewsModalOpen, setIsNewsModalOpen] = useState(false);
   const { profilePic, username } = useProfile();
   const router = useRouter();
 
@@ -60,13 +63,16 @@ const Sidebar: React.FC = () => {
     setIsMobileSidebarOpen((prevState) => !prevState);
   };
 
+  const openNewsModal = () => {
+    setIsNewsModalOpen(true);
+  };
+
   return (
     <>
       {/* Sidebar for larger screens */}
       <motion.div
-        className={`sidebar-container ${
-          isSidebarOpen ? "open" : "closed"
-        } hidden md:flex`} // Hide on mobile devices
+        className={`sidebar-container ${isSidebarOpen ? "open" : "closed"
+          } hidden md:flex`} // Hide on mobile devices
         initial="open"
         key="desktop-sidebar"
         animate={isSidebarOpen ? "open" : "closed"}
@@ -90,6 +96,19 @@ const Sidebar: React.FC = () => {
                 aria-label="Close Sidebar"
               >
                 <TbLayoutSidebarLeftCollapse className="text-cyan-700 dark:text-primary-brand-600 text-3xl" />
+              </Button>
+            </Tooltip>
+            <Tooltip
+              color="foreground"
+              placement="bottom"
+              content="What's New?">
+              <Button
+                isIconOnly
+                className="bg-primary-brand-200 dark:bg-gray-700"
+                aria-label="What's New?"
+                onClick={openNewsModal}
+              >
+                <HiMiniSparkles className="text-cyan-700 dark:text-primary-brand-600 text-3xl" />
               </Button>
             </Tooltip>
             <Tooltip
@@ -176,6 +195,14 @@ const Sidebar: React.FC = () => {
               label="Calendar"
               onClick={() => handleTabClick("Calendar")}
               isLoading={loadingTab === "calendar"}
+            />
+            <TabButton
+              icon={
+                <TbTargetArrow className="text-cyan-700 dark:text-primary-brand-600 text-lg" />
+              }
+              label="Goal Setter"
+              onClick={() => handleTabClick("goal-setter")}
+              isLoading={loadingTab === "goal-setter"}
             />
             <Button color="danger" onClick={handleLogout}>
               Logout
@@ -327,9 +354,8 @@ const Sidebar: React.FC = () => {
       {/* Sidebar for mobile devices */}
 
       <motion.div
-        className={`fixed inset-0 z-50 md:hidden duration-200 min-h-screen min-w-full ${
-          !isMobileSidebarOpen ? "pointer-events-none" : ""
-        }`} // Show on mobile devices only. The pointer events none is used to disable any kind of interactivity when the sidebar is hidden.
+        className={`fixed inset-0 z-50 md:hidden duration-200 min-h-screen min-w-full ${!isMobileSidebarOpen ? "pointer-events-none" : ""
+          }`} // Show on mobile devices only. The pointer events none is used to disable any kind of interactivity when the sidebar is hidden.
         initial="closed"
         animate={isMobileSidebarOpen ? "open" : "closed"}
         variants={{
@@ -521,6 +547,33 @@ const Sidebar: React.FC = () => {
           </Button>
         </Tooltip>
       </div>
+
+      {/* News Modal */}
+      <Modal closeButton aria-labelledby="modal-title" isOpen={isNewsModalOpen} onClose={() => setIsNewsModalOpen(false)} size="lg">
+        <ModalContent>
+          <ModalBody>
+
+            <article className="prose dark:prose-invert prose-sm md:prose-lg lg:prose-xl">
+              <h2 className="text-2xl font-bold mb-4 pt-8 mx-auto text-center"><HiMiniSparkles className="text-cyan-700 dark:text-primary-brand-600 inline" />   Updates  & Patches <FaTrophy className="text-cyan-700 dark:text-primary-brand-600 inline" /></h2>
+              <h3>v0.2.0alpha</h3>
+              <ul>
+                <li><b>NEW:</b> Added daily tasks to the task manager</li>
+                <li>Added AI Assistant</li>
+                <li>Added Calendar</li>
+                <li>Added Goal Setter</li>
+                <li>Fixed bugs from the previous version</li>
+              </ul>
+
+              <h3>v0.1.0alpha</h3>
+              <ul>
+                <li>Added Task Manager</li>
+                <li>Added Settings</li>
+
+              </ul>
+            </article>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </>
   );
 };
