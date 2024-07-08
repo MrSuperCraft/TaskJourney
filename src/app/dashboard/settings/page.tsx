@@ -33,6 +33,7 @@ const SettingsPage: React.FC = () => {
                         <Divider></Divider>
                         <AccountSettings />
                         <ThemeSettings />
+                        <NotificationSettings />
                         {/* Add more settings sections as needed */}
                     </div>
                 </div>

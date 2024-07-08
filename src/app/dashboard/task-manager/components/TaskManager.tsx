@@ -15,9 +15,10 @@ import { db } from "@/app/firebase";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDescription } from "@/app/contexts/EditorContext";
-import { Tabs, Tab } from "@nextui-org/react";
+import { Tabs, Tab, user } from "@nextui-org/react";
 import { FaCheckSquare, FaThumbtack } from "react-icons/fa";
 import { useAchievements } from "@/app/contexts/AchievementsContext";
+import { sendNotification, viewTags } from "@/app/lib/OneSignalHelpers";
 
 
 const TaskManager: React.FC = () => {
@@ -88,6 +89,30 @@ const TaskManager: React.FC = () => {
                     setCompletedTasks((prev) => [...prev, { ...newTask, id: newTask.id }]);
                 }
 
+                // Fetch the tags for the user
+                const tags = await viewTags(userData.uid);
+                // Find the key value pair of "task_reminders" in the tags object and compare the value to "t"
+                const taskRemindersKey: string = Object.keys(tags).find(key => key.includes('task_reminders')) as string;
+
+                // If the value is "t" the value of the constant should be true. Else, false
+                const shouldSendNotification = tags[taskRemindersKey] === 't';
+                console.log(shouldSendNotification);
+
+                if (shouldSendNotification) {
+                    // Check if the reminder is specified
+                    const reminderCheck = newTask.reminder !== 'No time specified' && newTask.reminder;
+                    const reminderTime = reminderCheck ? new Date(String(newTask.reminder)) : undefined;
+                    // If the task has a reminder, add a notification from OneSignal to remind on the specific time.
+                    if (reminderTime) {
+                        const title = `Task Reminder: ${newTask.title}`;
+                        const message = `Don't forget about your task!\nCheck your dashboard for more info`;
+                        const playerIds = [userData.uid]; // Use the user ID as the external ID
+
+                        // Schedule the notification
+                        await sendNotification(title, message, playerIds, reminderTime);
+                    }
+                }
+
                 // Show success toast
                 toast.success("Task successfully added!", {
                     position: "bottom-right",
@@ -116,7 +141,15 @@ const TaskManager: React.FC = () => {
             }
         } catch (error) {
             // Show error toast
-            toast.error(`Failed to add task: ${(error as Error).message}`);
+            toast.error(`Failed to add task: ${(error as Error).message}`, {
+                position: "bottom-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             console.error(`Failed to add task:`, error);
         }
     };

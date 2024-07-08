@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Modal, Button, ModalHeader, ModalBody, ModalFooter, ModalContent, useDisclosure, Divider, Input, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from '@nextui-org/react';
-import { format, addHours, differenceInMinutes, isAfter } from 'date-fns';
+import { format, addHours, differenceInMinutes, isAfter, addMinutes } from 'date-fns';
 import { FaPlus, FaEllipsisV, FaEdit, FaPencilAlt, FaTrash } from 'react-icons/fa';
 import useUserData from '@/app/hooks/useUserData';
 import { collection, addDoc, deleteDoc, updateDoc, doc } from 'firebase/firestore';
@@ -10,6 +10,7 @@ import { db } from '@/app/firebase';
 import { Event } from '../types';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { sendNotification, viewTags } from '@/app/lib/OneSignalHelpers';
 
 type DailyPlannerSidebarProps = {
     isOpen: boolean;
@@ -100,6 +101,45 @@ const DailyPlannerSidebar: React.FC<DailyPlannerSidebarProps> = ({
             } catch (error) {
                 console.error("Error adding event to Firestore: ", error);
             }
+
+            const scheduleNotifications = async () => {
+
+                if (userData) {
+
+                    // Fetch the tags for the user
+                    const tags = await viewTags(userData.uid);
+                    // Find the key value pair of "event_reminders" in the tags object and compare the value to "t"
+                    const eventRemindersKey: string = Object.keys(tags).find(key => key.includes('event_reminders')) as string;
+
+                    // If the value is "t" the value of the constant should be true. Else, false
+                    const shouldSendNotification = tags[eventRemindersKey] === 't';
+                    console.log(shouldSendNotification);
+                    if (shouldSendNotification) {
+
+                        const now = new Date();
+                        const eventsToSchedule = events.filter(event => {
+                            const eventStart = new Date(event.start);
+                            return eventStart > now;
+                        });
+
+                        if (eventsToSchedule.length > 0) {
+                            for (const event of eventsToSchedule) {
+                                const eventStart = new Date(event.start);
+                                const title = event.title;
+
+                                const timeUntilEvent = eventStart.getTime() - now.getTime();
+                                const notifyTime = Math.max(timeUntilEvent - 10 * 60 * 1000, 0);
+
+                                const notificationTime = addMinutes(new Date(), notifyTime / (1000 * 60));
+
+                                await sendNotification("Event Reminder: " + title, "Your event starts in 10 minutes.\nDon't forget to check your calendar!", [userData.uid], notificationTime);
+                            }
+                        }
+                    }
+                }
+            };
+
+            await scheduleNotifications();
 
             // Reset the form and close the modal
             setNewEventStartTime(null);

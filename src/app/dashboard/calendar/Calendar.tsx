@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useEffect, useState } from 'react';
 import {
     format,
@@ -13,7 +11,7 @@ import {
     addMonths,
     subMonths,
     isWithinInterval,
-    subHours
+    subHours,
 } from 'date-fns';
 import { Button, useDisclosure, Tooltip } from '@nextui-org/react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
@@ -73,7 +71,6 @@ const Calendar = () => {
         onOpen();
     };
 
-
     const handleUpdateEvent = () => {
         if (selectedEvent && newTitle && newStartHour && newEndHour) {
             const start = new Date(selectedEvent.start);
@@ -93,7 +90,6 @@ const Calendar = () => {
             onClose();
         }
     };
-
 
     const handleDeleteEvent = () => {
         if (selectedEvent) {
@@ -188,13 +184,14 @@ const Calendar = () => {
                         return (
                             <div
                                 key={day.toString()}
-                                className={`relative flex items-center justify-center border rounded-md aspect-square cursor-pointer ${isSameDay(day, new Date()) ? 'bg-blue-200 dark:bg-primary-brand-700' : ''} ${!isSameMonth(day, currentMonth) ? 'bg-gray-100 dark:bg-gray-900 text-gray-400' : ''} shadow-sm`}
+
+                                className={`relative flex items-center justify-center border rounded-md aspect-square cursor-pointer ${isSameDay(day, new Date()) ? 'bg-blue-200 dark:bg-primary-brand-700' : ''} ${!isSameMonth(day, currentMonth) ? 'bg-gray-100 dark:bg-gray-900 text-gray-400' : ''} shadow-sm transition-all hover:bg-gray-500 hover:text-white duration-200`}
                                 onClick={() => handleDateClick(day)}
                             >
                                 <div className='font-semibold text-lg'>{format(day, 'd')}</div>
                                 {eventsForDay.length > 0 && (
                                     <Tooltip content={tooltipContent} placement='top'>
-                                        <div className={`absolute bottom-2 left-1/2 transform -translate-x-1/2 w-3 h-3 rounded-full ${dotColor}`}></div>
+                                        <div className={`absolute bottom-2 left-1/2 transform -translate-x-1/2 ${dotColor} w-2 h-2 rounded-full`} />
                                     </Tooltip>
                                 )}
                             </div>
@@ -203,6 +200,7 @@ const Calendar = () => {
                 </div>
             </div>
 
+            {/* Modal for Event Details */}
             <DailyPlannerSidebar
                 isOpen={isOpen}
                 selectedDate={selectedDate}

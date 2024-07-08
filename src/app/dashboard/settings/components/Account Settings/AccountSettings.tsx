@@ -40,14 +40,15 @@ const AccountSettings: React.FC = () => {
                 const userDocSnap = await getDoc(userDocRef);
                 if (userDocSnap.exists()) {
                     const data = userDocSnap.data();
-                    console.log(data.timeZone)
                     setSelectedTimeZone(data.timeZone || ''); // Set selectedTimeZone from user data
                     setUserData((prevData: any) => ({
                         ...prevData,
-                        email: data.email || '',
+                        email: data.email || user.email,
                         description: data.description || '',
-                        visibility: data.visibility || '',
-                        timeZone: data.timeZone || '',
+                        visibility: data.visibility || 'Public', // Default to Public visibility
+                        timeZone: data.timeZone || 'EET',
+                        username: data.username || 'Guest', // Default to Guest username
+                        photoURL: data.photoURL || user.photoURL
                     }));
                 }
             }

@@ -116,8 +116,8 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
 
     const handleDateChange = (value: DateValue) => {
         if (value) {
-            const selectedDate = new Date(value.year, value.month, value.day);
-            const calendarDate = new CalendarDate(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate())
+            const selectedDate = new Date(value.year, value.month - 1, value.day);
+            const calendarDate = new CalendarDate(selectedDate.getFullYear(), selectedDate.getMonth() + 1, selectedDate.getDate())
             setDueDate(selectedDate);
             setSelectedDueDate(calendarDate);
             setIsPopoverOpen(false); // Close the popover when a date is selected
@@ -236,7 +236,7 @@ const TaskCreationBox: React.FC<TaskCreationBoxProps> = ({ onClose, onTaskAdd })
                                     onChange={handleDateChange}
                                     minValue={today(getLocalTimeZone())}
                                     defaultValue={today(getLocalTimeZone())}
-                                    value={selectedDueDate ?? today(getLocalTimeZone())} // Use a default value if selectedDueDate is null
+                                    value={selectedDueDate ? new CalendarDate(selectedDueDate.year, selectedDueDate.month, selectedDueDate.day) : today(getLocalTimeZone())} // Use a default value if selectedDueDate is null
                                     classNames={{
                                         nextButton: "bg-black text-white shadow-lg hover:bg-gray-800",
                                         prevButton: "bg-black text-white shadow-lg hover:bg-gray-800",
