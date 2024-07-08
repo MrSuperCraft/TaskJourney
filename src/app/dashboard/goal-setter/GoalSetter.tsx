@@ -3,7 +3,6 @@ import { db } from '@/app/firebase';
 import { getDocs, setDoc, doc, collection, addDoc, deleteDoc } from "firebase/firestore";
 
 import TopMenu from './TopMenu';
-import BottomRow from './BottomRow';
 import GoalForm from './GoalForm';
 import GoalList from './GoalList';
 import useUserData from '@/app/hooks/useUserData';
