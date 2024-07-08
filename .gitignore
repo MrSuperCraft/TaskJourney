@@ -35,8 +35,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Firebase
-taskjourney-cb5d6-firebase-adminsdk-l302o-639d1e02d4.json
-
 .env
 pnpm-lock.yaml
+certificates
+
+service_key.json
