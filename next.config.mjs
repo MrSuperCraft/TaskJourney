@@ -29,6 +29,8 @@ const nextConfig = withPWAInit({
             ],
             unoptimized: true,  // Disable image optimization
         },
+        reactStrictMode: false,
+
     });
 
 export default nextConfig;
