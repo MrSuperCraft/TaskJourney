@@ -42,7 +42,7 @@ const GoalForm: React.FC<GoalFormProps> = ({ goal, activeStage, setActiveStage, 
             });
             setActiveStage(0); // Set active stage to 0 for new goals
         }
-    }, [goal]);
+    }, [goal, setActiveStage]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
