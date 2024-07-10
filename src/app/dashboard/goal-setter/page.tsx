@@ -8,10 +8,10 @@ export const metadata: Metadata = {
 }
 
 
-export function Page() {
+const page = () => {
     return (
         <GoalSetterPage />
     )
 }
 
-export default Page;
+export default page;
