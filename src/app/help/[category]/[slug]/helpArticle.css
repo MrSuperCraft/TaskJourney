@@ -1,0 +1,7 @@
+article {
+    @apply prose prose-sm lg:prose-lg dark:prose-invert prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-lg prose-h4:text-medium;
+}
+
+html {
+    @apply bg-gradient-to-br from-cyan-600 to-cyan-900 w-full h-full bg-fixed;
+}
