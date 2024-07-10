@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Modal, Button, ModalHeader, ModalBody, ModalFooter, ModalContent, useDisclosure, Divider, Input, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from '@nextui-org/react';
-import { format, addHours, differenceInMinutes, isAfter, addMinutes } from 'date-fns';
+import { format, addHours, differenceInMinutes, isAfter, addMinutes, isSameDay, isWithinInterval } from 'date-fns';
 import { FaPlus, FaEllipsisV, FaEdit, FaPencilAlt, FaTrash } from 'react-icons/fa';
 import useUserData from '@/app/hooks/useUserData';
 import { collection, addDoc, deleteDoc, updateDoc, doc } from 'firebase/firestore';
@@ -232,25 +232,21 @@ const DailyPlannerSidebar: React.FC<DailyPlannerSidebarProps> = ({
 
         let currentTime = new Date(startTime);
 
-        const hourInMillis = 60 * 60 * 1000; // 1 hour in milliseconds
-        const totalTimeInMillis = endTime.getTime() - startTime.getTime();
-        const timeSlotHeight = (100 / totalTimeInMillis) * hourInMillis; // Height in pixels per millisecond
-
         while (currentTime <= endTime) {
             const formattedTime = format(currentTime, 'h aa');
             const slotKey = format(currentTime, 'HH:mm');
 
-            const event = events.find(event => {
+            const eventsOnDate = events.filter(event => {
                 const eventStart = new Date(event.start);
                 const eventEnd = new Date(event.end);
 
                 // Normalize event end time to be on the same day as start time
                 if (eventEnd < eventStart) {
-                    eventEnd.setDate(eventEnd.getDate() + 1); // Increment end date by 1 day
+                    eventEnd.setDate(eventEnd.getDate() + 1);
                 }
 
                 // Check if currentTime falls within the adjusted event start and end times
-                return eventStart <= currentTime && currentTime <= eventEnd;
+                return currentTime >= eventStart && currentTime < eventEnd && isSameDay(currentTime, eventStart);
             });
 
             timeSlots.push(
@@ -260,42 +256,17 @@ const DailyPlannerSidebar: React.FC<DailyPlannerSidebarProps> = ({
                     onMouseEnter={() => setHoveredSlot(slotKey)}
                 >
                     <span className="absolute top-1/2 transform -translate-y-1/2 text-sm">{formattedTime}</span>
-                    <Divider />
-                    {event && (
-                        <Dropdown
-                            placement="top"
-                        >
+                    <Divider className='m-0' />
+                    {hoveredSlot === slotKey && (
+                        <Dropdown placement="top">
                             <DropdownTrigger>
                                 <div className="absolute right-0 cursor-pointer text-gray-500 hover:text-gray-700" style={{ top: '50%', transform: 'translateY(-50%)' }}>
                                     <FaEllipsisV />
                                 </div>
                             </DropdownTrigger>
-                            <DropdownMenu
-                                className="bg-white dark:bg-gray-700 shadow-md rounded-md"
-                            >
-                                <DropdownItem onClick={() => handleEditEvent(event.id)} className='dark:hover:bg-gray-800'>
-                                    <span className='flex flex-row'> Edit <FaPencilAlt className='ml-2 text-primary-brand-600 dark:text-primary-brand-500' /></span>
-                                </DropdownItem>
-                                <DropdownItem onClick={() => handleDeleteEvent(event.id)} className='dark:hover:bg-gray-800'>
-                                    <span className='flex flex-row'> Delete <FaTrash className='ml-2 text-primary-brand-600 dark:text-primary-brand-500' /> </span>
-                                </DropdownItem>
-                            </DropdownMenu>
-                        </Dropdown>
-                    )}
-                    {hoveredSlot === slotKey && !event && (
-                        <Dropdown
-                            placement="top"
-                        >
-                            <DropdownTrigger>
-                                <div className="absolute right-0 cursor-pointer text-gray-500 hover:text-gray-700" style={{ top: '50%', transform: 'translateY(-50%)' }}>
-                                    <FaEllipsisV />
-                                </div>
-                            </DropdownTrigger>
-                            <DropdownMenu
-                                className="bg-white shadow-md rounded-md"
-                            >
+                            <DropdownMenu className="bg-white shadow-md rounded-md">
                                 <DropdownItem onClick={() => handleTimeSlotClick(new Date(currentTime))} className='flex flex-row'>
-                                    <span className='flex flex-row'>  Add Event for {formattedTime} <FaPlus className='ml-2 text-primary-brand-600 dark:text-primary-brand-500' /> </span>
+                                    <span className='flex flex-row'> Add Event for {formattedTime} <FaPlus className='ml-2 text-primary-brand-600 dark:text-primary-brand-500' /> </span>
                                 </DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
@@ -311,36 +282,96 @@ const DailyPlannerSidebar: React.FC<DailyPlannerSidebarProps> = ({
 
 
 
-
     const renderEventBlocks = () => {
         if (!selectedDate) return null;
 
         const startTime = new Date(selectedDate);
-        startTime.setHours(1, 0, 0, 0);
+        startTime.setHours(0, 0, 0, 0); // Set start time to the beginning of the selected day
 
-        return events.map(event => {
-            const startDiff = differenceInMinutes(event.start, startTime); // Difference from start time in minutes
-            const topOffset = (startDiff / 60) * 4.22; // 4rem per hour
+        const eventBlocks: JSX.Element[] = [];
 
-            const duration = differenceInMinutes(event.end, event.start); // Event duration in minutes
+        const sortedEvents = events
+            .filter(event => isSameDay(new Date(event.start), selectedDate))
+            .sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime());
+
+        sortedEvents.forEach((event, index) => {
+            const eventStart = new Date(event.start);
+            const eventEnd = new Date(event.end);
+
+            // Calculate top offset and height
+            const startDiff = differenceInMinutes(eventStart, startTime); // Difference from start time in minutes
+            const topOffset = (startDiff / 60) * 4; // 4rem per hour
+
+            const duration = differenceInMinutes(eventEnd, eventStart); // Event duration in minutes
             const height = (duration / 60) * 4; // 4rem per hour
 
-            return (
+            const hasOverlappingEvents = sortedEvents
+                .slice(index + 1)
+                .some((otherEvent) =>
+                    isWithinInterval(eventStart, { start: new Date(otherEvent.start), end: new Date(otherEvent.end) }) ||
+                    isWithinInterval(eventEnd, { start: new Date(otherEvent.start), end: new Date(otherEvent.end) })
+                );
+
+            const isShortEvent = differenceInMinutes(eventEnd, eventStart) < 60;
+
+            const eventBlockStyles = {
+                top: `${topOffset}rem`,
+                height: `${height}rem`,
+                zIndex: hasOverlappingEvents && !isShortEvent ? 1 : 0,
+            };
+
+            const eventBlock = (
                 <div
                     key={event.id}
                     className="absolute left-20 right-10 p-2 bg-primary-brand-600 text-white rounded-lg"
-                    style={{
-                        top: `${topOffset}rem`,
-                        height: `${height}rem`,
-                    }}
+                    style={eventBlockStyles}
                 >
                     <h3 className="text-sm font-bold">{event.title}</h3>
                     <p className="text-xs">{event.description}</p>
-                    <p className="text-xs">{format(event.start, 'h:mm aa')} - {format(event.end, 'h:mm aa')}</p>
+                    <p className="text-xs">{format(eventStart, 'h:mm aa')} - {format(eventEnd, 'h:mm aa')}</p>
+                    <Dropdown placement="top">
+                        <DropdownTrigger>
+                            <div className="absolute right-0 cursor-pointer text-gray-500 hover:text-gray-700" style={{ top: '50%', transform: 'translateY(-50%)' }}>
+                                <FaEllipsisV />
+                            </div>
+                        </DropdownTrigger>
+                        <DropdownMenu className="bg-white dark:bg-gray-700 shadow-md rounded-md">
+                            <DropdownItem onClick={() => handleEditEvent(event.id)} className='dark:hover:bg-gray-800'>
+                                <span className='flex flex-row'> Edit {event.title} <FaPencilAlt className='ml-2 text-primary-brand-600 dark:text-primary-brand-500' /></span>
+                            </DropdownItem>
+                            <DropdownItem onClick={() => handleDeleteEvent(event.id)} className='dark:hover:bg-gray-800'>
+                                <span className='flex flex-row'> Delete {event.title} <FaTrash className='ml-2 text-primary-brand-600 dark:text-primary-brand-500' /></span>
+                            </DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
                 </div>
             );
+
+            eventBlocks.push(eventBlock);
+
+            if (hasOverlappingEvents && !isShortEvent) {
+                const overlappingEventBlockStyles = {
+                    ...eventBlockStyles,
+                    top: `${topOffset + height}rem`,
+                    height: `calc(${100 - (height / 4)}% - 1rem)`,
+                    zIndex: 0,
+                };
+
+                const overlappingEventBlock = (
+                    <div
+                        key={`overlapping-${event.id}`}
+                        className="absolute left-20 right-10 p-2 bg-primary-brand-600 text-white rounded-lg"
+                        style={overlappingEventBlockStyles}
+                    />
+                );
+
+                eventBlocks.push(overlappingEventBlock);
+            }
         });
+
+        return eventBlocks;
     };
+
 
     return (
         <>

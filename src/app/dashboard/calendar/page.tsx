@@ -1,45 +1,15 @@
-'use client';
+import React from 'react';
+import CalendarPage from '@/app/dashboard/calendar/CalendarPage';
+import { Metadata } from 'next';
 
-import { ProfileProvider } from '@/app/contexts/ProfileContext';
-import { ThemeProviderWithAttribute } from '@/app/contexts/ThemeContext';
-import React from 'react'
-import Sidebar from '../components/sidebar/Sidebar';
-import Calendar from './Calendar';
-import { useRouter } from 'next/navigation';
-import useUserData from '@/app/hooks/useUserData';
-import Loading from '@/app/Loading';
-import { AchievementProvider } from '@/app/contexts/AchievementsContext';
-
-const CalendarPage = () => {
-
-    const { loading, authenticated, user, userData } = useUserData();
-    const router = useRouter();
-
-    if (loading) {
-        return <Loading />;
-    }
-
-    if (!authenticated) {
-        return null;
-    }
+export const metadata: Metadata = {
+    title: 'Calendar',
+    description: 'Add events, view, edit and delete - all with the click of a button. Manage your events with ease, with the help of TaskJourney.',
+};
 
 
+export default function Page() {
     return (
-        <>
-            <AchievementProvider>
-                <ProfileProvider>
-                    <ThemeProviderWithAttribute>
-                        <div className='flex h-screen'>
-                            <Sidebar />
-                            <div className="flex-1 overflow-y-auto max-h-[98vh] px-4 py-8">
-                                <Calendar />
-                            </div>
-                        </div>
-                    </ThemeProviderWithAttribute>
-                </ProfileProvider>
-            </AchievementProvider>
-        </>
+        <CalendarPage />
     )
 }
-
-export default CalendarPage;

@@ -1,30 +1,18 @@
+import React from 'react';
+import AiChatPage from '@/app/dashboard/ai-assistance/AiChatPage';
+import { Metadata } from 'next';
 
-'use client';
+
+export const metadata: Metadata = {
+    title: 'AI Chat',
+    description: 'Chat with our friendly AI Chatbot. Ask questions, get tips, advice and more. Have conversations with our AI - integrated system chatbot to improve your task management and productivity.',
+
+};
 
 
-import React from 'react'
-import Sidebar from '../components/sidebar/Sidebar'
-import { ThemeProviderWithAttribute } from '@/app/contexts/ThemeContext';
-import { ProfileProvider } from '@/app/contexts/ProfileContext';
-import AiChat from './components/AiChat';
 
-const AiPage = () => {
+export default function Page() {
     return (
-        <>
-            <ProfileProvider>
-                <ThemeProviderWithAttribute>
-                    <div className="h-screen flex">
-                        <Sidebar />
-                        <div className="container px-4 py-8 sm:ml-10 md:ml-16 lg:ml-20 overflow-auto ">
-                            <AiChat />
-                            {/* Add more settings sections as needed */}
-                        </div>
-                    </div>
-                </ThemeProviderWithAttribute>
-            </ProfileProvider>
-
-        </>
+        <AiChatPage />
     )
 }
-
-export default AiPage;
