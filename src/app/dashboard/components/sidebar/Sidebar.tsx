@@ -22,7 +22,7 @@ import { HiMiniSparkles } from "react-icons/hi2";
 
 import { TbLayoutSidebarLeftCollapse } from "react-icons/tb";
 import TabButton from "./TabButton";
-import { Button, Modal, Spinner, Tooltip, ModalBody, ModalContent } from "@nextui-org/react";
+import { Button, Modal, Spinner, Tooltip, ModalBody, ModalContent, Divider } from "@nextui-org/react";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
@@ -563,7 +563,7 @@ const Sidebar: React.FC = () => {
                 <li>Added Goal Setter</li>
                 <li>Fixed bugs from the previous version</li>
               </ul>
-
+              <Divider />
               <h3>v0.1.0alpha</h3>
               <ul>
                 <li>Added Task Manager</li>
