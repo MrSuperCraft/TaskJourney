@@ -37,6 +37,7 @@
     "../getContenfulEnvironment.js",
     "src/app/lib/oneSignal.js",
     "src/app/help/[category]/[slug]/HeadingLink.jsx",
+    "src/app/help/SearchAutoComplete.jsx",
   ],
   "exclude": [
     "node_modules"
