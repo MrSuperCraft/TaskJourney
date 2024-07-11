@@ -6,6 +6,7 @@ import { Input } from '@nextui-org/react';
 import { FiSettings, FiUser, FiGrid, FiHelpCircle, FiArrowRight, FiSearch } from 'react-icons/fi';
 import { ThemeProviderWithAttribute } from '../contexts/ThemeContext';
 import { FaHandsHelping } from "react-icons/fa";
+import SearchAutoComplete from './SearchAutoComplete';
 
 const HelpCenter = () => {
     // Define category data with placeholder content
@@ -87,17 +88,7 @@ const HelpCenter = () => {
                 <div className="bg-gray-200 dark:bg-gray-800 py-10">
                     <div className="container mx-auto">
                         <div className="flex justify-center mb-10">
-                            <Input
-                                isClearable
-                                placeholder="Search..."
-                                startContent={<FiSearch className='w-6 h-6' />}
-                                className="rounded-xl shadow-sm w-full max-w-2xl text-lg transition-all duration-300 hover:shadow-lg hover:border-blue-500 focus:border focus:border-blue-500 focus:ring-0 focus:shadow-lg"
-                                size="lg"
-                                classNames={{
-                                    base: "h-16",
-                                    inputWrapper: "h-16"
-                                }}
-                            />
+                            <SearchAutoComplete />
                         </div>
 
                         {/* Category Sections */}
