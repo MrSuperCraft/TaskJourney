@@ -89,7 +89,7 @@ const SearchAutocomplete = () => {
                 <ul className="absolute z-50 w-full bg-white dark:bg-gray-800 shadow-lg mt-2 rounded-xl overflow-hidden">
                     {results.map((result) => (
                         <li key={result.sys.id} className="p-4 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <Link href={`/help/${result.fields.slug}`}>
+                            <Link href={`/help/${result.fields.category}/${result.fields.slug}`}>
                                 <p className="text-gray-800 dark:text-gray-100">{result.fields.title}</p>
                             </Link>
                         </li>
