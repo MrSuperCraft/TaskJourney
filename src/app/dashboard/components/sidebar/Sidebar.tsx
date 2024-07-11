@@ -222,6 +222,7 @@ const Sidebar: React.FC = () => {
                   isIconOnly
                   className="mr-4 bg-primary-brand-200 dark:bg-gray-700 cursor-pointer"
                   aria-label="Send Feedback"
+                  onClick={() => handleTabClick("feedback")}
                 >
                   {loadingTab === "feedback" ? (
                     <Spinner color="current" />
@@ -465,6 +466,7 @@ const Sidebar: React.FC = () => {
                 isIconOnly
                 className="mr-4 bg-primary-brand-200 dark:bg-gray-700 cursor-pointer"
                 aria-label="Send Feedback"
+                onClick={() => handleTabClick("feedback")}
               >
                 {loadingTab === "feedback" ? (
                   <Spinner color="current" />
