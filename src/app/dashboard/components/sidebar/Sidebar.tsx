@@ -453,6 +453,14 @@ const Sidebar: React.FC = () => {
               onClick={() => handleTabClick("calendar")}
               isLoading={loadingTab === "calendar"}
             />
+            <TabButton
+              icon={
+                <TbTargetArrow className="text-cyan-700 dark:text-primary-brand-600 text-lg" />
+              }
+              label="Goal Setter"
+              onClick={() => handleTabClick("goal-setter")}
+              isLoading={loadingTab === "goal-setter"}
+            />
             <Button color="danger" onClick={handleLogout}>
               Logout
             </Button>
@@ -514,6 +522,72 @@ const Sidebar: React.FC = () => {
                   <FaSun className="text-cyan-700 dark:text-primary-brand-600 text-xl" />
                 ) : (
                   <FaMoon className="text-cyan-700 dark:text-primary-brand-600 text-xl" />
+                )}
+              </Button>
+            </Tooltip>
+          </div>
+          <div className="flex justify-center">
+            <Tooltip
+              content="Achievements"
+              color="foreground"
+              placement="top"
+            >
+              <Button
+                isIconOnly
+                className="mr-4 bg-primary-brand-200 dark:bg-gray-700 cursor-pointer"
+                onClick={() => handleTabClick("achievements")}
+                aria-label="Achievements"
+              >
+                {loadingTab === "achievements" ? (
+                  <Spinner color="current" />
+                ) : (
+                  <FaStar className="text-cyan-700 dark:text-primary-brand-600 text-xl" />
+                )}
+              </Button>
+            </Tooltip>
+            <Tooltip
+              content="Leaderboards"
+              color="foreground"
+              placement="top"
+            >
+              <Button
+                isIconOnly
+                className="bg-primary-brand-200 dark:bg-gray-700 cursor-pointer"
+                onClick={() => handleTabClick("leaderboards")}
+                aria-label="Leaderboards"
+              >
+                {loadingTab === "leaderboards" ? (
+                  <Spinner color="current" />
+                ) : (
+                  <FaTrophy className="text-cyan-700 dark:text-primary-brand-600 text-xl" />
+                )}
+              </Button>
+            </Tooltip>
+            <Tooltip content="Statistics" color="foreground" placement="top">
+              <Button
+                isIconOnly
+                className="ml-4 bg-primary-brand-200 dark:bg-gray-700 cursor-pointer"
+                onClick={() => handleTabClick("statistics")}
+                aria-label="Statistics"
+              >
+                {loadingTab === "statistics" ? (
+                  <Spinner color="current" />
+                ) : (
+                  <FaChartPie className="text-cyan-700 dark:text-primary-brand-600 text-xl" />
+                )}
+              </Button>
+            </Tooltip>
+            <Tooltip content="More" color="foreground" placement="top">
+              <Button
+                isIconOnly
+                className="ml-4 bg-primary-brand-200 dark:bg-gray-700 cursor-pointer"
+                onClick={() => handleTabClick("more")}
+                aria-label="More"
+              >
+                {loadingTab === "more" ? (
+                  <Spinner color="current" />
+                ) : (
+                  <FaEllipsisH className="text-cyan-700 dark:text-primary-brand-600 text-xl" />
                 )}
               </Button>
             </Tooltip>
