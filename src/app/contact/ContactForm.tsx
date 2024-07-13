@@ -24,7 +24,7 @@ const ContactForm = () => {
                         Thanks for contacting us!
                     </p>
                     <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-                        We greatly appreciate you reaching out. Sit tight, we'll get back to you shortly!
+                        We greatly appreciate you reaching out. Sit tight, we&apos;ll get back to you shortly!
                     </p>
                     <div className="mt-6">
                         <Link href="/login">
