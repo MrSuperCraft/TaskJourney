@@ -75,6 +75,9 @@ interface Statistics {
     tasksCompletedToday: number;
     exp: number;
     level: number;
+    eventsAttended: number;
+    friendsConnected: number;
+    completedAchivements: number;
 }
 
 
