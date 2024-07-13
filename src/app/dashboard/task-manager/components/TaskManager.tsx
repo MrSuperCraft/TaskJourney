@@ -125,7 +125,7 @@ const TaskManager: React.FC = () => {
                 });
 
                 // Track achievement progress
-                /* trackProgress('taskCreation', { date: new Date() }); */
+                trackProgress('taskCreation', { date: new Date() });
 
             } else {
                 toast.error("Failed to add the task. Try again soon.", {
