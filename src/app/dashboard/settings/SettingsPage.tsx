@@ -12,10 +12,10 @@ import { Divider } from '@nextui-org/react';
 import { ProfileProvider } from '@/app/contexts/ProfileContext';
 
 const SettingsPage: React.FC = () => {
-    const { loading, authenticated, user, userData } = useUserData();
+    const { isLoading, authenticated, user, userData } = useUserData();
     const router = useRouter();
 
-    if (loading) {
+    if (isLoading) {
         return <Loading />;
     }
 

@@ -16,10 +16,10 @@ import { AchievementProvider } from '@/app/contexts/AchievementsContext';
 
 
 const TaskManagerPage: React.FC = () => {
-    const { loading, authenticated, user, userData } = useUserData();
+    const { isLoading, authenticated, user, userData } = useUserData();
     const router = useRouter();
 
-    if (loading) {
+    if (isLoading) {
         return <Loading />;
     }
 

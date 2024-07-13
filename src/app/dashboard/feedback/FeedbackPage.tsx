@@ -134,9 +134,9 @@ const FeedbackForm = ({ email }: { email: string }) => {
 };
 
 const FeedbackPage = () => {
-    const { loading, authenticated, user } = useUserData();
+    const { isLoading, authenticated, user } = useUserData();
 
-    if (loading) {
+    if (isLoading) {
         return <Loading />;
     }
 

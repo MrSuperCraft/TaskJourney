@@ -15,10 +15,10 @@ import useUserData from '@/app/hooks/useUserData';
 
 const GoalSetterPage = () => {
 
-    const { loading, authenticated, user, userData } = useUserData();
+    const { isLoading, authenticated, user, userData } = useUserData();
     const router = useRouter();
 
-    if (loading) {
+    if (isLoading) {
         return <Loading />;
     }
 
