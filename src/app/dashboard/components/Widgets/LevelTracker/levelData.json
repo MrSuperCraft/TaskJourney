@@ -2,8 +2,8 @@
   "levels": [
     {
       "level": 1,
-      "expForNextLevel": 150,
-      "color": "from-green-200 to-green-400",
+      "expForNextLevel": 200,
+      "color": "linear-gradient(to right, #bbf7d0, #34d399)",
       "rewards": [
         "Badge 1",
         "Bonus Points 100"
@@ -13,8 +13,8 @@
     },
     {
       "level": 2,
-      "expForNextLevel": 200,
-      "color": "from-green-400 to-green-600",
+      "expForNextLevel": 300,
+      "color": "linear-gradient(to right, #34d399, #059669)",
       "rewards": [
         "Badge 2",
         "Bonus Points 200"
@@ -24,8 +24,8 @@
     },
     {
       "level": 3,
-      "expForNextLevel": 250,
-      "color": "from-green-600 to-green-800",
+      "expForNextLevel": 400,
+      "color": "linear-gradient(to right, #059669, #047857)",
       "rewards": [
         "Badge 3",
         "Bonus Points 300"
@@ -35,8 +35,8 @@
     },
     {
       "level": 4,
-      "expForNextLevel": 300,
-      "color": "from-blue-200 to-blue-400",
+      "expForNextLevel": 500,
+      "color": "linear-gradient(to right, #bfdbfe, #3b82f6)",
       "rewards": [
         "Badge 4",
         "Bonus Points 400"
@@ -46,8 +46,8 @@
     },
     {
       "level": 5,
-      "expForNextLevel": 350,
-      "color": "from-blue-400 to-blue-600",
+      "expForNextLevel": 600,
+      "color": "linear-gradient(to right, #3b82f6, #2563eb)",
       "rewards": [
         "Badge 5",
         "Bonus Points 500"
@@ -57,8 +57,8 @@
     },
     {
       "level": 6,
-      "expForNextLevel": 400,
-      "color": "from-blue-600 to-blue-800",
+      "expForNextLevel": 700,
+      "color": "linear-gradient(to right, #2563eb, #1d4ed8)",
       "rewards": [
         "Badge 6",
         "Bonus Points 600"
@@ -68,8 +68,8 @@
     },
     {
       "level": 7,
-      "expForNextLevel": 450,
-      "color": "from-purple-200 to-purple-400",
+      "expForNextLevel": 800,
+      "color": "linear-gradient(to right, #ddd6fe, #8b5cf6)",
       "rewards": [
         "Badge 7",
         "Bonus Points 700"
@@ -79,8 +79,8 @@
     },
     {
       "level": 8,
-      "expForNextLevel": 500,
-      "color": "from-purple-400 to-purple-600",
+      "expForNextLevel": 900,
+      "color": "linear-gradient(to right, #8b5cf6, #7c3aed)",
       "rewards": [
         "Badge 8",
         "Bonus Points 800"
@@ -90,8 +90,8 @@
     },
     {
       "level": 9,
-      "expForNextLevel": 550,
-      "color": "from-purple-600 to-purple-800",
+      "expForNextLevel": 1000,
+      "color": "linear-gradient(to right, #7c3aed, #6d28d9)",
       "rewards": [
         "Badge 9",
         "Bonus Points 900"
@@ -101,8 +101,8 @@
     },
     {
       "level": 10,
-      "expForNextLevel": 600,
-      "color": "from-red-200 to-red-400",
+      "expForNextLevel": 1100,
+      "color": "linear-gradient(to right, #fecaca, #f87171)",
       "rewards": [
         "Badge 10",
         "Bonus Points 1000"
@@ -112,8 +112,8 @@
     },
     {
       "level": 11,
-      "expForNextLevel": 175,
-      "color": "from-red-400 to-red-600",
+      "expForNextLevel": 170,
+      "color": "linear-gradient(to right, #f87171, #ef4444)",
       "rewards": [
         "Badge 11",
         "Bonus Points 1100"
@@ -123,8 +123,8 @@
     },
     {
       "level": 12,
-      "expForNextLevel": 212,
-      "color": "from-red-600 to-red-800",
+      "expForNextLevel": 197,
+      "color": "linear-gradient(to right, #ef4444, #dc2626)",
       "rewards": [
         "Badge 12",
         "Bonus Points 1200"
@@ -134,8 +134,8 @@
     },
     {
       "level": 13,
-      "expForNextLevel": 268,
-      "color": "from-orange-200 to-orange-400",
+      "expForNextLevel": 237,
+      "color": "linear-gradient(to right, #fed7aa, #fb923c)",
       "rewards": [
         "Badge 13",
         "Bonus Points 1300"
@@ -145,8 +145,8 @@
     },
     {
       "level": 14,
-      "expForNextLevel": 353,
-      "color": "from-orange-400 to-orange-600",
+      "expForNextLevel": 292,
+      "color": "linear-gradient(to right, #fb923c, #f97316)",
       "rewards": [
         "Badge 14",
         "Bonus Points 1400"
@@ -156,8 +156,8 @@
     },
     {
       "level": 15,
-      "expForNextLevel": 479,
-      "color": "from-orange-600 to-orange-800",
+      "expForNextLevel": 368,
+      "color": "linear-gradient(to right, #f97316, #ea580c)",
       "rewards": [
         "Badge 15",
         "Bonus Points 1500"
@@ -167,8 +167,8 @@
     },
     {
       "level": 16,
-      "expForNextLevel": 669,
-      "color": "from-yellow-200 to-yellow-400",
+      "expForNextLevel": 476,
+      "color": "linear-gradient(to right, #fde68a, #facc15)",
       "rewards": [
         "Badge 16",
         "Bonus Points 1600"
@@ -178,8 +178,8 @@
     },
     {
       "level": 17,
-      "expForNextLevel": 954,
-      "color": "from-yellow-400 to-yellow-600",
+      "expForNextLevel": 627,
+      "color": "linear-gradient(to right, #facc15, #eab308)",
       "rewards": [
         "Badge 17",
         "Bonus Points 1700"
@@ -189,8 +189,8 @@
     },
     {
       "level": 18,
-      "expForNextLevel": 1381,
-      "color": "from-yellow-600 to-yellow-800",
+      "expForNextLevel": 837,
+      "color": "linear-gradient(to right, #eab308, #ca8a04)",
       "rewards": [
         "Badge 18",
         "Bonus Points 1800"
@@ -200,8 +200,8 @@
     },
     {
       "level": 19,
-      "expForNextLevel": 2022,
-      "color": "from-pink-200 to-pink-400",
+      "expForNextLevel": 1133,
+      "color": "linear-gradient(to right, #fbcfe8, #ec4899)",
       "rewards": [
         "Badge 19",
         "Bonus Points 1900"
@@ -211,8 +211,8 @@
     },
     {
       "level": 20,
-      "expForNextLevel": 2983,
-      "color": "from-pink-400 to-pink-600",
+      "expForNextLevel": 1546,
+      "color": "linear-gradient(to right, #ec4899, #db2777)",
       "rewards": [
         "Badge 20",
         "Bonus Points 2000"
@@ -222,8 +222,8 @@
     },
     {
       "level": 21,
-      "expForNextLevel": 4424,
-      "color": "from-pink-600 to-pink-800",
+      "expForNextLevel": 2124,
+      "color": "linear-gradient(to right, #db2777, #be185d)",
       "rewards": [
         "Badge 21",
         "Bonus Points 2100"
@@ -233,8 +233,8 @@
     },
     {
       "level": 22,
-      "expForNextLevel": 6587,
-      "color": "from-gray-200 to-gray-400",
+      "expForNextLevel": 2934,
+      "color": "linear-gradient(to right, #e5e7eb, #6b7280)",
       "rewards": [
         "Badge 22",
         "Bonus Points 2200"
@@ -244,8 +244,8 @@
     },
     {
       "level": 23,
-      "expForNextLevel": 9830,
-      "color": "from-gray-400 to-gray-600",
+      "expForNextLevel": 4068,
+      "color": "linear-gradient(to right, #6b7280, #4b5563)",
       "rewards": [
         "Badge 23",
         "Bonus Points 2300"
@@ -255,8 +255,8 @@
     },
     {
       "level": 24,
-      "expForNextLevel": 14696,
-      "color": "from-gray-600 to-gray-800",
+      "expForNextLevel": 5656,
+      "color": "linear-gradient(to right, #4b5563, #374151)",
       "rewards": [
         "Badge 24",
         "Bonus Points 2400"
@@ -266,8 +266,8 @@
     },
     {
       "level": 25,
-      "expForNextLevel": 21994,
-      "color": "from-teal-200 to-teal-400",
+      "expForNextLevel": 7878,
+      "color": "linear-gradient(to right, #99f6e4, #14b8a6)",
       "rewards": [
         "Badge 25",
         "Bonus Points 2500"
@@ -277,8 +277,8 @@
     },
     {
       "level": 26,
-      "expForNextLevel": 32942,
-      "color": "from-teal-400 to-teal-600",
+      "expForNextLevel": 10989,
+      "color": "linear-gradient(to right, #14b8a6, #0d9488)",
       "rewards": [
         "Badge 26",
         "Bonus Points 2600"
@@ -288,8 +288,8 @@
     },
     {
       "level": 27,
-      "expForNextLevel": 49363,
-      "color": "from-teal-600 to-teal-800",
+      "expForNextLevel": 15345,
+      "color": "linear-gradient(to right, #0d9488, #0f766e)",
       "rewards": [
         "Badge 27",
         "Bonus Points 2700"
@@ -299,8 +299,8 @@
     },
     {
       "level": 28,
-      "expForNextLevel": 73994,
-      "color": "from-indigo-200 to-indigo-400",
+      "expForNextLevel": 21443,
+      "color": "linear-gradient(to right, #c7d2fe, #6366f1)",
       "rewards": [
         "Badge 28",
         "Bonus Points 2800"
@@ -310,8 +310,8 @@
     },
     {
       "level": 29,
-      "expForNextLevel": 110941,
-      "color": "from-indigo-400 to-indigo-600",
+      "expForNextLevel": 29981,
+      "color": "linear-gradient(to right, #6366f1, #4f46e5)",
       "rewards": [
         "Badge 29",
         "Bonus Points 2900"
@@ -321,8 +321,8 @@
     },
     {
       "level": 30,
-      "expForNextLevel": 166362,
-      "color": "from-indigo-600 to-indigo-800",
+      "expForNextLevel": 41934,
+      "color": "linear-gradient(to right, #4f46e5, #4338ca)",
       "rewards": [
         "Badge 30",
         "Bonus Points 3000"
@@ -332,8 +332,8 @@
     },
     {
       "level": 31,
-      "expForNextLevel": 249494,
-      "color": "from-lime-200 to-lime-400",
+      "expForNextLevel": 58667,
+      "color": "linear-gradient(to right, #d9f99d, #84cc16)",
       "rewards": [
         "Badge 31",
         "Bonus Points 3100"
@@ -343,8 +343,8 @@
     },
     {
       "level": 32,
-      "expForNextLevel": 374191,
-      "color": "from-lime-400 to-lime-600",
+      "expForNextLevel": 82094,
+      "color": "linear-gradient(to right, #84cc16, #65a30d)",
       "rewards": [
         "Badge 32",
         "Bonus Points 3200"
@@ -354,8 +354,8 @@
     },
     {
       "level": 33,
-      "expForNextLevel": 561237,
-      "color": "from-lime-600 to-lime-800",
+      "expForNextLevel": 114892,
+      "color": "linear-gradient(to right, #65a30d, #4d7c0f)",
       "rewards": [
         "Badge 33",
         "Bonus Points 3300"
@@ -365,8 +365,8 @@
     },
     {
       "level": 34,
-      "expForNextLevel": 841805,
-      "color": "from-green-200 to-green-400",
+      "expForNextLevel": 160809,
+      "color": "linear-gradient(to right, #bbf7d0, #34d399)",
       "rewards": [
         "Badge 34",
         "Bonus Points 3400"
@@ -376,8 +376,8 @@
     },
     {
       "level": 35,
-      "expForNextLevel": 1262658,
-      "color": "from-green-400 to-green-600",
+      "expForNextLevel": 225093,
+      "color": "linear-gradient(to right, #34d399, #059669)",
       "rewards": [
         "Badge 35",
         "Bonus Points 3500"
@@ -387,8 +387,8 @@
     },
     {
       "level": 36,
-      "expForNextLevel": 1893937,
-      "color": "from-green-600 to-green-800",
+      "expForNextLevel": 315091,
+      "color": "linear-gradient(to right, #059669, #047857)",
       "rewards": [
         "Badge 36",
         "Bonus Points 3600"
@@ -398,8 +398,8 @@
     },
     {
       "level": 37,
-      "expForNextLevel": 2840856,
-      "color": "from-blue-200 to-blue-400",
+      "expForNextLevel": 441088,
+      "color": "linear-gradient(to right, #bfdbfe, #3b82f6)",
       "rewards": [
         "Badge 37",
         "Bonus Points 3700"
@@ -409,8 +409,8 @@
     },
     {
       "level": 38,
-      "expForNextLevel": 4261234,
-      "color": "from-blue-400 to-blue-600",
+      "expForNextLevel": 617483,
+      "color": "linear-gradient(to right, #3b82f6, #2563eb)",
       "rewards": [
         "Badge 38",
         "Bonus Points 3800"
@@ -420,8 +420,8 @@
     },
     {
       "level": 39,
-      "expForNextLevel": 6391801,
-      "color": "from-blue-600 to-blue-800",
+      "expForNextLevel": 864436,
+      "color": "linear-gradient(to right, #2563eb, #1d4ed8)",
       "rewards": [
         "Badge 39",
         "Bonus Points 3900"
@@ -431,8 +431,8 @@
     },
     {
       "level": 40,
-      "expForNextLevel": 9587652,
-      "color": "from-purple-200 to-purple-400",
+      "expForNextLevel": 1210171,
+      "color": "linear-gradient(to right, #ddd6fe, #8b5cf6)",
       "rewards": [
         "Badge 40",
         "Bonus Points 4000"
@@ -442,8 +442,8 @@
     },
     {
       "level": 41,
-      "expForNextLevel": 14381429,
-      "color": "from-purple-400 to-purple-600",
+      "expForNextLevel": 1694200,
+      "color": "linear-gradient(to right, #8b5cf6, #7c3aed)",
       "rewards": [
         "Badge 41",
         "Bonus Points 4100"
@@ -453,8 +453,8 @@
     },
     {
       "level": 42,
-      "expForNextLevel": 21572094,
-      "color": "from-purple-600 to-purple-800",
+      "expForNextLevel": 2371840,
+      "color": "linear-gradient(to right, #7c3aed, #6d28d9)",
       "rewards": [
         "Badge 42",
         "Bonus Points 4200"
@@ -464,8 +464,8 @@
     },
     {
       "level": 43,
-      "expForNextLevel": 32358091,
-      "color": "from-red-200 to-red-400",
+      "expForNextLevel": 3320536,
+      "color": "linear-gradient(to right, #fecaca, #f87171)",
       "rewards": [
         "Badge 43",
         "Bonus Points 4300"
@@ -475,8 +475,8 @@
     },
     {
       "level": 44,
-      "expForNextLevel": 48537086,
-      "color": "from-red-400 to-red-600",
+      "expForNextLevel": 4648711,
+      "color": "linear-gradient(to right, #f87171, #ef4444)",
       "rewards": [
         "Badge 44",
         "Bonus Points 4400"
@@ -486,8 +486,8 @@
     },
     {
       "level": 45,
-      "expForNextLevel": 72805580,
-      "color": "from-red-600 to-red-800",
+      "expForNextLevel": 6508155,
+      "color": "linear-gradient(to right, #ef4444, #dc2626)",
       "rewards": [
         "Badge 45",
         "Bonus Points 4500"
@@ -497,8 +497,8 @@
     },
     {
       "level": 46,
-      "expForNextLevel": 109208320,
-      "color": "from-orange-200 to-orange-400",
+      "expForNextLevel": 9111377,
+      "color": "linear-gradient(to right, #fed7aa, #fb923c)",
       "rewards": [
         "Badge 46",
         "Bonus Points 4600"
@@ -508,8 +508,8 @@
     },
     {
       "level": 47,
-      "expForNextLevel": 163812430,
-      "color": "from-orange-400 to-orange-600",
+      "expForNextLevel": 12755888,
+      "color": "linear-gradient(to right, #fb923c, #f97316)",
       "rewards": [
         "Badge 47",
         "Bonus Points 4700"
@@ -519,8 +519,8 @@
     },
     {
       "level": 48,
-      "expForNextLevel": 245718596,
-      "color": "from-orange-600 to-orange-800",
+      "expForNextLevel": 17858204,
+      "color": "linear-gradient(to right, #f97316, #ea580c)",
       "rewards": [
         "Badge 48",
         "Bonus Points 4800"
@@ -530,8 +530,8 @@
     },
     {
       "level": 49,
-      "expForNextLevel": 368577844,
-      "color": "from-yellow-200 to-yellow-400",
+      "expForNextLevel": 25001446,
+      "color": "linear-gradient(to right, #fde68a, #facc15)",
       "rewards": [
         "Badge 49",
         "Bonus Points 4900"
@@ -541,8 +541,8 @@
     },
     {
       "level": 50,
-      "expForNextLevel": 552866716,
-      "color": "from-yellow-400 to-yellow-600",
+      "expForNextLevel": 35001984,
+      "color": "linear-gradient(to right, #facc15, #eab308)",
       "rewards": [
         "Badge 50",
         "Bonus Points 5000"
@@ -552,8 +552,8 @@
     },
     {
       "level": 51,
-      "expForNextLevel": 300,
-      "color": "from-red-200 via-orange-300 to-yellow-400",
+      "expForNextLevel": 12699962,
+      "color": "linear-gradient(to right, #fecaca, #fed7aa, #fde68a)",
       "rewards": [
         "Badge 51",
         "Bonus Points 5100"
@@ -563,8 +563,8 @@
     },
     {
       "level": 52,
-      "expForNextLevel": 500,
-      "color": "from-teal-200 via-blue-300 to-indigo-400",
+      "expForNextLevel": 22224859,
+      "color": "linear-gradient(to right, #99f6e4, #bfdbfe, #c7d2fe)",
       "rewards": [
         "Badge 52",
         "Bonus Points 5200"
@@ -574,8 +574,8 @@
     },
     {
       "level": 53,
-      "expForNextLevel": 900,
-      "color": "from-purple-200 via-pink-300 to-red-400",
+      "expForNextLevel": 38893429,
+      "color": "linear-gradient(to right, #ddd6fe, #fbcfe8, #fecaca)",
       "rewards": [
         "Badge 53",
         "Bonus Points 5300"
@@ -585,8 +585,8 @@
     },
     {
       "level": 54,
-      "expForNextLevel": 1700,
-      "color": "from-yellow-200 via-orange-300 to-red-400",
+      "expForNextLevel": 68063426,
+      "color": "linear-gradient(to right, #fde68a, #facc15, #ef4444)",
       "rewards": [
         "Badge 54",
         "Bonus Points 5400"
@@ -596,8 +596,8 @@
     },
     {
       "level": 55,
-      "expForNextLevel": 3300,
-      "color": "from-gray-200 via-teal-300 to-green-400",
+      "expForNextLevel": 119110920,
+      "color": "linear-gradient(to right, #e5e7eb, #99f6e4, #bbf7d0)",
       "rewards": [
         "Badge 55",
         "Bonus Points 5500"
@@ -607,8 +607,8 @@
     },
     {
       "level": 56,
-      "expForNextLevel": 6500,
-      "color": "from-pink-200 via-purple-300 to-indigo-400",
+      "expForNextLevel": 208444036,
+      "color": "linear-gradient(to right, #fbcfe8, #ddd6fe, #c7d2fe)",
       "rewards": [
         "Badge 56",
         "Bonus Points 5600"
@@ -618,8 +618,8 @@
     },
     {
       "level": 57,
-      "expForNextLevel": 12900,
-      "color": "from-indigo-200 via-blue-300 to-teal-400",
+      "expForNextLevel": 364776988,
+      "color": "linear-gradient(to right, #c7d2fe, #bfdbfe, #99f6e4)",
       "rewards": [
         "Badge 57",
         "Bonus Points 5700"
@@ -629,8 +629,8 @@
     },
     {
       "level": 58,
-      "expForNextLevel": 25700,
-      "color": "from-lime-200 via-yellow-300 to-orange-400",
+      "expForNextLevel": 638359654,
+      "color": "linear-gradient(to right, #d9f99d, #fde68a, #fb923c)",
       "rewards": [
         "Badge 58",
         "Bonus Points 5800"
@@ -640,8 +640,8 @@
     },
     {
       "level": 59,
-      "expForNextLevel": 51300,
-      "color": "from-red-200 via-pink-300 to-purple-400",
+      "expForNextLevel": 1117129321,
+      "color": "linear-gradient(to right, #fecaca, #fbcfe8, #ddd6fe)",
       "rewards": [
         "Badge 59",
         "Bonus Points 5900"
@@ -651,8 +651,8 @@
     },
     {
       "level": 60,
-      "expForNextLevel": 102500,
-      "color": "from-blue-200 via-green-300 to-teal-400",
+      "expForNextLevel": 1954976236,
+      "color": "linear-gradient(to right, #bfdbfe, #99f6e4, #bbf7d0)",
       "rewards": [
         "Badge 60",
         "Bonus Points 6000"
@@ -662,8 +662,8 @@
     },
     {
       "level": 61,
-      "expForNextLevel": 204900,
-      "color": "from-purple-200 via-indigo-300 to-blue-400",
+      "expForNextLevel": 3421208339,
+      "color": "linear-gradient(to right, #ddd6fe, #c7d2fe, #bfdbfe)",
       "rewards": [
         "Badge 61",
         "Bonus Points 6100"
@@ -673,8 +673,8 @@
     },
     {
       "level": 62,
-      "expForNextLevel": 409700,
-      "color": "from-yellow-200 via-lime-300 to-green-400",
+      "expForNextLevel": 5987114518,
+      "color": "linear-gradient(to right, #fde68a, #d9f99d, #bbf7d0)",
       "rewards": [
         "Badge 62",
         "Bonus Points 6200"
@@ -684,8 +684,8 @@
     },
     {
       "level": 63,
-      "expForNextLevel": 819300,
-      "color": "from-teal-200 via-cyan-300 to-blue-400",
+      "expForNextLevel": 10477450332,
+      "color": "linear-gradient(to right, #99f6e4, #67e8f9, #bfdbfe)",
       "rewards": [
         "Badge 63",
         "Bonus Points 6300"
@@ -695,8 +695,8 @@
     },
     {
       "level": 64,
-      "expForNextLevel": 1638500,
-      "color": "from-orange-200 via-red-300 to-pink-400",
+      "expForNextLevel": 18335538007,
+      "color": "linear-gradient(to right, #fed7aa, #fecaca, #fbcfe8)",
       "rewards": [
         "Badge 64",
         "Bonus Points 6400"
@@ -706,8 +706,8 @@
     },
     {
       "level": 65,
-      "expForNextLevel": 3276900,
-      "color": "from-gray-200 via-gray-400 to-gray-600",
+      "expForNextLevel": 32087191438,
+      "color": "linear-gradient(to right, #e5e7eb, #6b7280, #4b5563)",
       "rewards": [
         "Badge 65",
         "Bonus Points 6500"
@@ -717,8 +717,8 @@
     },
     {
       "level": 66,
-      "expForNextLevel": 6553700,
-      "color": "from-green-200 via-teal-300 to-blue-400",
+      "expForNextLevel": 56152584942,
+      "color": "linear-gradient(to right, #bbf7d0, #99f6e4, #bfdbfe)",
       "rewards": [
         "Badge 66",
         "Bonus Points 6600"
@@ -728,8 +728,8 @@
     },
     {
       "level": 67,
-      "expForNextLevel": 13107300,
-      "color": "from-indigo-200 via-purple-300 to-pink-400",
+      "expForNextLevel": 98267023574,
+      "color": "linear-gradient(to right, #c7d2fe, #ddd6fe, #fbcfe8)",
       "rewards": [
         "Badge 67",
         "Bonus Points 6700"
@@ -739,8 +739,8 @@
     },
     {
       "level": 68,
-      "expForNextLevel": 26214500,
-      "color": "from-pink-200 via-red-300 to-orange-400",
+      "expForNextLevel": 171967291179,
+      "color": "linear-gradient(to right, #fbcfe8, #fecaca, #fed7aa)",
       "rewards": [
         "Badge 68",
         "Bonus Points 6800"
@@ -750,8 +750,8 @@
     },
     {
       "level": 69,
-      "expForNextLevel": 52428900,
-      "color": "from-lime-200 via-green-300 to-blue-400",
+      "expForNextLevel": 300942759489,
+      "color": "linear-gradient(to right, #d9f99d, #99f6e4, #bfdbfe)",
       "rewards": [
         "Badge 69",
         "Bonus Points 6900"
@@ -761,8 +761,8 @@
     },
     {
       "level": 70,
-      "expForNextLevel": 104857700,
-      "color": "from-cyan-200 via-teal-300 to-indigo-400",
+      "expForNextLevel": 526649829031,
+      "color": "linear-gradient(to right, #67e8f9, #99f6e4, #c7d2fe)",
       "rewards": [
         "Badge 70",
         "Bonus Points 7000"
@@ -772,8 +772,8 @@
     },
     {
       "level": 71,
-      "expForNextLevel": 209715300,
-      "color": "from-orange-200 via-yellow-300 to-red-400",
+      "expForNextLevel": 921637200730,
+      "color": "linear-gradient(to right, #fecaca, #fed7aa, #fde68a)",
       "rewards": [
         "Badge 71",
         "Bonus Points 7100"
@@ -783,8 +783,8 @@
     },
     {
       "level": 72,
-      "expForNextLevel": 419430500,
-      "color": "from-purple-200 via-blue-300 to-green-400",
+      "expForNextLevel": 1612865101202,
+      "color": "linear-gradient(to right, #ddd6fe, #bfdbfe, #99f6e4)",
       "rewards": [
         "Badge 72",
         "Bonus Points 7200"
@@ -794,8 +794,8 @@
     },
     {
       "level": 73,
-      "expForNextLevel": 838860900,
-      "color": "from-green-200 via-yellow-300 to-red-400",
+      "expForNextLevel": 2822513927029,
+      "color": "linear-gradient(to right, #bbf7d0, #facc15, #ef4444)",
       "rewards": [
         "Badge 73",
         "Bonus Points 7300"
@@ -805,8 +805,8 @@
     },
     {
       "level": 74,
-      "expForNextLevel": 1677721700,
-      "color": "from-blue-200 via-purple-300 to-pink-400",
+      "expForNextLevel": 4939399372226,
+      "color": "linear-gradient(to right, #bfdbfe, #ddd6fe, #fbcfe8)",
       "rewards": [
         "Badge 74",
         "Bonus Points 7400"
@@ -816,8 +816,8 @@
     },
     {
       "level": 75,
-      "expForNextLevel": 3355443300,
-      "color": "from-red-200 via-orange-300 to-yellow-400",
+      "expForNextLevel": 8643948901322,
+      "color": "linear-gradient(to right, #fecaca, #fed7aa, #fde68a)",
       "rewards": [
         "Badge 75",
         "Bonus Points 7500"
@@ -827,8 +827,8 @@
     },
     {
       "level": 76,
-      "expForNextLevel": 6710886500,
-      "color": "from-teal-200 via-blue-300 to-indigo-400",
+      "expForNextLevel": 15126910577238,
+      "color": "linear-gradient(to right, #99f6e4, #bfdbfe, #c7d2fe)",
       "rewards": [
         "Badge 76",
         "Bonus Points 7600"
@@ -838,8 +838,8 @@
     },
     {
       "level": 77,
-      "expForNextLevel": 13421772900,
-      "color": "from-purple-200 via-pink-300 to-red-400",
+      "expForNextLevel": 26472093510092,
+      "color": "linear-gradient(to right, #ddd6fe, #fbcfe8, #fecaca)",
       "rewards": [
         "Badge 77",
         "Bonus Points 7700"
@@ -849,8 +849,8 @@
     },
     {
       "level": 78,
-      "expForNextLevel": 26843545700,
-      "color": "from-yellow-200 via-orange-300 to-red-400",
+      "expForNextLevel": 46326163642587,
+      "color": "linear-gradient(to right, #fde68a, #facc15, #ef4444)",
       "rewards": [
         "Badge 78",
         "Bonus Points 7800"
@@ -860,8 +860,8 @@
     },
     {
       "level": 79,
-      "expForNextLevel": 53687091300,
-      "color": "from-gray-200 via-teal-300 to-green-400",
+      "expForNextLevel": 81070786374453,
+      "color": "linear-gradient(to right, #e5e7eb, #99f6e4, #bbf7d0)",
       "rewards": [
         "Badge 79",
         "Bonus Points 7900"
@@ -871,8 +871,8 @@
     },
     {
       "level": 80,
-      "expForNextLevel": 107374182500,
-      "color": "from-pink-200 via-purple-300 to-indigo-400",
+      "expForNextLevel": 141873876155218,
+      "color": "linear-gradient(to right, #fbcfe8, #ddd6fe, #c7d2fe)",
       "rewards": [
         "Badge 80",
         "Bonus Points 8000"
@@ -882,8 +882,8 @@
     },
     {
       "level": 81,
-      "expForNextLevel": 214748364900,
-      "color": "from-indigo-200 via-blue-300 to-teal-400",
+      "expForNextLevel": 248279283271557,
+      "color": "linear-gradient(to right, #c7d2fe, #bfdbfe, #99f6e4)",
       "rewards": [
         "Badge 81",
         "Bonus Points 8100"
@@ -893,8 +893,8 @@
     },
     {
       "level": 82,
-      "expForNextLevel": 429496729700,
-      "color": "from-lime-200 via-yellow-300 to-orange-400",
+      "expForNextLevel": 434488745725149,
+      "color": "linear-gradient(to right, #d9f99d, #fde68a, #fb923c)",
       "rewards": [
         "Badge 82",
         "Bonus Points 8200"
@@ -904,8 +904,8 @@
     },
     {
       "level": 83,
-      "expForNextLevel": 858993459300,
-      "color": "from-red-200 via-pink-300 to-purple-400",
+      "expForNextLevel": 760355305018937,
+      "color": "linear-gradient(to right, #fecaca, #fbcfe8, #ddd6fe)",
       "rewards": [
         "Badge 83",
         "Bonus Points 8300"
@@ -915,8 +915,8 @@
     },
     {
       "level": 84,
-      "expForNextLevel": 1717986918500,
-      "color": "from-blue-200 via-green-300 to-teal-400",
+      "expForNextLevel": 1330621783783065,
+      "color": "linear-gradient(to right, #bfdbfe, #99f6e4, #bbf7d0)",
       "rewards": [
         "Badge 84",
         "Bonus Points 8400"
@@ -926,8 +926,8 @@
     },
     {
       "level": 85,
-      "expForNextLevel": 3435973836900,
-      "color": "from-purple-200 via-indigo-300 to-blue-400",
+      "expForNextLevel": 2328588121620289,
+      "color": "linear-gradient(to right, #ddd6fe, #c7d2fe, #bfdbfe)",
       "rewards": [
         "Badge 85",
         "Bonus Points 8500"
@@ -937,8 +937,8 @@
     },
     {
       "level": 86,
-      "expForNextLevel": 6871947673700,
-      "color": "from-yellow-200 via-lime-300 to-green-400",
+      "expForNextLevel": 4075029212835430,
+      "color": "linear-gradient(to right, #fde68a, #d9f99d, #bbf7d0)",
       "rewards": [
         "Badge 86",
         "Bonus Points 8600"
@@ -948,8 +948,8 @@
     },
     {
       "level": 87,
-      "expForNextLevel": 13743895347300,
-      "color": "from-teal-200 via-cyan-300 to-blue-400",
+      "expForNextLevel": 7131301122461928,
+      "color": "linear-gradient(to right, #99f6e4, #67e8f9, #bfdbfe)",
       "rewards": [
         "Badge 87",
         "Bonus Points 8700"
@@ -959,8 +959,8 @@
     },
     {
       "level": 88,
-      "expForNextLevel": 27487790694500,
-      "color": "from-orange-200 via-red-300 to-pink-400",
+      "expForNextLevel": 12479776964308300,
+      "color": "linear-gradient(to right, #fed7aa, #fecaca, #fbcfe8)",
       "rewards": [
         "Badge 88",
         "Bonus Points 8800"
@@ -970,8 +970,8 @@
     },
     {
       "level": 89,
-      "expForNextLevel": 54975581388900,
-      "color": "from-gray-200 via-gray-400 to-gray-600",
+      "expForNextLevel": 21839609687539452,
+      "color": "linear-gradient(to right, #e5e7eb, #6b7280, #4b5563)",
       "rewards": [
         "Badge 89",
         "Bonus Points 8900"
@@ -981,8 +981,8 @@
     },
     {
       "level": 90,
-      "expForNextLevel": 109951162777700,
-      "color": "from-green-200 via-teal-300 to-blue-400",
+      "expForNextLevel": 38219316953193970,
+      "color": "linear-gradient(to right, #bbf7d0, #99f6e4, #bfdbfe)",
       "rewards": [
         "Badge 90",
         "Bonus Points 9000"
@@ -992,8 +992,8 @@
     },
     {
       "level": 91,
-      "expForNextLevel": 219902325555300,
-      "color": "from-indigo-200 via-purple-300 to-pink-400",
+      "expForNextLevel": 66883804668089360,
+      "color": "linear-gradient(to right, #c7d2fe, #ddd6fe, #fbcfe8)",
       "rewards": [
         "Badge 91",
         "Bonus Points 9100"
@@ -1003,8 +1003,8 @@
     },
     {
       "level": 92,
-      "expForNextLevel": 439804651110500,
-      "color": "from-pink-200 via-red-300 to-orange-400",
+      "expForNextLevel": 117046658169156290,
+      "color": "linear-gradient(to right, #fbcfe8, #fecaca, #fed7aa)",
       "rewards": [
         "Badge 92",
         "Bonus Points 9200"
@@ -1014,8 +1014,8 @@
     },
     {
       "level": 93,
-      "expForNextLevel": 879609302220900,
-      "color": "from-lime-200 via-green-300 to-blue-400",
+      "expForNextLevel": 204831651796023460,
+      "color": "linear-gradient(to right, #d9f99d, #99f6e4, #bfdbfe)",
       "rewards": [
         "Badge 93",
         "Bonus Points 9300"
@@ -1025,8 +1025,8 @@
     },
     {
       "level": 94,
-      "expForNextLevel": 1759218604441700,
-      "color": "from-cyan-200 via-teal-300 to-indigo-400",
+      "expForNextLevel": 358455390643041000,
+      "color": "linear-gradient(to right, #67e8f9, #99f6e4, #c7d2fe)",
       "rewards": [
         "Badge 94",
         "Bonus Points 9400"
@@ -1036,8 +1036,8 @@
     },
     {
       "level": 95,
-      "expForNextLevel": 3518437208883300,
-      "color": "from-orange-200 via-yellow-300 to-red-400",
+      "expForNextLevel": 627296933625321700,
+      "color": "linear-gradient(to right, #fecaca, #fed7aa, #fde68a)",
       "rewards": [
         "Badge 95",
         "Bonus Points 9500"
@@ -1047,8 +1047,8 @@
     },
     {
       "level": 96,
-      "expForNextLevel": 7036874417766500,
-      "color": "from-purple-200 via-blue-300 to-green-400",
+      "expForNextLevel": 1097769633844313000,
+      "color": "linear-gradient(to right, #ddd6fe, #bfdbfe, #99f6e4)",
       "rewards": [
         "Badge 96",
         "Bonus Points 9600"
@@ -1058,8 +1058,8 @@
     },
     {
       "level": 97,
-      "expForNextLevel": 14073748835532900,
-      "color": "from-green-200 via-yellow-300 to-red-400",
+      "expForNextLevel": 1921096859227547100,
+      "color": "linear-gradient(to right, #bbf7d0, #facc15, #ef4444)",
       "rewards": [
         "Badge 97",
         "Bonus Points 9700"
@@ -1069,8 +1069,8 @@
     },
     {
       "level": 98,
-      "expForNextLevel": 28147497671065700,
-      "color": "from-blue-200 via-purple-300 to-pink-400",
+      "expForNextLevel": 3361919503648207400,
+      "color": "linear-gradient(to right, #bfdbfe, #ddd6fe, #fbcfe8)",
       "rewards": [
         "Badge 98",
         "Bonus Points 9800"
@@ -1080,8 +1080,8 @@
     },
     {
       "level": 99,
-      "expForNextLevel": 56294995342131300,
-      "color": "from-red-200 via-orange-300 to-yellow-400",
+      "expForNextLevel": 5883359131384363000,
+      "color": "linear-gradient(to right, #fecaca, #fed7aa, #fde68a)",
       "rewards": [
         "Badge 99",
         "Bonus Points 9900"
@@ -1091,8 +1091,8 @@
     },
     {
       "level": 100,
-      "expForNextLevel": 112589990684262500,
-      "color": "from-teal-200 via-blue-300 to-indigo-400",
+      "expForNextLevel": 10295878479922637000,
+      "color": "linear-gradient(to right, #99f6e4, #bfdbfe, #c7d2fe)",
       "rewards": [
         "Badge 100",
         "Bonus Points 10000"

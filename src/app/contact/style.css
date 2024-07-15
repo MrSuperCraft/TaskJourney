@@ -1,0 +1,9 @@
+/* Apply a background image to the body */
+body {
+    background-image: url('/hero.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    @apply h-screen
+}

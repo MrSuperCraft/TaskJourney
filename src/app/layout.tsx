@@ -1,8 +1,9 @@
-
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { AuthContextProvider } from "../app/contexts/AuthContext";
+import { AuthContextProvider } from "./contexts/AuthContext";
+import ReactQueryProvider from "../app/contexts/ReactQueryProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,9 +46,11 @@ export default function RootLayout({
       <meta name="google-site-verification" content="HPRsI9jClQ_G3uLgK3lB-hELlLxJA-UB3DURj2_dTck" />
 
       <body className={inter.className}>
-        <AuthContextProvider>
-          {children}
-        </AuthContextProvider>
+        <ReactQueryProvider>
+          <AuthContextProvider>
+            {children}
+          </AuthContextProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );

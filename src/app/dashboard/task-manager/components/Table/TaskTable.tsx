@@ -27,6 +27,7 @@ import {
 } from "react-icons/fa";
 import { Task } from "../../../types";
 import EditTaskModal from "../EditModal";
+import { toast } from "react-toastify";
 
 interface TaskTableProps {
     tasks: Task[];
@@ -72,7 +73,6 @@ const TaskTable: React.FC<TaskTableProps> = ({
     const pages = Math.ceil(tasks.length / rowsPerPage);
     const [sortedTasks, setSortedTasks] = useState(tasks);
 
-    console.log(sortedTasks);
 
     const startIndex = (page - 1) * rowsPerPage;
     const endIndex = startIndex + rowsPerPage;
@@ -163,7 +163,17 @@ const TaskTable: React.FC<TaskTableProps> = ({
 
     const confirmDelete = () => {
         if (selectedTask) {
-            onTaskRemove(selectedTask?.id);
+            onTaskRemove(selectedTask.id);
+        } else {
+            return toast.error("No task selected", {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
         setIsModalVisible(false);
     };

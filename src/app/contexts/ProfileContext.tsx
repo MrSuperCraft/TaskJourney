@@ -1,7 +1,7 @@
+'use client';
+
 import React, { useState, createContext, useContext, ReactNode, useEffect } from 'react';
-import { doc, getDoc } from 'firebase/firestore';
 import useUserData from '../hooks/useUserData';
-import { db } from '@/app/firebase';
 
 interface ProfileContextType {
     profilePic: string;
@@ -19,32 +19,17 @@ interface ProfileProviderProps {
 export const ProfileProvider: React.FC<ProfileProviderProps> = ({ children }) => {
     const [profilePic, setProfilePic] = useState<string>('');
     const [username, setUsername] = useState<string>('');
-    const { user } = useUserData();
+    const { user, userData } = useUserData();
 
     useEffect(() => {
-        const fetchProfileDataFromFirestore = async () => {
-            if (user && user.uid) {
-                const profileRef = doc(db, 'users', user.uid);
-                try {
-                    const snapshot = await getDoc(profileRef);
-                    if (snapshot.exists()) {
-                        const data = snapshot.data();
-                        setProfilePic(data?.photoURL);
-                        setUsername(data?.username);
-                    } else {
-                        console.log('Profile document does not exist');
-                    }
-                } catch (error) {
-                    console.error('Error fetching profile data:', error);
-                }
-            } else {
-                console.log('User or user UID is null');
-            }
-        };
-
-        fetchProfileDataFromFirestore();
-    }, [user]);
-
+        if (user && userData) {
+            setUsername(userData.username || '');
+            setProfilePic(userData.photoURL || '');
+        } else {
+            setUsername('');
+            setProfilePic('');
+        }
+    }, [userData, user]);
 
     return (
         <ProfileContext.Provider value={{ profilePic, setProfilePic, username, setUsername }}>

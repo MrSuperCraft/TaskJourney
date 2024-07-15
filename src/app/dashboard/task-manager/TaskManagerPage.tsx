@@ -12,13 +12,14 @@ import { ThemeProviderWithAttribute } from '@/app/contexts/ThemeContext';
 import TaskManager from './components/TaskManager';
 import { Providers } from '@/app/Providers';
 import { EditorProvider } from '@/app/contexts/EditorContext';
+import { AchievementProvider } from '@/app/contexts/AchievementsContext';
 
 
 const TaskManagerPage: React.FC = () => {
-    const { loading, authenticated, user, userData } = useUserData();
+    const { isLoading, authenticated, user, userData } = useUserData();
     const router = useRouter();
 
-    if (loading) {
+    if (isLoading) {
         return <Loading />;
     }
 
@@ -27,22 +28,24 @@ const TaskManagerPage: React.FC = () => {
     }
 
     return (
-        <ProfileProvider>
-            <EditorProvider>
-                <Providers>
-                    <ThemeProviderWithAttribute>
-                        <div className="h-screen flex">
-                            <Sidebar />
-                            <div className="container  py-8 sm:ml-10 md:ml-16 lg:ml-20 overflow-auto">
-                                <h1 className="text-3xl font-bold mb-8 px-4">Task Manager</h1>
-                                <Divider />
-                                <TaskManager />
+        <AchievementProvider>
+            <ProfileProvider>
+                <EditorProvider>
+                    <Providers>
+                        <ThemeProviderWithAttribute>
+                            <div className="h-screen flex">
+                                <Sidebar />
+                                <div className="container  py-8 sm:ml-10 md:ml-16 lg:ml-20 overflow-auto">
+                                    <h1 className="text-3xl font-bold mb-8 px-4">Task Manager</h1>
+                                    <Divider />
+                                    <TaskManager />
+                                </div>
                             </div>
-                        </div>
-                    </ThemeProviderWithAttribute>
-                </Providers>
-            </EditorProvider>
-        </ProfileProvider>
+                        </ThemeProviderWithAttribute>
+                    </Providers>
+                </EditorProvider>
+            </ProfileProvider>
+        </AchievementProvider>
     );
 };
 
