@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-
 interface TabButtonProps {
   icon: JSX.Element;
   label: string;
@@ -22,7 +19,7 @@ const TabButton: React.FC<TabButtonProps> = ({
 
   return (
     <div
-      className="flex gap-2 items-center px-4 py-4 text-[#bababa] font-semibold text-sm hover:bg-primary-500 duration-200 hover:text-white"
+      className="text-[#BABABA] items-center w-full flex gap-2 hover:bg-primary-500 hover:text-white py-4 font-medium text-sm rounded-md duration-200 px-2"
       onClick={onClick}
       aria-label={label}
       role="button"
